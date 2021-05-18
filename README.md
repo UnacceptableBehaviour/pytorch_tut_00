@@ -69,6 +69,9 @@ Quick look a pytorch  dip toe in water!
 
 ## PyTorch Tutorials  
 ### 01 - Installation  
+To get a basic environment up and running first install conda (s/w package manger similar to homebrew) [How to install conda?](#how-to-install-conda)  
+Then activate the virtual environment and install pytorch [How to install pytorch on osx?](#how-to-install-pytorch-on-osx)  
+  
 ### 02 - Tensor Basics  
 ### 03 - Gradient Calculation With Autograd  
 ### 04 - Backpropagation - Theory With Example  
