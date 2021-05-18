@@ -42,8 +42,8 @@ Add table later if relevant.
 	20. [20 - RNN & LSTM & GRU - Recurrent Neural Nets](#20---rnn--lstm--gru---recurrent-neural-nets)  
 	21. [21 - PyTorch Lightning Tutorial - Lightweight PyTorch Wrapper For ML Researchers](#21---pytorch-lightning-tutorial---lightweight-pytorch-wrapper-for-ml-researchers)  
 	22. [22 - PyTorch LR Scheduler - Adjust The Learning Rate For Better Results](#22---pytorch-lr-scheduler---adjust-the-learning-rate-for-better-results)  
-7. [Unit 1: Introduction](#unit-1-introduction)  
-	1. [L1 - Algorithmic thinking, peak finding](#l1---algorithmic-thinking-peak-finding)  
+7. [EG chapter](#eg-chapter)  
+	1. [EG episode](#eg-episode)  
 		1. [**Vid contents - EG**](#vid-contents---eg)  
 8. [Glossary of terms](#glossary-of-terms)  
 9. [How To s](#how-to-s)  
@@ -63,7 +63,7 @@ Quick look a pytorch  dip toe in water!
 ## Intoduction to algorithms MIT - part 1 / 3:  
 [LECTURE PLAYLIST on YOUTUBE](https://www.youtube.com/playlist?list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb)  
 [COURSE INFO @ MIT](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/)  
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 
 
 
@@ -91,8 +91,9 @@ Quick look a pytorch  dip toe in water!
 ### 21 - PyTorch Lightning Tutorial - Lightweight PyTorch Wrapper For ML Researchers  
 ### 22 - PyTorch LR Scheduler - Adjust The Learning Rate For Better Results  
 
-## Unit 1: Introduction
-### L1 - Algorithmic thinking, peak finding	
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+## EG chapter
+### EG episode
 [vid](https://www.youtube.com/watch?v=HtSuA80QTyo&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=2&t=423s) ~ 
 [lect notes](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec01.pdf)  
 
@@ -101,6 +102,11 @@ Quick look a pytorch  dip toe in water!
 | - | - |
 **0m - 15m45**		| into to pytorch
 **15m45 - 36m20**	|  installing.  
+
+Maths equation test:
+<p align="center"><img src="./tex/70780174d39f9035e4c6288d5b180bd9.svg?invert_in_darkmode" align=middle width=711.1665561pt height=152.56240395pt/></p>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
 
 
@@ -175,6 +181,8 @@ An adapted version of render int the same directory as create_TOC_for_md.py for 
 > curl https://raw.githubusercontent.com/UnacceptableBehaviour/algorithms/master/render.py > render.py
 
 # edit create_TOC_for_md.py point DEFAULT_DOC_TO_PROCESS=rtf source file
+> mkdir -p ./scratch/tex          # -p make parent dirs as needed
+                                  # add scratch dir to .gitignore - temp work area
 
 > ./create_TOC_for_md.py -p       # to render README.md w/ TOC and maths equations
 
