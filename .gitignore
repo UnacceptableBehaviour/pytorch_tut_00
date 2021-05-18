@@ -1,0 +1,24 @@
+# for osx
+**/*.DS_Store   # ignore .DS_Store in subdirectories too!
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.RHistory
+
+#*.pyc
+#*.pyo
+*.py[co]    # file or folder ending in .pyc or .pyo. However, it doesn’t match .py!
+
+                  # ignore directory and contents
+__pycache__/      # directory at any level / at end
+venv/
+/scratch          # root directory
+
+# notes on
+# https://labs.consol.de/development/git/2017/02/22/gitignore.html
+
+# specific to python EG
+# https://github.com/github/gitignore/blob/master/Python.gitignore
