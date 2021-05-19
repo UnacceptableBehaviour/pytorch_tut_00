@@ -18,9 +18,8 @@ Add table later if relevant.
 2. [Progress](#progress)  
 3. [Contents](#contents)  
 4. [AIM:](#aim)  
-5. [Intoduction to algorithms MIT - part 1 / 3:](#intoduction-to-algorithms-mit---part-1--3)  
-6. [PyTorch Tutorials](#pytorch-tutorials)  
-	1. [01 - Installation ([vid](https://www.youtube.com/playlist?list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4))](#01---installation-vidhttpswwwyoutubecomplaylistlistplqnslrfeh2urcdbwf5mfpgpqqdsta6vk4)  
+5. [PyTorch Tutorials](#pytorch-tutorials)  
+	1. [01 - Installation](#01---installation)  
 	2. [02 - Tensor Basics](#02---tensor-basics)  
 	3. [03 - Gradient Calculation With Autograd](#03---gradient-calculation-with-autograd)  
 	4. [04 - Backpropagation - Theory With Example](#04---backpropagation---theory-with-example)  
@@ -42,43 +41,52 @@ Add table later if relevant.
 	20. [20 - RNN & LSTM & GRU - Recurrent Neural Nets](#20---rnn--lstm--gru---recurrent-neural-nets)  
 	21. [21 - PyTorch Lightning Tutorial - Lightweight PyTorch Wrapper For ML Researchers](#21---pytorch-lightning-tutorial---lightweight-pytorch-wrapper-for-ml-researchers)  
 	22. [22 - PyTorch LR Scheduler - Adjust The Learning Rate For Better Results](#22---pytorch-lr-scheduler---adjust-the-learning-rate-for-better-results)  
-7. [EG chapter](#eg-chapter)  
+6. [EG chapter](#eg-chapter)  
 	1. [EG episode](#eg-episode)  
 		1. [**Vid contents - EG**](#vid-contents---eg)  
-8. [Glossary of terms](#glossary-of-terms)  
-9. [How To s](#how-to-s)  
+7. [Glossary of terms](#glossary-of-terms)  
+8. [How To s](#how-to-s)  
 	1. [How to install conda?](#how-to-install-conda)  
 		1. [Whats conda?](#whats-conda)  
 			1. [TLDR;](#tldr)  
 	2. [How to install pytorch on osx?](#how-to-install-pytorch-on-osx)  
 	3. [How do I autogenerate README.md file from RTF?](#how-do-i-autogenerate-readmemd-file-from-rtf)  
-10. [References](#references)  
+	4. [Where does conda store virtual environments?](#where-does-conda-store-virtual-environments)  
+	5. [What is a conda channel?](#what-is-a-conda-channel)  
+	6. [How do I install a conda environment?](#how-do-i-install-a-conda-environment)  
+9. [References](#references)  
 
 
 ## AIM:  
 
 Quick look a pytorch  dip toe in water!   
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-## Intoduction to algorithms MIT - part 1 / 3:  
-[LECTURE PLAYLIST on YOUTUBE](https://www.youtube.com/playlist?list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb)  
-[COURSE INFO @ MIT](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/)  
-
-
 
 
 ## PyTorch Tutorials  
-### 01 - Installation ([vid](https://www.youtube.com/playlist?list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4))  
-To get a basic environment up and running first install conda (s/w package manger similar to homebrew) [How to install conda?](#how-to-install-conda)  
-Then activate the virtual environment and install pytorch [How to install pytorch on osx?](#how-to-install-pytorch-on-osx)  
-Nope!
-From
-https://stackoverflow.com/questions/58251251/conda-environment-is-in-an-unsolvable-loop-of-the-environment-is-inconsistent
-  Tips:
-Use a virtual environment whenever you are working on a project. Don't install all packages in the "base" environment. The "base" is designed to work with conda the command, not recommended for your projects.
-Don't mix use pip and conda in the same environment, unless you read the following reference.
-Extended Reading
-
+### 01 - Installation 
+([vid](https://www.youtube.com/playlist?list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4))  
+First install conda (s/w package manger similar to homebrew) [How to install conda](#how-to-install-conda)  
+Then creat & activate the virtual environment and install pytorch [How to install pytorch on osx](#how-to-install-pytorch-on-osx)  
+  
+```
+> conda create -n pt3 python=3.7        # -n pt3 - name of the virtual environment can be anything!
+> conda activate pt3                    # activate the venv - # To deactivate use $ conda deactivate
+> conda install pytorch torchvision torchaudio -c pytorch
+```
+WARNING: **do NOT set python=3.9** because the instal fails!  
+Also  a bit of a gotcha:
+```
+(base) > conda activate pt3
+(pt3) > python --version	             # using SYSTEM version
+Python 3.9.2
+(pt3) > python3 --version	             # using venv version 
+Python 3.7.10
+> python -c import sys; print(sys.executable)  # find out which exe is being used - rtf 
+```
+  
+Conda [CHEAT SHEET](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)  
+https://github.com/conda/conda/issues/9392  
 
 
 
@@ -99,6 +107,7 @@ Extended Reading
 ### 16 - How To Use The TensorBoard  
 ### 17 - Saving and Loading Models  
 ### 18 - Create & Deploy A Deep Learning App - PyTorch Model Deployment With Flask & Heroku  
+	[Docker Introduction 1hr](https://www.youtube.com/watch?v=i7ABlHngi1Q).  
 ### 19 - PyTorch RNN Tutorial - Name Classification Using A Recurrent Neural Net  
 ### 20 - RNN & LSTM & GRU - Recurrent Neural Nets  
 ### 21 - PyTorch Lightning Tutorial - Lightweight PyTorch Wrapper For ML Researchers  
@@ -153,12 +162,12 @@ Say yes to initialise, start new shell
 > conda --version
 conda 4.9.2
 > conda update -n base -c defaults conda          # update to latest version
-> conda create -n pt python=3.9                   # -n pt - name of the virtual environment can be anything!
+> conda create -n my_virtual_env_name python=3.9  # -n short name of the virtual environment can be anything!
 > conda info --envs	                               # conda environments
 # conda environments:
 #
 base                     /Users/simon/miniconda3
-pt                    *  /Users/simon/miniconda3/envs/pt
+pt3                   *  /Users/simon/miniconda3/envs/pt
 > conda remove --name env_name --all              # remove environment
 ```
 [Setting up Virtual environments - basics](https://heartbeat.fritz.ai/creating-python-virtual-environments-with-conda-why-and-how-180ebd02d1db).  
@@ -177,15 +186,16 @@ Pip is the Python Packaging Authoritys recommended tool for installing package
 Conda is a cross platform package and environment manager that installs and manages conda packages from the Anaconda repository as well as from the Anaconda Cloud. Conda packages are binaries. There is never a need to have compilers available to install them. Additionally conda packages are not limited to Python software. They may also contain C or C++ libraries, R packages or any other software.  
   
 
-
 ### How to install pytorch on osx?
 [Pytorch Home Page](https://pytorch.org/).  
-![install config](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/pythorch_install_config.png).  
+![install config](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/pythorch_install_config.png)
 ```
-> conda create -n pt python=3.9        # -n pt - name of the virtual environment can be anything!
-> conda activate pt                    # activate the venv - # To deactivate use $ conda deactivate
+> conda create -n pt3 python=3.7        # -n pt3 - name of the virtual environment can be anything!
+> conda activate pt3                    # activate the venv - # To deactivate use $ conda deactivate
 > conda install pytorch torchvision torchaudio -c pytorch
 ```
+WARNING: **do NOT set python=3.9** because the instal fails!
+  
 
 ### How do I autogenerate README.md file from RTF?
 Use **create_TOC_for_md.py** which reads a specified RTF file & creates a TOC for the README.md file and the readme itself. 
@@ -195,8 +205,8 @@ Requires striprtf for TOC function.
 An adapted version of render int the same directory as create_TOC_for_md.py for the latex function - [avalable here](https://github.com/UnacceptableBehaviour/algorithms/blob/master/render.py).  
 ```
                                   # update for conda
-> conda activate pt
-> pip install striprtf
+> conda activate pt3
+> pip install striprtf            # using **pip not RECOMMENDED** investigate options
 > curl https://raw.githubusercontent.com/UnacceptableBehaviour/algorithms/master/create_TOC_for_md.py > create_TOC_for_md.py
 > chmod +x create_TOC_for_md.py
 # to pull render.py - if you need latex
@@ -222,24 +232,28 @@ An adapted version of render int the same directory as create_TOC_for_md.py for 
 #
 # Name                    Version                   Build  Channel
 openssl                   1.1.1k               h9ed2024_0  
-.
-.
+.  
 sqlite                    3.35.4               hce871da_0  
 striprtf                  0.0.12                   pypi_0    pypi
 etc
 ```
 
-Where does conda store virtual environments?
+### Where does conda store virtual environments?
 ```
-> python3 -m venv /path/to/new/environment                   # with venv the path to venv is specified like so
+# with venv the path to venv is specified like so
+> python3 -m venv /path/to/new/environment          
+         
 With conda theyre all in /Users/username/miniconda3/envs    # EG /Users/simon/miniconda3/envs/pt 
                                    Or .../anaconda3/envs
 ```
-
-What is a conda channel?
+You ca also store them in the same way as venv see 
+[Defnitive guide to conda](https://towardsdatascience.com/a-guide-to-conda-environments-bc6180fc533)  
+see I prefer the approach taken by venv for two reasons.
+ 
+### What is a conda channel?
 Conda package sources are called channels, EG default_channels, conda-forge, pypi
 
-How do I install a conda environment?
+### How do I install a conda environment?
 Using a yml config file like so.
 ```
 conda env create -f environment.yml          # as in pip install requirements.txt
@@ -254,75 +268,16 @@ If not available on conda option to [build conda packages](https://docs.conda.io
 [Understanding Conda & Pip](https://www.anaconda.com/blog/understanding-conda-and-pip)   
 
 
-Problem may have naused things up using pip instead of conda?
-Steps
-```
-# reboot
-(base) simon@dtk pytorch % pip list
-Package    Version
----------- ---------
-striprtf   0.0.12                            # present
-
-% conda activate pt   
-(pt) simon@dtk pytorch % pip list
-Package    Version
----------- -------------------
-striprtf   0.0.12                            # also present
-
-# install complains about conflicts creating a fresh install
-> conda create -n pt2 python=3.9        # -n pt - name of the virtual environment can be anything!
-> conda activate pt2                    # activate the venv - # To deactivate use $ conda deactivate
-> conda install pytorch torchvision torchaudio -c pytorch
-
-Still fails with
-(base) simon@dtk pytorch % conda activate pt2
-(pt2) simon@dtk pytorch % conda install pytorch torchvision torchaudio -c pytorch
-Collecting package metadata (current_repodata.json): done
-Solving environment: failed with initial frozen solve. Retrying with flexible solve.
-Solving environment: failed with repodata from current_repodata.json, will retry with next repodata source.
-Collecting package metadata (repodata.json): done
-Solving environment: failed with initial frozen solve. Retrying with flexible solve.
-Solving environment: \ 
-Found conflicts! Looking for incompatible packages.
-This can take several minutes.  Press CTRL-C to abort.
-failed                                                                                                                                                               
-
-UnsatisfiableError: The following specifications were found to be incompatible with each other:
-
-Output in format: Requested package -> Available versions
-
-Package pytorch conflicts for:
-torchvision -> pytorch[version='1.2.0|1.3.0|1.3.1|1.4.0|1.5.0|1.5.1|1.6.0|1.7.0|1.7.1|1.8.0|1.8.1|>=1.1.0|>=1.0.0|>=0.4|>=0.3|>=0.2|1.3.1.*']
-torchaudio -> pytorch[version='1.2.0|1.3.0|1.3.1|1.4.0|1.5.0|1.5.1|1.6.0|1.7.0|1.7.1|1.8.0|1.8.1']
-pytorch
-
-Package six conflicts for:
-torchvision -> six
-pytorch -> mkl-service[version='>=2,<3.0a0'] -> six
-
-
-
-# try it the pip route
-> cd /Users/simon/a_syllabus/lang/python/pytorch/pytorch_tut_00 
-(base) > python -m venv venv
-(base) > .pe
-(venv) (base) > pip install torch torchvision torchaudio 
-Collecting torch
-etc
-Installing collected packages: typing-extensions, numpy, torch, pillow, torchvision, torchaudio
-Successfully installed numpy-1.20.3 pillow-8.2.0 torch-1.8.1 torchaudio-0.8.1 torchvision-0.9.1 typing-extensions-3.10.0.0
-
-```
-[Installing pytorch w/ pip - check it works](https://dev.to/berry_clione/install-pytorch-on-mac-by-pip-2fga).  
-
-
-
-
-
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ## References
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Courses / Books Found w/ Summary:
+
+
+
+
+
+
 
 
  
