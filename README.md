@@ -27,9 +27,10 @@ Add table later if relevant.
 	4. [04 - Backpropagation - Theory w/ Example](#04---backpropagation---theory-w-example)  
 		1. [**Vid contents - 04 back propagation**](#vid-contents---04-back-propagation)  
 	5. [05 - Gradient Descent w/ Autograd and Backpropagation](#05---gradient-descent-w-autograd-and-backpropagation)  
-		1. [**Vid contents - 05 gradient descent **](#vid-contents---05-gradient-descent-)  
+		1. [**Vid contents - 05 logistic regression**](#vid-contents---05-logistic-regression)  
 	6. [06 - Training Pipeline: Model, Loss, and Optimizer](#06---training-pipeline-model-loss-and-optimizer)  
-		1. [**Vid contents - 06 training pipeline **](#vid-contents---06-training-pipeline-)  
+		1. [**Vid contents - 06 training pipeline**](#vid-contents---06-training-pipeline)  
+		2. [Steps in Torch ML pipeline](#steps-in-torch-ml-pipeline)  
 	7. [07 - Linear Regression](#07---linear-regression)  
 	8. [08 - Logistic Regression](#08---logistic-regression)  
 	9. [09 - Dataset and DataLoader - Batch Training](#09---dataset-and-dataloader---batch-training)  
@@ -148,24 +149,33 @@ Chain rule - add reference.
 ### 05 - Gradient Descent w/ Autograd and Backpropagation  
 ([vid](https://www.youtube.com/watch?v=E-I2DNVzQLg&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=5)) - 
 ([code - numpy verison](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/05_tensor_model_optimisation_a.py)) - 
-([code - torch verison](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/05_tensor_model_optimisation_b.py))  
-#### **Vid contents - 05 gradient descent **
+([code - torch verison](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/05_tensor_model_optimisation_b.py))   
+#### **Vid contents - 05 logistic regression**
  time				| notes	
 | - | - |
 **0m**		| Manual, Prediction, Gradient Computation, Loss Computation, Parameter updates
 **12m10**	| Switch over from numpy to torch
   
 ### 06 - Training Pipeline: Model, Loss, and Optimizer  
-([vid]( )) - 
-([code]( ))  
-#### **Vid contents - 06 training pipeline **
+([vid](https://www.youtube.com/watch?v=VVDHU_TWwUg&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=6)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/06_tensor_training_pipeline_a.py))  
+#### **Vid contents - 06 training pipeline**
  time				| notes	
 | - | - |
-**0m**		| intro to gradients  
-**1m**		|  o
-**1m**		|  o
-**1m**		|  o
-**1m**		|  o
+**0m**		| Steps in Torch ML pipeline
+**2m40**	| Step 3 - Adapt code - import torch.nn
+**5m04**	| introduce a pytorch model
+**11m40**	| custom LinearRegression model
+
+#### Steps in Torch ML pipeline
+1) Design Model (input, output size, forward pass)
+2) Construct the Loos & optimiser
+3) Training Loop
+  - forward pass: compute prediction
+  - backward pass: gradients
+  - update weights
+  
+
 ### 07 - Linear Regression  
 ### 08 - Logistic Regression  
 ### 09 - Dataset and DataLoader - Batch Training  
