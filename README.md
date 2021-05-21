@@ -21,9 +21,10 @@ Add table later if relevant.
 5. [PyTorch Tutorials](#pytorch-tutorials)  
 	1. [01 - Installation](#01---installation)  
 	2. [02 - Tensor Basics](#02---tensor-basics)  
-	3. [03 - Gradient Calculation With Autograd](#03---gradient-calculation-with-autograd)  
+		1. [**Vid contents - 02 basics**](#vid-contents---02-basics)  
+	3. [03 - Gradient Calculation w/ Autograd](#03---gradient-calculation-w-autograd)  
 		1. [**Vid contents - 03**](#vid-contents---03)  
-	4. [04 - Backpropagation - Theory With Example](#04---backpropagation---theory-with-example)  
+	4. [04 - Backpropagation - Theory w/ Example](#04---backpropagation---theory-w-example)  
 	5. [05 - Gradient Descent with Autograd and Backpropagation](#05---gradient-descent-with-autograd-and-backpropagation)  
 	6. [06 - Training Pipeline: Model, Loss, and Optimizer](#06---training-pipeline-model-loss-and-optimizer)  
 	7. [07 - Linear Regression](#07---linear-regression)  
@@ -83,31 +84,48 @@ Also  a bit of a gotcha:
 Python 3.9.2
 (pt3) > python3 --version	             # using venv version 
 Python 3.7.10
-> python -c import sys; print(sys.executable)  # find out which exe is being used - rtf 
+> python -c "import sys; print(sys.executable)"  # find out which exe is being used - rtf ""
 ```
   
 Conda [CHEAT SHEET](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)  
 https://github.com/conda/conda/issues/9392  
 
 ### 02 - Tensor Basics  
-### 03 - Gradient Calculation With Autograd  
+([vid](https://www.youtube.com/watch?v=exaWOE8jvy8&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=2)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/02_tensor_basics.py))  
+#### **Vid contents - 02 basics**
+ time				| notes	
+| - | - |
+**0m**		|  Initialisation & types
+**3m25**	|  tensor arithamatic
+**8m11**	|  manipulations, resize / slice
+**10m25**	|  resizing
+**10m44**	|  converting from numpy to tensor
+**11m50**	|  tensor by refence issues / numpy cpu vs gpu
+**14m40**	|  creating tensor on the GPU
+**17m**		|  moving to GPU and back to CPU
+**17m20**	|  intro to requires_grad argument
+  
+### 03 - Gradient Calculation w/ Autograd  
+([vid](https://www.youtube.com/watch?v=DbeIqrwb_dE&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=3)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/03_tensor_gradients.py))  
 #### **Vid contents - 03**
  time				| notes	
 | - | - |
 **0m**		| into to gradients  
-**1m30**		| requires_grad
-**1m30**		| computational graph, forward pass, back propagation, 
+**1m30**	| requires_grad
+**1m30**	| computational graph, forward pass, back propagation, 
 **5m30**	|  vector Jacobean product. Jacobean matrix w/ derivatives, gradient vector = final gradients (chain rule)   
 **8m20**	|  preventing gradient tracking - 3 options
 **9m40**	|  option 1
 **10m15**	|  option 2 
 **10m40**	|  option 3
 **11m30**	|  gradient accumulation / clearing
-**14m**	|  optimiser
-**15m**	|  summary
+**14m**		|  optimiser
+**15m**		|  summary
 
   
-### 04 - Backpropagation - Theory With Example  
+### 04 - Backpropagation - Theory w/ Example  
 ### 05 - Gradient Descent with Autograd and Backpropagation  
 ### 06 - Training Pipeline: Model, Loss, and Optimizer  
 ### 07 - Linear Regression  
