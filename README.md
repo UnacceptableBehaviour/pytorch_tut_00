@@ -310,10 +310,10 @@ If not available on conda option to [build conda packages](https://docs.conda.io
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ## References
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Courses / Books Found w/ Summary:
-[](https://www.youtube.com/playlist?list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4) - 
-from [Python Engineer](https://www.youtube.com/c/PythonEngineer)
-
+Courses / Books Found w/ Summary:  
+[PyTorch Tutorials - Complete Beginner Course](https://www.youtube.com/playlist?list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4) - 
+from [Python Engineer](https://www.youtube.com/c/PythonEngineer).  
+  
 
 
 
