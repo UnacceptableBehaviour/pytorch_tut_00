@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
-# PyTorch Tutorial 03 - Gradient Calculation With Autograd
-# https://www.youtube.com/watch?v=DbeIqrwb_dE&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=3
+# PyTorch Tutorial 05 - Gradient Descent with Autograd and Backpropagation
+# https://www.youtube.com/watch?v=E-I2DNVzQLg&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=6
 
 #from __future__ import print_function
 import numpy as np
