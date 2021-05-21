@@ -60,7 +60,7 @@ Add table later if relevant.
 
 ## AIM:  
 
-Quick look a pytorch  dip toe in water!   
+Quick look a pytorch - dip toe in water!   
 
 
 
@@ -102,14 +102,9 @@ https://github.com/conda/conda/issues/9392
 **9m40**	|  option 1
 **10m15**	|  option 2 
 **10m40**	|  option 3
-** **	|  installing
-** **	|  installing
-** **	|  installing
-** **	|  installing
-** - **	|  installing
-** - **	|  installing
-** - **	|  installing
-** - **	|  installing
+**11m30**	|  gradient accumulation / clearing
+**14m**	|  optimiser
+**15m**	|  summary
 
   
 ### 04 - Backpropagation - Theory With Example  
@@ -205,7 +200,7 @@ Conda more like Homebrew but it's cross platform
 [more here](https://towardsdatascience.com/managing-project-specific-environments-with-conda-b8b50aa8be0e) 
 inc Conda vs MiniConda vs Anaconda.  
   
-Pip is the Python Packaging Authoritys recommended tool for installing packages from the Python Package Index, PyPI. Pip installs Python software packaged as wheels or source distributions. The latter may require that the system have compatible compilers, and possibly libraries, installed before invoking pip to succeed.  
+Pip is the Python Packaging Authority's recommended tool for installing packages from the Python Package Index, PyPI. Pip installs Python software packaged as wheels or source distributions. The latter may require that the system have compatible compilers, and possibly libraries, installed before invoking pip to succeed.  
   
 Conda is a cross platform package and environment manager that installs and manages conda packages from the Anaconda repository as well as from the Anaconda Cloud. Conda packages are binaries. There is never a need to have compilers available to install them. Additionally conda packages are not limited to Python software. They may also contain C or C++ libraries, R packages or any other software.  
   
@@ -236,7 +231,7 @@ An adapted version of render int the same directory as create_TOC_for_md.py for 
 # to pull render.py - if you need latex
 > curl https://raw.githubusercontent.com/UnacceptableBehaviour/algorithms/master/render.py > render.py
 
-# edit create_TOC_for_md.py point DEFAULT_DOC_TO_PROCESS=rtf source file
+# edit create_TOC_for_md.py point DEFAULT_DOC_TO_PROCESS='rtf source file'
 > mkdir -p ./scratch/tex          # -p make parent dirs as needed
                                   # add scratch dir to .gitignore - temp work area
 
@@ -267,15 +262,17 @@ etc
 # with venv the path to venv is specified like so
 > python3 -m venv /path/to/new/environment          
          
-With conda theyre all in /Users/username/miniconda3/envs    # EG /Users/simon/miniconda3/envs/pt 
+With conda they're all in /Users/username/miniconda3/envs    # EG /Users/simon/miniconda3/envs/pt 
                                    Or .../anaconda3/envs
 ```
 You ca also store them in the same way as venv see 
 [Defnitive guide to conda](https://towardsdatascience.com/a-guide-to-conda-environments-bc6180fc533)  
-see I prefer the approach taken by venv for two reasons.
+see 'I prefer the approach taken by venv for two reasons'.
  
 ### What is a conda channel?
-Conda package sources are called channels, EG default_channels, conda-forge, pypi
+Conda package sources are called channels, EG default_channels, conda-forge, pypi.  
+pypi is a **bad example** since the advice is NOT to install packages in a conda environment using pip.  
+You should use ```conda install package```.  
 
 ### How do I install a conda environment?
 Using a yml config file like so.
@@ -287,7 +284,7 @@ conda search package_name --info
 
 [Defnitive guide to conda](https://towardsdatascience.com/a-guide-to-conda-environments-bc6180fc533)   
 [Pip & Conda](https://www.anaconda.com/blog/using-pip-in-a-conda-environment)   
-Advice is dont mix them use conda.
+Advice is don't mix them use conda.
 If not available on conda option to [build conda packages](https://docs.conda.io/projects/conda-build/en/latest/) is available.
 [Understanding Conda & Pip](https://www.anaconda.com/blog/understanding-conda-and-pip)   
 
