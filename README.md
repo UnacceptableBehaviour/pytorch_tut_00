@@ -26,7 +26,8 @@ Add table later if relevant.
 		1. [**Vid contents - 03 gradient calcs**](#vid-contents---03-gradient-calcs)  
 	4. [04 - Backpropagation - Theory w/ Example](#04---backpropagation---theory-w-example)  
 		1. [**Vid contents - 04 back propagation**](#vid-contents---04-back-propagation)  
-	5. [05 - Gradient Descent with Autograd and Backpropagation](#05---gradient-descent-with-autograd-and-backpropagation)  
+	5. [05 - Gradient Descent w/ Autograd and Backpropagation](#05---gradient-descent-w-autograd-and-backpropagation)  
+		1. [**Vid contents - 05 gradient descent **](#vid-contents---05-gradient-descent-)  
 	6. [06 - Training Pipeline: Model, Loss, and Optimizer](#06---training-pipeline-model-loss-and-optimizer)  
 	7. [07 - Linear Regression](#07---linear-regression)  
 	8. [08 - Logistic Regression](#08---logistic-regression)  
@@ -83,9 +84,9 @@ Also  a bit of a gotcha:
 (base) > conda activate pt3
 (pt3) > python --version	             # using SYSTEM version
 Python 3.9.2
-(pt3) > python3 --version	             # using venv version 
+(pt3) > python3 --version	             # using conda venv version 
 Python 3.7.10
-> python -c "import sys; print(sys.executable)"  # find out which exe is being used - rtf ""
+> python -c "import sys; print(sys.executable)"  # find out which exe is being used
 ```
   
 Conda [CHEAT SHEET](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)  
@@ -131,11 +132,30 @@ https://github.com/conda/conda/issues/9392
  time				| notes	
 | - | - |
 **0m**		| intro to gradients  
-**1m**		|  o
-**1m**		|  o
-**15m**		|  summary
+**1m**		|  theory - chain rule
+**2m**		|  computational graph
+**4m12**	|  backward pass - concept overview
+**4m30**		|  linear regression
+**4m50**		|  walk through the maths
+**10m30**		|  pytorch implementation
   
-### 05 - Gradient Descent with Autograd and Backpropagation  
+Chain rule - add reference.  
+<p align="center"><img src="./tex/80d54bc90546c7381ff21ec68e752c5e.svg?invert_in_darkmode" align=middle width=173.51321625pt height=14.611878599999999pt/></p>
+  
+
+
+
+  
+
+### 05 - Gradient Descent w/ Autograd and Backpropagation  
+#### **Vid contents - 05 gradient descent **
+ time				| notes	
+| - | - |
+**0m**		| intro to gradients  
+**1m**		|  o
+**1m**		|  o
+**1m**		|  o
+**1m**		|  o
 ### 06 - Training Pipeline: Model, Loss, and Optimizer  
 ### 07 - Linear Regression  
 ### 08 - Logistic Regression  
