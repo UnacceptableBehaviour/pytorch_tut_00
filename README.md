@@ -22,6 +22,7 @@ Add table later if relevant.
 	1. [01 - Installation](#01---installation)  
 	2. [02 - Tensor Basics](#02---tensor-basics)  
 	3. [03 - Gradient Calculation With Autograd](#03---gradient-calculation-with-autograd)  
+		1. [**Vid contents - 03**](#vid-contents---03)  
 	4. [04 - Backpropagation - Theory With Example](#04---backpropagation---theory-with-example)  
 	5. [05 - Gradient Descent with Autograd and Backpropagation](#05---gradient-descent-with-autograd-and-backpropagation)  
 	6. [06 - Training Pipeline: Model, Loss, and Optimizer](#06---training-pipeline-model-loss-and-optimizer)  
@@ -47,7 +48,7 @@ Add table later if relevant.
 7. [Glossary of terms](#glossary-of-terms)  
 8. [How To s](#how-to-s)  
 	1. [How to install conda?](#how-to-install-conda)  
-		1. [Whats conda?](#whats-conda)  
+		1. [What is conda?](#what-is-conda)  
 			1. [TLDR;](#tldr)  
 	2. [How to install pytorch on osx?](#how-to-install-pytorch-on-osx)  
 	3. [How do I autogenerate README.md file from RTF?](#how-do-i-autogenerate-readmemd-file-from-rtf)  
@@ -88,10 +89,29 @@ Python 3.7.10
 Conda [CHEAT SHEET](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)  
 https://github.com/conda/conda/issues/9392  
 
-
-
 ### 02 - Tensor Basics  
 ### 03 - Gradient Calculation With Autograd  
+#### **Vid contents - 03**
+ time				| notes	
+| - | - |
+**0m**		| into to gradients  
+**1m30**		| requires_grad
+**1m30**		| computational graph, forward pass, back propagation, 
+**5m30**	|  vector Jacobean product. Jacobean matrix w/ derivatives, gradient vector = final gradients (chain rule)   
+**8m20**	|  preventing gradient tracking - 3 options
+**9m40**	|  option 1
+**10m15**	|  option 2 
+**10m40**	|  option 3
+** **	|  installing
+** **	|  installing
+** **	|  installing
+** **	|  installing
+** - **	|  installing
+** - **	|  installing
+** - **	|  installing
+** - **	|  installing
+
+  
 ### 04 - Backpropagation - Theory With Example  
 ### 05 - Gradient Descent with Autograd and Backpropagation  
 ### 06 - Training Pipeline: Model, Loss, and Optimizer  
@@ -162,18 +182,22 @@ Say yes to initialise, start new shell
 > conda --version
 conda 4.9.2
 > conda update -n base -c defaults conda          # update to latest version
-> conda create -n my_virtual_env_name python=3.9  # -n short name of the virtual environment can be anything!
+> conda create -n my_virtual_env_name python=3.7  # -n short --name of the virtual environment can be anything!
+
 > conda info --envs	                               # conda environments
 # conda environments:
 #
 base                     /Users/simon/miniconda3
 pt3                   *  /Users/simon/miniconda3/envs/pt
+
 > conda remove --name env_name --all              # remove environment
+
+> conda config --set auto_activate_base false     # STOPS conda automatically activating base! WAS ANNOYING
 ```
 [Setting up Virtual environments - basics](https://heartbeat.fritz.ai/creating-python-virtual-environments-with-conda-why-and-how-180ebd02d1db).  
 [Conda Environments Python / R - TDS - more in depth](https://towardsdatascience.com/a-guide-to-conda-environments-bc6180fc533).  
   
-#### Whats conda?  
+#### What is conda?  
 [Difference between Conda & Pip?](https://www.anaconda.com/blog/understanding-conda-and-pip#:~:text=Pip%20installs%20Python%20packages%20whereas,software%20written%20in%20any%20language.&text=Another%20key%20difference%20between%20the,the%20packages%20installed%20in%20them.)  
 
 ##### TLDR;   
