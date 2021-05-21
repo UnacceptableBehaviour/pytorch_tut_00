@@ -43,45 +43,60 @@ print(f'n_samples {n_samples}, n_features {n_features}')
 input_size = n_features
 output_size = n_features
 # normally we would have to design this. But since this example is trivial can use built ins
-model = nn.Linear(input_size, output_size)
+# model = nn.Linear(input_size, output_size)     # <
+                                                 #
+# even after 1000 epoch not quite there!         #
+#                                                #
+# X_test tensor([5.])                            #
+# X.shape torch.Size([4, 1])                     #
+# n_samples 4, n_features 1                      #
+# prediction BEFORE training: f(5) = 4.837       #
+# epoch 1: w = 0.957, loss = 6.61540985          #
+# epoch 11: w = 1.548, loss = 0.33475524         #
+# epoch 21: w = 1.652, loss = 0.16273710         #
+# .                                              #
+# .                                              #
+# epoch 971: w = 1.981, loss = 0.00053171        #
+# epoch 981: w = 1.981, loss = 0.00050076        #
+# epoch 991: w = 1.982, loss = 0.00047161        #
+# prediction AFTER training: f(5) = 9.964        #
+#                                                #
+# tried 10000 - model crystalised after 2711     #
+# epoch 2711: w = 2.000, loss = 0.00000001       #
+# epoch 2721: w = 2.000, loss = 0.00000000       #
 
-# even after 1000 epoch not quite there!
-#
+
+# custom model
+class LinearRegression(nn.Module):
+  def __init__(self, input_dim, output_dim):
+    super(LinearRegression, self).__init__()
+    # define layers
+    self.lin = nn.Linear(input_dim, output_dim)
+
+  def forward(self, x):
+    return self.lin(x)
+
+model = LinearRegression(input_size, output_size)
+
 # X_test tensor([5.])
 # X.shape torch.Size([4, 1])
 # n_samples 4, n_features 1
-# prediction BEFORE training: f(5) = 4.837
-# epoch 1: w = 0.957, loss = 6.61540985
-# epoch 11: w = 1.548, loss = 0.33475524
-# epoch 21: w = 1.652, loss = 0.16273710
+# prediction BEFORE training: f(5) = 3.426
+# epoch 1: w = 0.727, loss = 11.25522518
+# epoch 11: w = 1.499, loss = 0.46884847
 # .
-# .
-# epoch 971: w = 1.981, loss = 0.00053171
-# epoch 981: w = 1.981, loss = 0.00050076
-# epoch 991: w = 1.982, loss = 0.00047161
-# prediction AFTER training: f(5) = 9.964
-#
-# tried 10000 - model crystalised after 2711
-# epoch 2711: w = 2.000, loss = 0.00000001
-# epoch 2721: w = 2.000, loss = 0.00000000
-
-
-# # custom model
-# class LinearRegression(nn.Module):
-#   def __init__(self, input_dim, outpu_dim):
-#     super(LinearRegression, self).__init__()
-#     # define layers
-#     self.lin = nn.Linear(input_dim, output_dim)
-#
-#   def forward(self, x):
-#     return self.lin(x)
-#
-# model = LinearRegression(input_size, output_  size)
-
-
-
-
-
+# . 1
+# epoch 2911: w = 2.000, loss = 0.00000001
+# epoch 2921: w = 2.000, loss = 0.00000000
+# . 2
+# epoch 3011: w = 2.000, loss = 0.00000001
+# epoch 3021: w = 2.000, loss = 0.00000000
+# . 3
+# epoch 2101: w = 2.000, loss = 0.00000001
+# epoch 2111: w = 2.000, loss = 0.00000000
+# . 4
+# epoch 2131: w = 2.000, loss = 0.00000001
+# epoch 2141: w = 2.000, loss = 0.00000000
 
 print(f'prediction BEFORE training: f(5) = {model(X_test).item():.3f}')
 
