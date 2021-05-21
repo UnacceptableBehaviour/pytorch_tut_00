@@ -23,8 +23,9 @@ Add table later if relevant.
 	2. [02 - Tensor Basics](#02---tensor-basics)  
 		1. [**Vid contents - 02 basics**](#vid-contents---02-basics)  
 	3. [03 - Gradient Calculation w/ Autograd](#03---gradient-calculation-w-autograd)  
-		1. [**Vid contents - 03**](#vid-contents---03)  
+		1. [**Vid contents - 03 gradient calcs**](#vid-contents---03-gradient-calcs)  
 	4. [04 - Backpropagation - Theory w/ Example](#04---backpropagation---theory-w-example)  
+		1. [**Vid contents - 04 back propagation**](#vid-contents---04-back-propagation)  
 	5. [05 - Gradient Descent with Autograd and Backpropagation](#05---gradient-descent-with-autograd-and-backpropagation)  
 	6. [06 - Training Pipeline: Model, Loss, and Optimizer](#06---training-pipeline-model-loss-and-optimizer)  
 	7. [07 - Linear Regression](#07---linear-regression)  
@@ -109,23 +110,31 @@ https://github.com/conda/conda/issues/9392
 ### 03 - Gradient Calculation w/ Autograd  
 ([vid](https://www.youtube.com/watch?v=DbeIqrwb_dE&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=3)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/03_tensor_gradients.py))  
-#### **Vid contents - 03**
+#### **Vid contents - 03 gradient calcs**
  time				| notes	
 | - | - |
-**0m**		| into to gradients  
+**0m**		| intro to gradients  
 **1m30**	| requires_grad
 **1m30**	| computational graph, forward pass, back propagation, 
 **5m30**	|  vector Jacobean product. Jacobean matrix w/ derivatives, gradient vector = final gradients (chain rule)   
 **8m20**	|  preventing gradient tracking - 3 options
-**9m40**	|  option 1
-**10m15**	|  option 2 
-**10m40**	|  option 3
+**9m40**	|  option 1 - x.requires_grad_(False)
+**10m15**	|  option 2 - x.detach()
+**10m40**	|  option 3 - with torch.no_grad():
 **11m30**	|  gradient accumulation / clearing
 **14m**		|  optimiser
 **15m**		|  summary
 
   
 ### 04 - Backpropagation - Theory w/ Example  
+#### **Vid contents - 04 back propagation**
+ time				| notes	
+| - | - |
+**0m**		| intro to gradients  
+**1m**		|  o
+**1m**		|  o
+**15m**		|  summary
+  
 ### 05 - Gradient Descent with Autograd and Backpropagation  
 ### 06 - Training Pipeline: Model, Loss, and Optimizer  
 ### 07 - Linear Regression  
