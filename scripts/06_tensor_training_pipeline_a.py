@@ -1,10 +1,11 @@
 #! /usr/bin/env python
 
-# PyTorch Tutorial 03 - Gradient Calculation With Autograd
-# https://www.youtube.com/watch?v=DbeIqrwb_dE&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=3
+# PyTorch Tutorial 06 - Training Pipeline: Model, Loss, and Optimizer
+# https://www.youtube.com/watch?v=VVDHU_TWwUg&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=6 pt 2
 
 #from __future__ import print_function
 import torch
+import torch.nn as nn
 
 print("\n" * 20)
 print("-" * 80)
@@ -12,8 +13,27 @@ print("-" * 80)
 print("\n" * 2)
 
 
-# 0m - Manual, Prediction, Gradient Computation, Loss Computation, Parameter updates
-# 12m10 - switch over from numpy to torch
+# 0m - Steps in Torch ML pipeline
+# 2m40 - Adapt code
+#
+#
+#
+#
+#
+#
+#
+#
+#
+
+# 0m - Steps in Torch ML pipeline
+# 1) Design Model (input, output size, forward pass)
+# 2) Contsruct the Loos & optimiser
+# 3) Training Loop
+#   - forward pass: compute prediction
+#   - backward pass: gradients
+#   - update weights
+
+
 
 # f = 2 * x
 X = torch.tensor([1,2,3,4], dtype=torch.float32)
@@ -24,15 +44,15 @@ w = torch.tensor(0.0, dtype=torch.float32, requires_grad=True)
 def forward(x):
   return w * x
 
-# loss = MSE - Mean Squared Error
-def loss(y, y_predicted):
-  return ((y_predicted - y)**2).mean()
-
 
 print(f'prediction BEFORE training: f(5) = {forward(5):.3f}')
 
 learning_rate = 0.01
 n_iters = 80 # 10
+
+loss = nn.MSELoss()   # Mean Squared Error Loss    -  REMOVE brackets?
+optimizer = torch.optim.SGD([w], lr=learning_rate)
+
 
 for epoch in range(n_iters):
   # prediction = forward pass
@@ -46,11 +66,10 @@ for epoch in range(n_iters):
                 # accumulate gradients in w.grad attirbute
 
   # update weights
-  with torch.no_grad():
-    w -= learning_rate * w.grad
+  optimizer.step()
 
   # zero out gradients
-  w.grad.zero_()
+  optimizer.zero_grad()
 
   if epoch % 10 ==  0:
     print(f'epoch {epoch+1}: w = {w:.3f}, loss = {l:.8f}')
