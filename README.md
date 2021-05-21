@@ -29,6 +29,7 @@ Add table later if relevant.
 	5. [05 - Gradient Descent w/ Autograd and Backpropagation](#05---gradient-descent-w-autograd-and-backpropagation)  
 		1. [**Vid contents - 05 gradient descent **](#vid-contents---05-gradient-descent-)  
 	6. [06 - Training Pipeline: Model, Loss, and Optimizer](#06---training-pipeline-model-loss-and-optimizer)  
+		1. [**Vid contents - 06 training pipeline **](#vid-contents---06-training-pipeline-)  
 	7. [07 - Linear Regression](#07---linear-regression)  
 	8. [08 - Logistic Regression](#08---logistic-regression)  
 	9. [09 - Dataset and DataLoader - Batch Training](#09---dataset-and-dataloader---batch-training)  
@@ -128,6 +129,8 @@ https://github.com/conda/conda/issues/9392
 
   
 ### 04 - Backpropagation - Theory w/ Example  
+([vid](https://www.youtube.com/watch?v=3Kb0QS6z7WA&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=4)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/04_tensor_backpropagation.py))  
 #### **Vid contents - 04 back propagation**
  time				| notes	
 | - | - |
@@ -142,13 +145,20 @@ https://github.com/conda/conda/issues/9392
 Chain rule - add reference.  
 <p align="center"><img src="./tex/80d54bc90546c7381ff21ec68e752c5e.svg?invert_in_darkmode" align=middle width=173.51321625pt height=14.611878599999999pt/></p>
   
-
-
-
-  
-
 ### 05 - Gradient Descent w/ Autograd and Backpropagation  
+([vid](https://www.youtube.com/watch?v=E-I2DNVzQLg&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=5)) - 
+([code - numpy verison](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/05_tensor_model_optimisation_a.py)) - 
+([code - torch verison](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/05_tensor_model_optimisation_b.py))  
 #### **Vid contents - 05 gradient descent **
+ time				| notes	
+| - | - |
+**0m**		| Manual, Prediction, Gradient Computation, Loss Computation, Parameter updates
+**12m10**	| Switch over from numpy to torch
+  
+### 06 - Training Pipeline: Model, Loss, and Optimizer  
+([vid]( )) - 
+([code]( ))  
+#### **Vid contents - 06 training pipeline **
  time				| notes	
 | - | - |
 **0m**		| intro to gradients  
@@ -156,7 +166,6 @@ Chain rule - add reference.
 **1m**		|  o
 **1m**		|  o
 **1m**		|  o
-### 06 - Training Pipeline: Model, Loss, and Optimizer  
 ### 07 - Linear Regression  
 ### 08 - Logistic Regression  
 ### 09 - Dataset and DataLoader - Batch Training  
@@ -189,6 +198,8 @@ Chain rule - add reference.
 
 Maths equation test:
 <p align="center"><img src="./tex/b01132dc54e41412aacb955f99104fe7.svg?invert_in_darkmode" align=middle width=679.0714507499999pt height=149.36606024999998pt/></p>
+
+How to change the maths equation for size?
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
