@@ -4,7 +4,6 @@
 # https://www.youtube.com/watch?v=DbeIqrwb_dE&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=3
 
 #from __future__ import print_function
-import torch
 import numpy as np
 
 print("\n" * 20)
@@ -14,18 +13,7 @@ print("\n" * 2)
 
 
 # 0m - Manual, Prediction, Gradient Computation, Loss Computation, Parameter updates
-# 12m10 -
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
+# 12m10 - switch over from numpy to torch
 
 # f = 2 * x
 X = np.array([1,2,3,4], dtype=np.float32)
@@ -40,7 +28,7 @@ def forward(x):
 def loss(y, y_predicted):
   return ((y_predicted - y)**2).mean()
 
-# gradient
+# gradient - manually computed gradient
 #       mean   prediction   actual value   squared
 # MSE = 1/N *  (w*x       -    y)           **2
 # J - objective function
