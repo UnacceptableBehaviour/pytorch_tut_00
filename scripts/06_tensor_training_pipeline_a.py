@@ -38,7 +38,7 @@ print("\n" * 2)
 # f = 2 * x
 X = torch.tensor([1,2,3,4], dtype=torch.float32)
 Y = torch.tensor([2,4,6,8], dtype=torch.float32)
-w = torch.tensor(0.0, dtype=torch.float32, requires_grad=True)
+w = torch.tensor(0.0, dtype=torch.float32, requires_grad=True) # weights
 
 # model predition
 def forward(x):
