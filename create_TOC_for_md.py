@@ -13,6 +13,13 @@
 
 # passing a .md file as argument will print a TOC for that file
 
+# TODO autmatically create required directories if not present: Currently manual mkdir -p ./scratch/tex
+
+
+
+# look into 'create & install a local package'
+# https://realpython.com/python-import/#pythons-import-path
+# and publishing OS package to PyPI
 
 import os
 import subprocess

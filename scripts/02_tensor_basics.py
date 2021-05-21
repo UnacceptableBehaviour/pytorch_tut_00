@@ -1,5 +1,9 @@
 #! /usr/bin/env python
 
+# PyTorch Tutorial 02 - Tensor Basics
+# https://www.youtube.com/watch?v=exaWOE8jvy8&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=2
+
+
 #from __future__ import print_function
 import torch
 
