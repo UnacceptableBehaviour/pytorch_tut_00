@@ -144,9 +144,9 @@ https://github.com/conda/conda/issues/9392
 **1m**		|  theory - chain rule
 **2m**		|  computational graph
 **4m12**	|  backward pass - concept overview
-**4m30**		|  linear regression
-**4m50**		|  walk through the maths
-**10m30**		|  pytorch implementation
+**4m30**	|  linear regression
+**4m50**	|  walk through the maths
+**10m30**	|  pytorch implementation
   
 Chain rule - add reference.  
 <p align="center"><img src="./tex/80d54bc90546c7381ff21ec68e752c5e.svg?invert_in_darkmode" align=middle width=173.51321625pt height=14.611878599999999pt/></p>
@@ -188,6 +188,13 @@ Chain rule - add reference.
 | - | - |
 **0m**		| Review Steps in Torch ML pipeline
 **1m**		| imports
+**0m**		| review Steps in Torch ML pipeline
+**1m**		| library imports
+**2m**		| coding starts - prepare data
+**4m30**	| 1) Design Model (input, output size, forward pass)
+**5m40**	| 2) Construct the loss & optimiser
+**7m**		| 3) Training Loop
+**10m**		| plot
 
 #### Summary of module import for 07
 ```
@@ -213,6 +220,22 @@ import matplotlib.pyplot as plt # Matplotlib is a plotting library for the Pytho
   # How to plot & save graph hello world: https://github.com/UnacceptableBehaviour/latex_maths#python---matplotlib-numpy
 ```
 
+Marplotlib & sklearn is not part of the conda virtual environment requires conda install.
+```
+conda install matplotlib
+conda install -c intel scikit-learn		# intel based mac
+.
+.
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: \ 
+  INSTALLED PACKAGE OF SCIKIT-LEARN CAN BE ACCELERATED USING DAAL4PY. 
+  PLEASE SET 'USE_DAAL4PY_SKLEARN' ENVIRONMENT VARIABLE TO 'YES' TO ENABLE THE ACCELERATION. 
+
+  FOR EXAMPLE:
+      $ USE_DAAL4PY_SKLEARN=YES python
+```
+
 
 #### Refs 07  
 ##### Whats the difference between Torch & Pytorch?  
@@ -221,9 +244,13 @@ Both PyTorch and Torch use [THNN](https://github.com/torch/nn/tree/master/lib/T
 ##### Whats THNN?
 THNN is a library that gathers nn's C implementations of neural network modules. It's entirely free of Lua dependency and therefore can be used in any application that has a C FFI. Please note that it only contains quite low level functions, and an object oriented C/C++ wrapper will be created soon as another library. (There is also a CUDA counterpart of THNN - THCUNN)
 
+[Static vs Dynamic Shape](https://pgaleone.eu/tensorflow/2018/07/28/understanding-tensorflow-tensors-shape-static-dynamic/) .  
+Describing computational graphs is just a matter of connecting nodes correctly. Connecting nodes seems a trivial operation, but it hides some difficulties related to the shape of tensors. This article will guide you through the concept of tensors shape in both its variants: static and dynamic.
 
+How to setup pytorch code prediction for Komodo IDE?
 
 ### 08 - Logistic Regression  
+How to setup pytorch code prediction for Komodo IDE?
 ### 09 - Dataset and DataLoader - Batch Training  
 ### 10 - Dataset Transforms  
 ### 11 - Softmax and Cross Entropy  
