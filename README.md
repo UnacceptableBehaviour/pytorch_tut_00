@@ -32,6 +32,11 @@ Add table later if relevant.
 		1. [**Vid contents - 06 training pipeline**](#vid-contents---06-training-pipeline)  
 		2. [Steps in Torch ML pipeline](#steps-in-torch-ml-pipeline)  
 	7. [07 - Linear Regression](#07---linear-regression)  
+		1. [**Vid contents - 07 linear regression**](#vid-contents---07-linear-regression)  
+		2. [Summary of module import for 07](#summary-of-module-import-for-07)  
+		3. [Refs 07](#refs-07)  
+			1. [Whats the difference between Torch & Pytorch?](#whats-the-difference-between-torch--pytorch)  
+			2. [Whats THNN?](#whats-thnn)  
 	8. [08 - Logistic Regression](#08---logistic-regression)  
 	9. [09 - Dataset and DataLoader - Batch Training](#09---dataset-and-dataloader---batch-training)  
 	10. [10 - Dataset Transforms](#10---dataset-transforms)  
@@ -169,14 +174,55 @@ Chain rule - add reference.
 
 #### Steps in Torch ML pipeline
 1) Design Model (input, output size, forward pass)
-2) Construct the Loos & optimiser
+2) Construct the loss & optimiser
 3) Training Loop
   - forward pass: compute prediction
   - backward pass: gradients
   - update weights
   
-
 ### 07 - Linear Regression  
+([vid](https://www.youtube.com/watch?v=YAJ5XBwlN4o&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=7)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/07_tensor_linear_regresssion.py))   
+#### **Vid contents - 07 linear regression**
+ time				| notes	
+| - | - |
+**0m**		| Review Steps in Torch ML pipeline
+**1m**		| imports
+
+#### Summary of module import for 07
+```
+import torch.nn as nn       # PyTorch nn module has high-level APIs to build a neural network.
+  # Torch. nn module uses Tensors and Automatic differentiation modules for training and building layers such as input,
+  # hidden, and output layers - DOCS: https://pytorch.org/docs/stable/nn.html
+
+import numpy as np      # NumPy is a library for the Python programming language, adding support for large,
+  # multi-dimensional arrays and matrices, along with a large collection of high-level mathematical functions to operate
+  # on these arrays - DOCS: https://numpy.org/doc/stable/user/whatisnumpy.html
+
+from sklearn import datasets  # to generate a regression dataset
+                              # Scikit-learn is a library in Python that provides many unsupervised and supervised
+  # learning algorithms. It contains a lot of efficient tools for machine learning and statistical modeling including
+  # classification, regression, clustering and dimensionality reduction. Built upon some of the technology you might
+  # already be familiar with, like NumPy, pandas, and Matplotlib!
+  # DOCS: https://scikit-learn.org/stable/
+
+import matplotlib.pyplot as plt # Matplotlib is a plotting library for the Python programming language. It provides an
+  # object-oriented API for embedding plots into applications using general-purpose GUI toolkits like Tkinter,
+  # wxPython, Qt, or GTK - DOCS:
+  # cheatsheets: https://github.com/matplotlib/cheatsheets#cheatsheets
+  # How to plot & save graph hello world: https://github.com/UnacceptableBehaviour/latex_maths#python---matplotlib-numpy
+```
+
+
+#### Refs 07  
+##### Whats the difference between Torch & Pytorch?  
+Both PyTorch and Torch use [THNN](https://github.com/torch/nn/tree/master/lib/THNN). Torch provides lua wrappers to the THNN library while Pytorch provides Python wrappers for the same.
+
+##### Whats THNN?
+THNN is a library that gathers nn's C implementations of neural network modules. It's entirely free of Lua dependency and therefore can be used in any application that has a C FFI. Please note that it only contains quite low level functions, and an object oriented C/C++ wrapper will be created soon as another library. (There is also a CUDA counterpart of THNN - THCUNN)
+
+
+
 ### 08 - Logistic Regression  
 ### 09 - Dataset and DataLoader - Batch Training  
 ### 10 - Dataset Transforms  
