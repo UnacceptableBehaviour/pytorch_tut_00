@@ -260,10 +260,14 @@ https://www.google.com/search?safe=active&sxsrf=ALeKk03QSxUCcfqoRqniKinMd2nkDpWU
  time				| notes	
 | - | - |
 **0m**		| intro
-**1m**		| next
-
-#### What data sets are available in sklearn?
-
+**0m**		| review Steps in Torch ML pipeline
+**1m**		| library imports
+**2m**		| Prepare data set - Breast Cancer
+**7m43**	| Build model
+**14m40**	| show accuracy
+  
+#### What data sets are available in sklearn?  
+There are Toy, Realworld & Generated [sklearn datasets here](https://scikit-learn.org/stable/datasets.html).  
 
 #### torch.tensor.shape() - torch.Size([455, 1])
 It seems odd that ROWS, COLS would be the order in which to specify shape
@@ -286,6 +290,7 @@ tensor([1., 1., 1., . . 455 COLS . ., 1., 1., 0., 1., 0., 0., 1., 1., 1., 1., 1.
 455 - torch.Size([455])
 ```
   
+TODO
 Read [this post](https://towardsdatascience.com/understanding-dimensions-in-pytorch-6edf9972d3be) add experimental code.  
 More on [dynamic & static shapes](https://pgaleone.eu/tensorflow/2018/07/28/understanding-tensorflow-tensors-shape-static-dynamic/).  
 
