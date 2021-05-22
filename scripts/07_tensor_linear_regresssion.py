@@ -20,7 +20,11 @@ print("\n" * 2)
 
 # 0m - review Steps in Torch ML pipeline
 # 1m - library imports
-# 2m - coding starts
+# 2m - coding starts - prepare data
+# 4m30 - 1) Design Model (input, output size, forward pass)
+# 5m40 - 2) Construct the loss & optimiser
+# 7m - 3) Training Loop
+# 10m - plot
 
 import torch
 
@@ -136,9 +140,12 @@ for epoch in range(num_epochs):
 
 # plot
 predicted = model(X).detach().numpy()     # prevent gradient tracking?
-plt.plot(x_numpy, y_numpy, 'ro')
-plt.plot(x_numpy, predicted, 'b')
-plt.show
+label_data = plt.plot(x_numpy, y_numpy, 'ro')
+label_model = plt.plot(x_numpy, predicted, 'b')
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.legend(['data','model'])
+plt.show()
 print('plt.show')
 print(f"\n x_numpy \n{ x_numpy }")
 print(f"\n y_numpy \n{ y_numpy }")
