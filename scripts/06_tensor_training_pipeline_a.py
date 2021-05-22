@@ -97,6 +97,8 @@ model = LinearRegression(input_size, output_size)
 # . 4
 # epoch 2131: w = 2.000, loss = 0.00000001
 # epoch 2141: w = 2.000, loss = 0.00000000
+#
+# take in between 2K-3K epochs to home in
 
 print(f'prediction BEFORE training: f(5) = {model(X_test).item():.3f}')
 

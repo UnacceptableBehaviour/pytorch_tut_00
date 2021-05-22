@@ -10,7 +10,10 @@ print("-" * 80)
 print("-" * 80)
 print("\n" * 2)
 
-
+# 0m - intro to gradients
+# 1m - theory - chain rule
+# 2m - computational graph
+# etc
 
 
 #print(f"\n  \n{  }")
