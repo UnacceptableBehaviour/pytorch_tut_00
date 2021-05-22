@@ -38,6 +38,9 @@ Add table later if relevant.
 			1. [Whats the difference between Torch & Pytorch?](#whats-the-difference-between-torch--pytorch)  
 			2. [Whats THNN?](#whats-thnn)  
 	8. [08 - Logistic Regression](#08---logistic-regression)  
+		1. [**Vid contents - 08 logistic regression**](#vid-contents---08-logistic-regression)  
+		2. [What data sets are available in sklearn?](#what-data-sets-are-available-in-sklearn)  
+		3. [torch.tensor.shape() - torch.Size([455, 1])](#torchtensorshape---torchsize455-1)  
 	9. [09 - Dataset and DataLoader - Batch Training](#09---dataset-and-dataloader---batch-training)  
 	10. [10 - Dataset Transforms](#10---dataset-transforms)  
 	11. [11 - Softmax and Cross Entropy](#11---softmax-and-cross-entropy)  
@@ -245,12 +248,47 @@ Both PyTorch and Torch use [THNN](https://github.com/torch/nn/tree/master/lib/T
 THNN is a library that gathers nn's C implementations of neural network modules. It's entirely free of Lua dependency and therefore can be used in any application that has a C FFI. Please note that it only contains quite low level functions, and an object oriented C/C++ wrapper will be created soon as another library. (There is also a CUDA counterpart of THNN - THCUNN)
 
 [Static vs Dynamic Shape](https://pgaleone.eu/tensorflow/2018/07/28/understanding-tensorflow-tensors-shape-static-dynamic/) .  
-Describing computational graphs is just a matter of connecting nodes correctly. Connecting nodes seems a trivial operation, but it hides some difficulties related to the shape of tensors. This article will guide you through the concept of tensors shape in both its variants: static and dynamic.
+Describing computational graphs is just a matter of connecting nodes correctly. Connecting nodes seems a trivial operation, **but it hides some difficulties related to the shape of tensors**. This article will guide you through the concept of tensors shape in both its variants: static and dynamic.
 
 How to setup pytorch code prediction for Komodo IDE?
+https://www.google.com/search?safe=active&sxsrf=ALeKk03QSxUCcfqoRqniKinMd2nkDpWUuw:1621682572448&q=How+to+setup+%22pytorch%22+code+prediction+for+Komodo+IDE?&sa=X&ved=2ahUKEwi25qytlt3wAhXDTxUIHaTVD7UQ5t4CMAF6BAgDEAo&biw=1125&bih=734
 
 ### 08 - Logistic Regression  
-How to setup pytorch code prediction for Komodo IDE?
+([vid](https://www.youtube.com/watch?v=OGpQxIkR4ao&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=8)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/07_tensor_linear_regresssion.py))   
+#### **Vid contents - 08 logistic regression**
+ time				| notes	
+| - | - |
+**0m**		| intro
+**1m**		| next
+
+#### What data sets are available in sklearn?
+
+
+#### torch.tensor.shape() - torch.Size([455, 1])
+It seems odd that ROWS, COLS would be the order in which to specify shape
+```
+tensor([[1.],
+        [1.],
+        [1.],
+        [0.],
+        .
+        .	455 ROWS
+        .
+        [1.],
+        [0.],
+        [1.]])
+
+455 - torch.Size([455, 1])
+
+ before y_train 
+tensor([1., 1., 1., . . 455 COLS . ., 1., 1., 0., 1., 0., 0., 1., 1., 1., 1., 1.])
+455 - torch.Size([455])
+```
+  
+Read [this post](https://towardsdatascience.com/understanding-dimensions-in-pytorch-6edf9972d3be) add experimental code.  
+More on [dynamic & static shapes](https://pgaleone.eu/tensorflow/2018/07/28/understanding-tensorflow-tensors-shape-static-dynamic/).  
+
 ### 09 - Dataset and DataLoader - Batch Training  
 ### 10 - Dataset Transforms  
 ### 11 - Softmax and Cross Entropy  
