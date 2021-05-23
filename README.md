@@ -42,6 +42,7 @@ Add table later if relevant.
 		2. [What data sets are available in sklearn?](#what-data-sets-are-available-in-sklearn)  
 		3. [torch.tensor.shape() - torch.Size([455, 1])](#torchtensorshape---torchsize455-1)  
 	9. [09 - Dataset and DataLoader - Batch Training](#09---dataset-and-dataloader---batch-training)  
+		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 	10. [10 - Dataset Transforms](#10---dataset-transforms)  
 	11. [11 - Softmax and Cross Entropy](#11---softmax-and-cross-entropy)  
 	12. [12 - Activation Functions](#12---activation-functions)  
@@ -290,11 +291,41 @@ tensor([1., 1., 1., . . 455 COLS . ., 1., 1., 0., 1., 0., 0., 1., 1., 1., 1., 1.
 455 - torch.Size([455])
 ```
   
-TODO
+TODO  
 Read [this post](https://towardsdatascience.com/understanding-dimensions-in-pytorch-6edf9972d3be) add experimental code.  
 More on [dynamic & static shapes](https://pgaleone.eu/tensorflow/2018/07/28/understanding-tensorflow-tensors-shape-static-dynamic/).  
 
 ### 09 - Dataset and DataLoader - Batch Training  
+([vid](https://www.youtube.com/watch?v=PXOzkkB5eH0&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=9)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/09_tensor_data_loader.py))   
+#### **Vid contents - 09 data loader**
+ time				| notes	
+| - | - |
+**0m**		| intro
+**0m**		| intro to dataloader classes
+**1m30**	| terms: epoch, batch size, num of iteration,
+**2m**		| libs: torch, torchvision, torch.utils.data, numpy, math
+**2m30**	| Custom datase
+**7m13**	| completed class WineDataset(Dataset)
+**7m30**	| inspect dataset
+**10m18**	| feature vectors & class label ispect
+**10m40**	| training loop - iterating dataset
+**14m50**	| example data sets: MNIST et al  
+  
+Terms  
+```
+epoch = 1 forward & backward pass of all training samples
+batch_size = number of training samples in forward & backward pass
+number of iterations = number of passes, each pass using [batch_size] number of samples
+EG 100 samples, batch_size=20 -> 100/20 = 5 iterations for 1 epoch
+```
+
+Using load_wine() ([sklearn load_wine()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_wine.html#sklearn.datasets.load_wine)) load info about the dataset but doesn't appear to load the whole data set. How do I load & walk the data?
+```
+from sklearn.datasets import load_wine
+data = load_wine()			# 
+```
+  
 ### 10 - Dataset Transforms  
 ### 11 - Softmax and Cross Entropy  
 ### 12 - Activation Functions  
@@ -479,6 +510,7 @@ If not available on conda option to [build conda packages](https://docs.conda.io
 Courses / Books Found w/ Summary:  
 [PyTorch Tutorials - Complete Beginner Course](https://www.youtube.com/playlist?list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4) - 
 from [Python Engineer](https://www.youtube.com/c/PythonEngineer).  
+[Git-hub-pythorchTutorial](https://github.com/python-engineer/pytorchTutorial).  
   
 
 
