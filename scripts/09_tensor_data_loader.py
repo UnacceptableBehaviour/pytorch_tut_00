@@ -25,6 +25,8 @@ print("\n" * 2)
 # batch_size = number of training samples in forward & backward pass
 # number of iterations = number of passes, each pass using [batch_size] number of samples
 # EG 100 samples, batch_size=20 -> 100/20 = 5 iterations for 1 epoch
+#
+# in the data each ROW is a sample
 # ```
 
 import torch
@@ -33,7 +35,7 @@ import torchvision
   # conda install torchvision -c pytorch    # already installed.
 
 from torch.utils.data import Dataset, DataLoader
-import numpy
+import numpy as np
 import math
 
 from sklearn.datasets import load_wine
@@ -203,11 +205,28 @@ print(target)
 # for i in data.data.item():
 #   print(i)
 
+print('\n\n\n** L O A D I N G   F R O M   C S V   F I L E **\n\n\n')
 
 class WineDataset(Dataset):
+  # each ROW is a sample
   def __init__(self):
-    xy = np.loadtxt('./data/wine.data', delimiter=',', dtype=np.float32, skiprows=1)
+    # x - features
+    # y - class - wine in this case
+
+    # * * * N O T E * * *
+    # run ./scripts/09_tensor_data_loader.py from /pytorch/pytorch_tut_00
+    xy = np.loadtxt('./data/wine.csv', delimiter=',', dtype=np.float32, skiprows=1) # skiprows=1 - skip header row
+
+    # split dataset into x & y
+    # self.x = xy[:, 1:]    # all ROWS :, from COL 1 onwards - 1:
+    # self.x = xy[:, [0]]   # all ROWS :, jsut COL 0         - [0]
+    # convert to torch
+
+    self.x = torch.from_numpy(xy[:, 1:])
+    self.y = torch.from_numpy(xy[:, [0]])
+
     self.n_samples = xy.shape[0]
+
 
   def __getitem__(self, index):
     return self.x[index], self.y[index]
@@ -215,6 +234,103 @@ class WineDataset(Dataset):
   def __len__(self):
     return self.n_samples
 
+dataset = WineDataset()
+
+print(dataset)
+
+first_data = dataset[0]
+features, labels = first_data
+print(f"\n features \n{ features }")
+print(f"\n labels \n{ labels }")
+
+b_size = 6
+dataloader = DataLoader(dataset=dataset, batch_size=b_size, shuffle=True, num_workers=2) # num_workers - use mor than one process
+#                                            ^            ^
+#                     how many to get per fetch          shuffle data on fetch
+
+dataIter = iter(dataloader)
+data = dataIter.next()
+features, labels = data
+print(f"\n iter features batch_size:{b_size} \n{ features }")
+print(f"\n iter labels batch_size:{b_size} \n{ labels }")
+
+b_size = 4
+dataloader = DataLoader(dataset=dataset, batch_size=b_size, shuffle=True, num_workers=2)
+dataIter = iter(dataloader)
+
+# for batch in dataIter:
+#   features, labels = batch
+#   print('\nbatch - - - \\')
+#   print(f"\n iter features batch_size:{b_size} \n{ features }")
+#   print(f"\n iter labels batch_size:{b_size} \n{ labels }")
+
+
+# training loop
+
+num_epochs = 2
+total_samples = len(dataset)
+n_iterations = math.ceil(total_samples/4)
+
+print(f"\n total_samples \n{ total_samples }")
+print(f"\n n_iterations \n{ n_iterations }")
+
+for epoch in range(num_epochs):
+    for i, (inputs, labels) in enumerate(dataloader):
+        # 178 rows > 178 samples
+        # i will count them out
+        # input - x - features
+        # labels - y - wine 1,2,3
+        # iterations 178 sample / batch size 4 . . ceil(44.5) = 45
+
+        # Run your training process
+        if (i+1) % 5 == 0:
+            print(f'epoch: {epoch+1}/{num_epochs}, step {i+1}/{n_iterations} \t inputs {inputs.shape} \t labels {labels.shape}')
+
+#  total_samples
+# 178
+#
+#  n_iterations
+# 45
+# epoch: 1/2, step 5/45 	 inputs torch.Size([4, 13]) 	 labels torch.Size([4, 1])
+# epoch: 1/2, step 10/45 	 inputs torch.Size([4, 13]) 	 labels torch.Size([4, 1])
+# epoch: 1/2, step 15/45 	 inputs torch.Size([4, 13]) 	 labels torch.Size([4, 1])
+# epoch: 1/2, step 20/45 	 inputs torch.Size([4, 13]) 	 labels torch.Size([4, 1])
+# epoch: 1/2, step 25/45 	 inputs torch.Size([4, 13]) 	 labels torch.Size([4, 1])
+# epoch: 1/2, step 30/45 	 inputs torch.Size([4, 13]) 	 labels torch.Size([4, 1])
+# epoch: 1/2, step 35/45 	 inputs torch.Size([4, 13]) 	 labels torch.Size([4, 1])
+# epoch: 1/2, step 40/45 	 inputs torch.Size([4, 13]) 	 labels torch.Size([4, 1])
+# epoch: 1/2, step 45/45 	 inputs torch.Size([2, 13]) 	 labels torch.Size([2, 1])
+# epoch: 2/2, step 5/45 	 inputs torch.Size([4, 13]) 	 labels torch.Size([4, 1])
+# epoch: 2/2, step 10/45 	 inputs torch.Size([4, 13]) 	 labels torch.Size([4, 1])
+# epoch: 2/2, step 15/45 	 inputs torch.Size([4, 13]) 	 labels torch.Size([4, 1])
+# epoch: 2/2, step 20/45 	 inputs torch.Size([4, 13]) 	 labels torch.Size([4, 1])
+# epoch: 2/2, step 25/45 	 inputs torch.Size([4, 13]) 	 labels torch.Size([4, 1])
+# epoch: 2/2, step 30/45 	 inputs torch.Size([4, 13]) 	 labels torch.Size([4, 1])
+# epoch: 2/2, step 35/45 	 inputs torch.Size([4, 13]) 	 labels torch.Size([4, 1])
+# epoch: 2/2, step 40/45 	 inputs torch.Size([4, 13]) 	 labels torch.Size([4, 1])
+# epoch: 2/2, step 45/45 	 inputs torch.Size([2, 13]) 	 labels torch.Size([2, 1])
+
+
+
+
+# some FAMOUS datasets are available in torchvision.datasets
+# e.g. MNIST, fashion-mnist, cifar10, coco
+
+train_dataset = torchvision.datasets.MNIST(root='./scratch',
+                                           train=True,
+                                           transform=torchvision.transforms.ToTensor(),
+                                           download=True)
+
+train_loader = DataLoader(dataset=train_dataset,
+                                           batch_size=3,
+                                           shuffle=True)
+
+# look at one random sample
+dataiter = iter(train_loader)
+data = dataiter.next()
+inputs, targets = data
+print(f"\n inputs.shape \n{ inputs.shape }")
+print(f"\n targets.shape \n{ targets.shape }")
 
 
 #print(f"\n  \n{  }")
