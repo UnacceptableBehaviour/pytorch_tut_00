@@ -331,7 +331,11 @@ data = dataiter.next()
 inputs, targets = data
 print(f"\n inputs.shape \n{ inputs.shape }")
 print(f"\n targets.shape \n{ targets.shape }")
-
+#  inputs.shape
+# torch.Size([3, 1, 28, 28])
+#
+#  targets.shape
+# torch.Size([3])
 
 #print(f"\n  \n{  }")
 
