@@ -45,6 +45,7 @@ Add table later if relevant.
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 		2. [Using load_wine() ([sklearn load_wine()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_wine.html#sklearn.datasets.load_wine)) load info about the dataset but doesn't appear to load the whole data set. How do I load & walk the data?](#using-loadwine-sklearn-loadwinehttpsscikit-learnorgstablemodulesgeneratedsklearndatasetsloadwinehtmlsklearndatasetsloadwine-load-info-about-the-dataset-but-doesnt-appear-to-load-the-whole-data-set-how-do-i-load--walk-the-data)  
 	10. [10 - Dataset Transforms](#10---dataset-transforms)  
+		1. [**Vid contents - 10 data transforms**](#vid-contents---10-data-transforms)  
 	11. [11 - Softmax and Cross Entropy](#11---softmax-and-cross-entropy)  
 	12. [12 - Activation Functions](#12---activation-functions)  
 	13. [13 - Feed-Forward Neural Network](#13---feed-forward-neural-network)  
@@ -332,6 +333,20 @@ Scaler example [from importance of feature scaling](https://scikit-learn.org/sta
 
   
 ### 10 - Dataset Transforms  
+([vid](https://www.youtube.com/watch?v=X_QOZEko5uE&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=10)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/09_tensor_data_loader.py))   
+#### **Vid contents - 10 data transforms**
+ time				| notes	
+| - | - |
+**0m**		| intro to transforms Link: https://pytorch.org/vision/stable/transforms.html
+**source**	| https://pytorch.org/vision/stable/_modules/torchvision/transforms/transforms.html
+**1m40**	| adapt WineDataset class
+**3m40**	| custom transform class
+**6m50**	| Mul transform class
+**8m50**	| transform list
+
+
+
 ### 11 - Softmax and Cross Entropy  
 ### 12 - Activation Functions  
 ### 13 - Feed-Forward Neural Network  
