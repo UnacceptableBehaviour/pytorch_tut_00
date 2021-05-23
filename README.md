@@ -43,6 +43,7 @@ Add table later if relevant.
 		3. [torch.tensor.shape() - torch.Size([455, 1])](#torchtensorshape---torchsize455-1)  
 	9. [09 - Dataset and DataLoader - Batch Training](#09---dataset-and-dataloader---batch-training)  
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
+		2. [Using load_wine() ([sklearn load_wine()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_wine.html#sklearn.datasets.load_wine)) load info about the dataset but doesn't appear to load the whole data set. How do I load & walk the data?](#using-loadwine-sklearn-loadwinehttpsscikit-learnorgstablemodulesgeneratedsklearndatasetsloadwinehtmlsklearndatasetsloadwine-load-info-about-the-dataset-but-doesnt-appear-to-load-the-whole-data-set-how-do-i-load--walk-the-data)  
 	10. [10 - Dataset Transforms](#10---dataset-transforms)  
 	11. [11 - Softmax and Cross Entropy](#11---softmax-and-cross-entropy)  
 	12. [12 - Activation Functions](#12---activation-functions)  
@@ -320,11 +321,15 @@ number of iterations = number of passes, each pass using [batch_size] number of 
 EG 100 samples, batch_size=20 -> 100/20 = 5 iterations for 1 epoch
 ```
 
-Using load_wine() ([sklearn load_wine()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_wine.html#sklearn.datasets.load_wine)) load info about the dataset but doesn't appear to load the whole data set. How do I load & walk the data?
+#### Using load_wine() ([sklearn load_wine()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_wine.html#sklearn.datasets.load_wine)) load info about the dataset but doesn't appear to load the whole data set. How do I load & walk the data?
 ```
 from sklearn.datasets import load_wine
 data = load_wine()			# 
 ```
+  
+Scaler example [from importance of feature scaling](https://scikit-learn.org/stable/auto_examples/preprocessing/plot_scaling_importance.html#sphx-glr-auto-examples-preprocessing-plot-scaling-importance-py):
+![scaler example](./imgs/scaling_data.png)  
+
   
 ### 10 - Dataset Transforms  
 ### 11 - Softmax and Cross Entropy  
