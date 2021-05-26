@@ -49,6 +49,7 @@ Add table later if relevant.
 		2. [What is PIL / Pillow?](#what-is-pil--pillow)  
 	11. [11 - Softmax and Cross Entropy](#11---softmax-and-cross-entropy)  
 		1. [**Vid contents - 11 softmax & X-entropy**](#vid-contents---11-softmax--x-entropy)  
+		2. [Sigmoid function](#sigmoid-function)  
 	12. [12 - Activation Functions](#12---activation-functions)  
 	13. [13 - Feed-Forward Neural Network](#13---feed-forward-neural-network)  
 	14. [14 - Convolutional Neural Network (CNN)](#14---convolutional-neural-network-cnn)  
@@ -452,6 +453,12 @@ pillow                    8.2.0            py37h5270095_0      # shows already i
 **0m**		| intro
 **source**	| https://pytorch.org/vision/stable/_modules/torchvision/transforms/transforms.html
 
+
+#### Sigmoid function
+![sigmoid function](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/sigmoid_function.png)  
+Sigmoid function (for any value of x is between 0 & 1, crossover at 0.5) [6m maths](https://www.youtube.com/watch?v=TPqr8t919YM):
+<p align="center"><img src="./tex/0c6d0c344de69ab02d54858734614069.svg?invert_in_darkmode" align=middle width=110.56831829999999pt height=34.3600389pt/></p>
+Used to map output values into probabilities
 
 ### 12 - Activation Functions  
 ### 13 - Feed-Forward Neural Network  
