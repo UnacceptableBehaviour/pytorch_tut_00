@@ -381,6 +381,10 @@ scripted_transforms = torch.jit.script(transforms)
   
 Quick scan of '[https://pytorch.org/vision/stable/transforms.html](https://pytorch.org/vision/stable/transforms.html)' using [fetch_transforms.py](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/fetch_transforms.py) give us these transforms:  
 ```
+List scraped with
+https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/fetch_transforms.py
+
+== COMPOSE MULTI TRANSFORM
 Compose(transforms)
 
 == ON IMAGES
@@ -415,8 +419,12 @@ RandomErasing(p=0.5, scale=(0.02, 0.33), ratio=(0.3, 3.3), value=0, inplace=Fals
 ConvertImageDtype(dtype: torch.dtype) → None
 ToPILImage(mode=None)
 ToTensor
+
+== GENERIC
 Lambda(lambd)
-functional.InterpolationMode
+
+==CUSTOM
+ToTensor, MulTransform
 ```
 
 #### What is PIL / Pillow?  
