@@ -382,6 +382,8 @@ scripted_transforms = torch.jit.script(transforms)
 Quick scan of '[https://pytorch.org/vision/stable/transforms.html](https://pytorch.org/vision/stable/transforms.html)' using [fetch_transforms.py](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/fetch_transforms.py) give us these transforms:  
 ```
 Compose(transforms)
+
+== ON IMAGES
 CenterCrop(size)
 ColorJitter(brightness=0, contrast=0, saturation=0, hue=0)
 FiveCrop(size)
@@ -403,9 +405,13 @@ TenCrop(size, vertical_flip=False)
 GaussianBlur(kernel_size, sigma=(0.1, 2.0))
 RandomChoice(transforms)
 RandomOrder(transforms)
+
+== ON TENSORS
 LinearTransformation(transformation_matrix, mean_vector)
 Normalize(mean, std, inplace=False)
 RandomErasing(p=0.5, scale=(0.02, 0.33), ratio=(0.3, 3.3), value=0, inplace=False)
+
+== CONVERSION
 ConvertImageDtype(dtype: torch.dtype) → None
 ToPILImage(mode=None)
 ToTensor
