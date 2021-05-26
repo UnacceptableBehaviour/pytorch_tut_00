@@ -360,7 +360,7 @@ Tensor Image is a tensor with (C, H, W) shape, where 
 C is a number of channels, 
 H and W are image height and width. 
   
-Batch of Tensor Images is a tensor of (B, C, H, W) shape, where 
+Batch of Tensor Images is a tensor of (B, C, H, W) shape, where   
 B is a number of images in the batch.  
   
 Deterministic or random transformations applied on the batch of Tensor Images identically transform all the images of the batch.
@@ -373,16 +373,55 @@ Batch processing  scripts
 ```
 
 ```
+Quick scan of '' using [fetch_transforms.py](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/fetch_transforms.py) give us these transforms:  
+```
+Compose(transforms)
+CenterCrop(size)
+ColorJitter(brightness=0, contrast=0, saturation=0, hue=0)
+FiveCrop(size)
+Grayscale(num_output_channels=1)
+Pad(padding, fill=0, padding_mode='constant')
+RandomAffine(degrees, translate=None, scale=None, shear=None, interpolation=<InterpolationMode.NEAREST: 'nearest'>, fill=0, fillcolor=None, resample=None)
+RandomApply(transforms, p=0.5)
+RandomCrop(size, padding=None, pad_if_needed=False, fill=0, padding_mode='constant')
+RandomGrayscale(p=0.1)
+RandomHorizontalFlip(p=0.5)
+RandomPerspective(distortion_scale=0.5, p=0.5, interpolation=<InterpolationMode.BILINEAR: 'bilinear'>, fill=0)
+RandomResizedCrop(size, scale=(0.08, 1.0), ratio=(0.75, 1.3333333333333333), interpolation=<InterpolationMode.BILINEAR: 'bilinear'>)
+RandomRotation(degrees, interpolation=<InterpolationMode.NEAREST: 'nearest'>, expand=False, center=None, fill=0, resample=None)
+RandomSizedCrop(*args, **kwargs)
+RandomVerticalFlip(p=0.5)
+Resize(size, interpolation=<InterpolationMode.BILINEAR: 'bilinear'>)
+Scale(*args, **kwargs)
+TenCrop(size, vertical_flip=False)
+GaussianBlur(kernel_size, sigma=(0.1, 2.0))
+RandomChoice(transforms)
+RandomOrder(transforms)
+LinearTransformation(transformation_matrix, mean_vector)
+Normalize(mean, std, inplace=False)
+RandomErasing(p=0.5, scale=(0.02, 0.33), ratio=(0.3, 3.3), value=0, inplace=False)
+ConvertImageDtype(dtype: torch.dtype) → None
+ToPILImage(mode=None)
+ToTensor
+Lambda(lambd)
+functional.InterpolationMode
+```
+
 #### What is PIL / Pillow?  
 Python Imaging Library is a free and open-source additional library for the Python programming language that adds support for opening, manipulating, and saving many different image file formats. It is available for Windows, Mac OS X and Linux.   
   
 Pillow offers several standard procedures for image manipulation. These include:
-per-pixel manipulations,  
-masking and transparency handling,  
-image filtering, such as blurring, contouring, smoothing, or edge finding,  
-image enhancing, such as sharpening, adjusting brightness, contrast or color,  
-adding text to images and much more.   
+ - per-pixel manipulations,  
+ - masking and transparency handling,  
+ - image filtering, such as blurring, contouring, smoothing, or edge finding,  
+ - image enhancing, such as sharpening, adjusting brightness, contrast or color,  
+ - adding text to images and much more.   
 [Wikipedia](https://en.wikipedia.org/wiki/Python_Imaging_Library).  
+```
+> conda list                      
+pillow                    8.2.0            py37h5270095_0      # shows already installed
+> conda install -c anaconda pillow                             # if not in list
+```
 
 ### 11 - Softmax and Cross Entropy  
 ([vid](https://www.youtube.com/watch?v=7q7E91pHoW4&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=12)) - 
@@ -480,7 +519,7 @@ pt3                   *  /Users/simon/miniconda3/envs/pt
 [Difference between Conda & Pip?](https://www.anaconda.com/blog/understanding-conda-and-pip#:~:text=Pip%20installs%20Python%20packages%20whereas,software%20written%20in%20any%20language.&text=Another%20key%20difference%20between%20the,the%20packages%20installed%20in%20them.)  
 
 ##### TLDR;   
-Conda more like Homebrew but it's cross platform
+Conda more like Homebrew than pip, it's a **cross platform package manager w/ dependency handling.**
 [more here](https://towardsdatascience.com/managing-project-specific-environments-with-conda-b8b50aa8be0e) 
 inc Conda vs MiniConda vs Anaconda.  
   
@@ -530,7 +569,7 @@ An adapted version of render int the same directory as create_TOC_for_md.py for 
                                   # also add README.md to git, commits, and pushes
                                   # -p = commit & push
 
-> % conda list                    # list installed package showing install source (aka channel)
+> conda list                      # list installed package showing install source (aka channel)
 # packages in environment at /Users/simon/miniconda3/envs/pt:
 #
 # Name                    Version                   Build  Channel
