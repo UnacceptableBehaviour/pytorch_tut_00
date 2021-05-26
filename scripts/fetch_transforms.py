@@ -45,3 +45,9 @@ matches = re.findall("class torchvision.transforms.(.*?)\[source\]", text)
 
 for i in matches:
   print(i)
+
+#
+# matches = re.findall("torchvision.transforms.functional.", text)
+#
+# for i in matches:
+#   print(i)

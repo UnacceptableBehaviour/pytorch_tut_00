@@ -219,7 +219,7 @@ class WineDataset(Dataset):
 
     # split dataset into x & y
     # self.x = xy[:, 1:]    # all ROWS :, from COL 1 onwards - 1:
-    # self.x = xy[:, [0]]   # all ROWS :, jsut COL 0         - [0]
+    # self.y = xy[:, [0]]   # all ROWS :, jsut COL 0         - [0]
     # convert to torch
 
     self.x = torch.from_numpy(xy[:, 1:])
