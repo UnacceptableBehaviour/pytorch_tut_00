@@ -47,6 +47,7 @@ Add table later if relevant.
 	10. [10 - Dataset Transforms](#10---dataset-transforms)  
 		1. [**Vid contents - 10 data transforms**](#vid-contents---10-data-transforms)  
 	11. [11 - Softmax and Cross Entropy](#11---softmax-and-cross-entropy)  
+		1. [**Vid contents - 10 data transforms**](#vid-contents---10-data-transforms)  
 	12. [12 - Activation Functions](#12---activation-functions)  
 	13. [13 - Feed-Forward Neural Network](#13---feed-forward-neural-network)  
 	14. [14 - Convolutional Neural Network (CNN)](#14---convolutional-neural-network-cnn)  
@@ -345,9 +346,38 @@ Scaler example [from importance of feature scaling](https://scikit-learn.org/sta
 **6m50**	| Mul transform class
 **8m50**	| transform list
 
-
+From: [TORCHVISION.TRANSFORMS](https://pytorch.org/vision/stable/transforms.html)  
+**Transforms are common image transformations.** They **can be chained together** using [](https://pytorch.org/vision/stable/transforms.html#torchvision.transforms.Compose). Additionally, there is the [torchvision.transforms.functional](https://pytorch.org/vision/stable/transforms.html#module-torchvision.transforms.functional) module. Functional transforms give fine-grained control over the transformations. This is useful if you have to build a more complex transformation pipeline (e.g. in the case of segmentation tasks).  
+  
+All transformations accept:   
+PIL Image,  
+Tensor Image or  
+batch of Tensor Images. 
+as input. 
+  
+Tensor Image is a tensor with (C, H, W) shape, where 
+C is a number of channels, 
+H and W are image height and width. 
+  
+Batch of Tensor Images is a tensor of (B, C, H, W) shape, where 
+B is a number of images in the batch.  
+  
+Deterministic or random transformations applied on the batch of Tensor Images identically transform all the images of the batch.
+  
 
 ### 11 - Softmax and Cross Entropy  
+([vid](https://www.youtube.com/watch?v=7q7E91pHoW4&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=12)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/09_tensor_data_loader.py))   
+#### **Vid contents - 10 data transforms**
+ time				| notes	
+| - | - |
+**0m**		| intro to transforms Link: https://pytorch.org/vision/stable/transforms.html
+**source**	| https://pytorch.org/vision/stable/_modules/torchvision/transforms/transforms.html
+**1m40**	| adapt WineDataset class
+**3m40**	| custom transform class
+**6m50**	| Mul transform class
+**8m50**	| transform list
+
 ### 12 - Activation Functions  
 ### 13 - Feed-Forward Neural Network  
 ### 14 - Convolutional Neural Network (CNN)  
