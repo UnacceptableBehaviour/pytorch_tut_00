@@ -369,11 +369,17 @@ Random seed:
 import torch
 torch.manual_seed(17)
 ```
+  
 Batch processing  scripts
 ```
-
+transforms = torch.nn.Sequential(
+    transforms.CenterCrop(10),
+    transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
+)
+scripted_transforms = torch.jit.script(transforms)
 ```
-Quick scan of '' using [fetch_transforms.py](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/fetch_transforms.py) give us these transforms:  
+  
+Quick scan of '[https://pytorch.org/vision/stable/transforms.html](https://pytorch.org/vision/stable/transforms.html)' using [fetch_transforms.py](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/fetch_transforms.py) give us these transforms:  
 ```
 Compose(transforms)
 CenterCrop(size)
