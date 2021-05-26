@@ -46,6 +46,7 @@ Add table later if relevant.
 		2. [Using load_wine() ([sklearn load_wine()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_wine.html#sklearn.datasets.load_wine)) load info about the dataset but doesn't appear to load the whole data set. How do I load & walk the data?](#using-loadwine-sklearn-loadwinehttpsscikit-learnorgstablemodulesgeneratedsklearndatasetsloadwinehtmlsklearndatasetsloadwine-load-info-about-the-dataset-but-doesnt-appear-to-load-the-whole-data-set-how-do-i-load--walk-the-data)  
 	10. [10 - Dataset Transforms](#10---dataset-transforms)  
 		1. [**Vid contents - 10 data transforms**](#vid-contents---10-data-transforms)  
+		2. [What is PIL / Pillow?](#what-is-pil--pillow)  
 	11. [11 - Softmax and Cross Entropy](#11---softmax-and-cross-entropy)  
 		1. [**Vid contents - 10 data transforms**](#vid-contents---10-data-transforms)  
 	12. [12 - Activation Functions](#12---activation-functions)  
@@ -350,7 +351,7 @@ From: [TORCHVISION.TRANSFORMS](https://pytorch.org/vision/stable/transforms.html
 **Transforms are common image transformations.** They **can be chained together** using [](https://pytorch.org/vision/stable/transforms.html#torchvision.transforms.Compose). Additionally, there is the [torchvision.transforms.functional](https://pytorch.org/vision/stable/transforms.html#module-torchvision.transforms.functional) module. Functional transforms give fine-grained control over the transformations. This is useful if you have to build a more complex transformation pipeline (e.g. in the case of segmentation tasks).  
   
 All transformations accept:   
-PIL Image,  
+PIL Image ([Pillow](https://pillow.readthedocs.io/en/stable/installation.html)),  
 Tensor Image or  
 batch of Tensor Images. 
 as input. 
@@ -363,7 +364,25 @@ Batch of Tensor Images is a tensor of (B, C, H, W) shape, where 
 B is a number of images in the batch.  
   
 Deterministic or random transformations applied on the batch of Tensor Images identically transform all the images of the batch.
+Random seed:
+```
+import torch
+torch.manual_seed(17)
+```
+Batch processing  scripts
+```
+
+```
+#### What is PIL / Pillow?  
+Python Imaging Library is a free and open-source additional library for the Python programming language that adds support for opening, manipulating, and saving many different image file formats. It is available for Windows, Mac OS X and Linux.   
   
+Pillow offers several standard procedures for image manipulation. These include:
+per-pixel manipulations,  
+masking and transparency handling,  
+image filtering, such as blurring, contouring, smoothing, or edge finding,  
+image enhancing, such as sharpening, adjusting brightness, contrast or color,  
+adding text to images and much more.   
+[Wikipedia](https://en.wikipedia.org/wiki/Python_Imaging_Library).  
 
 ### 11 - Softmax and Cross Entropy  
 ([vid](https://www.youtube.com/watch?v=7q7E91pHoW4&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=12)) - 
