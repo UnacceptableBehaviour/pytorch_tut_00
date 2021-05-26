@@ -48,7 +48,7 @@ Add table later if relevant.
 		1. [**Vid contents - 10 data transforms**](#vid-contents---10-data-transforms)  
 		2. [What is PIL / Pillow?](#what-is-pil--pillow)  
 	11. [11 - Softmax and Cross Entropy](#11---softmax-and-cross-entropy)  
-		1. [**Vid contents - 10 data transforms**](#vid-contents---10-data-transforms)  
+		1. [**Vid contents - 11 softmax & X-entropy**](#vid-contents---11-softmax--x-entropy)  
 	12. [12 - Activation Functions](#12---activation-functions)  
 	13. [13 - Feed-Forward Neural Network](#13---feed-forward-neural-network)  
 	14. [14 - Convolutional Neural Network (CNN)](#14---convolutional-neural-network-cnn)  
@@ -438,15 +438,12 @@ pillow                    8.2.0            py37h5270095_0      # shows already i
 ### 11 - Softmax and Cross Entropy  
 ([vid](https://www.youtube.com/watch?v=7q7E91pHoW4&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=12)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/09_tensor_data_loader.py))   
-#### **Vid contents - 10 data transforms**
+#### **Vid contents - 11 softmax & X-entropy**
  time				| notes	
 | - | - |
-**0m**		| intro to transforms Link: https://pytorch.org/vision/stable/transforms.html
+**0m**		| intro
 **source**	| https://pytorch.org/vision/stable/_modules/torchvision/transforms/transforms.html
-**1m40**	| adapt WineDataset class
-**3m40**	| custom transform class
-**6m50**	| Mul transform class
-**8m50**	| transform list
+
 
 ### 12 - Activation Functions  
 ### 13 - Feed-Forward Neural Network  
