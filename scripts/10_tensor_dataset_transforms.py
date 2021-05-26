@@ -16,9 +16,9 @@ print("\n" * 2)
 # 1m40 - adapt WineDataset class
 # 3m40 - custom transform class
 # 6m50 - Mul transform class
-# 8m50 - transform list
+# 8m50 - Compose - multiple transform list
 
-# List scarped with
+# List scraped with
 # https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/fetch_transforms.py
 #
 # == COMPOSE MULTI TRANSFORM
@@ -129,6 +129,7 @@ class ToTensor:
 # t = ToTensor()  # t =  ToTensor callable object
 # t()             # TypeError: __call__() missing 1 required positional argument: 'sample'
 
+print('\n\n - - - Applying a tranfer class')
 
 dataset = WineDataset(transform=None)
 fisrt_data = dataset[0]
@@ -142,6 +143,34 @@ features, labels = fisrt_data
 print(f"\n type(features) - transform=ToTensor()\n{ type(features) }")    # <class 'torch.Tensor'>
 print(f"\n type(labels)   - transform=ToTensor()\n{ type(labels) }")      # <class 'torch.Tensor'>
 
+
+
+class MulTransform:
+  def __init__(self, factor):
+    self.factor = factor
+
+  def __call__(self, sample):
+    inputs, target = sample
+    inputs *= self.factor        # multiply each element in the tensor
+    return inputs, target
+
+
+composed = torchvision.transforms.Compose([ToTensor(), MulTransform(2)])
+
+print('\n\n - - - Applying multiple tranfer classs using Compose')
+print('\n\n - - - torchvision.transforms.Compose([ToTensor(), MulTransform(2)])')
+
+dataset = WineDataset(transform=None)
+fisrt_data = dataset[0]
+features, labels = fisrt_data
+print(f"\n features - transform=None \n{ features }")
+print(f"\n labels   - transform=None \n{ labels }")
+
+dataset = WineDataset(transform=composed)
+fisrt_data = dataset[0]
+features, labels = fisrt_data
+print(f"\n features - transform=composed \n{ features }")
+print(f"\n labels   - transform=composed \n{ labels }")
 
 
 
