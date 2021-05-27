@@ -52,8 +52,14 @@ Add table later if relevant.
 		2. [Sigmoid function](#sigmoid-function)  
 		3. [Softmax equation:](#softmax-equation)  
 		4. [Refs 11 - softmax & cross entropy](#refs-11---softmax--cross-entropy)  
+		5. [Cross-Entropy equation:](#cross-entropy-equation)  
 	12. [12 - Activation Functions](#12---activation-functions)  
+		1. [**Vid contents - 11 softmax & X-entropy**](#vid-contents---11-softmax--x-entropy)  
+		2. [Neural Network code example](#neural-network-code-example)  
+		3. [Refs - 12 activation functions](#refs---12-activation-functions)  
 	13. [13 - Feed-Forward Neural Network](#13---feed-forward-neural-network)  
+		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
+		2. [Refs 13 feed forward NN](#refs-13-feed-forward-nn)  
 	14. [14 - Convolutional Neural Network (CNN)](#14---convolutional-neural-network-cnn)  
 	15. [15 - Transfer Learning](#15---transfer-learning)  
 	16. [16 - How To Use The TensorBoard](#16---how-to-use-the-tensorboard)  
@@ -160,6 +166,7 @@ https://github.com/conda/conda/issues/9392
 **10m30**	|  pytorch implementation
   
 Chain rule - add reference.  
+y hat = predicted loss.  
 <p align="center"><img src="./tex/80d54bc90546c7381ff21ec68e752c5e.svg?invert_in_darkmode" align=middle width=173.51321625pt height=14.611878599999999pt/></p>
   
 ### 05 - Gradient Descent w/ Autograd and Backpropagation  
@@ -456,6 +463,26 @@ pillow                    8.2.0            py37h5270095_0      # shows already i
 | - | - |
 **0m**		| intro
 **source**	| https://pytorch.org/vision/stable/_modules/torchvision/transforms/transforms.html
+**0m**		| intro softmax maths
+**0m30**	| softmax formula
+**1m20**	| softmax diagram : scores, logits, probabilities (sum of probabilities = 1), prediction
+**1m40**	| code start
+**2m**		| softmax: numpy
+**2m53**	| softmax: torch
+**3m15**	| Cross-Entropy: measures the performance of the output model
+note		| better prediction = lower Cross-Entropy loss
+**4m05**	| One-Hot encoding: Each class represented by a single binary 1 on classificaton array [0,1,0,0]
+**4m30**	| Y hat: predicted probablities (softmax)
+**5m17**	| cross_entropy(Y actual, Y hat predicted)
+**6m50**	| cross_entropy: torch caveats/gotchas slide
+note		| nn.CrossEntropyLoss applies nn.LogSoftmax + nn NLLLoss (-ve log liklihood loss)
+note		| Y has class labels not one-hot
+note		| Y_pred (y hat) has raw scores (logits), no Softmax
+**7m50**	| cross_entropy torch: code
+**14m10**	| Neural Net w/ Softmax - slide - multi class
+**15m05**	| Neural Net w/ Softmax - code
+**16m30**	| Neural Net w/ Sigmoid - slide - binary
+**17m10**	| Neural Net w/ Sigmoid - code
 
 
 #### Sigmoid function
@@ -472,13 +499,12 @@ What this equation describes is element wise exponentiation divided by the sum o
   
 ![softmax element exponentiation](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/softmax_element_exponentiation.png)   
   
-[desmos - softmax bar charts](https://www.desmos.com/calculator/drqqhtb037)  
-
 The far right column represent the Sum of exponentiations for each element.   
 The preceding 4 the exponentiation of each element.   
 Who is divided by the sum to get the softmax probability outputs.   
+[desmos - softmax bar charts](https://www.desmos.com/calculator/drqqhtb037) < interactive.   
   
-What are logits?
+What are logits? Output score from linear layer I think. .
 What is an activation function?
 
 #### Refs 11 - softmax & cross entropy
@@ -491,8 +517,84 @@ Here Andrew Ng walks through the maths with an example 3m element wise exponenti
 [Sigmoid function](https://www.youtube.com/watch?v=TPqr8t919YM).  
 
 
+#### Cross-Entropy equation:
+Used to home in on a better answer, the lower the cross-entropy loss the closer to target we are.
+<p align="center"><img src="./tex/a796f18824561d22a6ec64fd3c494f3d.svg?invert_in_darkmode" align=middle width=356.61131055pt height=32.990165999999995pt/></p>
+TODO - explain the maths
+Start w/ single output example, then above is simply a summation for of each of the loss functions for multiple class outputs.  
+  
 ### 12 - Activation Functions  
+([vid](https://www.youtube.com/watch?v=3t9lZM7SS7k&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/12_tensor_activation_functions.py))   
+  
+#### **Vid contents - 11 softmax & X-entropy**
+ time				| notes	
+| - | - |
+**0m**		| Intro to activation functions - rationale
+**2m**		| Popular activation functions
+ 			| Step function, Sigmoid, TanH, ReLU, Leaky ReLU, Softmax
+**2m25**	| Sigmoid 0 to 1: Last layer of binary classificatioon problem
+**2m50**	| TanH -1 to +1: Scaled & shifted sigmoid function - used in hidden layers
+**3m20**	| ReLU: Rectified Linear Unit: 0 for -ve inputs, linear for +ve inputs
+ 			| better performance than sigmoid
+**4m20**	| Leaky ReLU: Used in solving Vanishing gradient problem
+**5m40**	| Softmax:Typically good choice in last layer of a multi classification problem
+**6m30**	| Walk the 1st Neural Network code
+**7m40**	| Walk the 2nd Neural Network code
+**note**		| the NN code isn't executed - next episode
+**8m30**	| API: torch.nn, torch.nn.functional
+
+
+#### Neural Network code example
+```
+class NeuralNet(nn.Module):
+    # initialise models named object vasr with standard functions
+    def __init__(self, input_size, hidden_size):
+        super(NeuralNet, self).__init__()
+        self.linear1 = nn.Linear(input_size, hidden_size)
+        self.relu = nn.ReLU()
+        self.linear2 = nn.Linear(hidden_size, 1)
+        self.sigmoid = nn.Sigmoid()
+
+    # use object name in forward pass
+    # output from each step/layer is passed to the next step/layer
+    def forward(self, x):
+        out = self.linear1(x)
+        out = self.relu(out)
+        out = self.linear2(out)
+        out = self.sigmoid(out)
+        return out
+```
+Is the activation function then a filter that shapes the output to the next layer? Basically yes!
+Activation function decides, whether a neuron should be activated or not by calculating weighted sum and further adding bias with it. The purpose of the activation function is to introduce non-linearity into the output of a neuron.
+
+
+#### Refs - 12 activation functions
+Pytorch Modules [ref here](https://pytorch.org/docs/stable/generated/torch.nn.Module.html).  
+Example pipeline [digit identifier](https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html).  
+
+
 ### 13 - Feed-Forward Neural Network  
+([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
+#### **Vid contents - 09 data loader**
+ time				| notes	
+| - | - |
+**0m**		| intro
+
+
+A typical training procedure for a neural network is as follows:
+ - Define the neural network that has some learnable parameters (or weights)
+ - Iterate over a dataset of inputs
+ - Process input through the network
+ - Compute the loss (how far is the output from being correct)
+ - Propagate gradients back into the networks parameters
+ - Update the weights of the network, typically using a simple update rule: weight = weight - learning_rate * gradient
+
+
+#### Refs 13 feed forward NN 
+[Pytorch tutorial](https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html).  
+
 ### 14 - Convolutional Neural Network (CNN)  
 ### 15 - Transfer Learning  
 ### 16 - How To Use The TensorBoard  
