@@ -447,7 +447,7 @@ pillow                    8.2.0            py37h5270095_0      # shows already i
 ### 11 - Softmax and Cross Entropy  
 ([vid](https://www.youtube.com/watch?v=7q7E91pHoW4&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=12)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/09_tensor_data_loader.py)) - 
-([code python __call__](https://github.com/UnacceptableBehaviour/python_koans/blob/master/python3/scratch_pad_1b_instance__call__.py))  
+([code python \_\_call\_\_](https://github.com/UnacceptableBehaviour/python_koans/blob/master/python3/scratch_pad_1b_instance__call__.py))  
   
 #### **Vid contents - 11 softmax & X-entropy**
  time				| notes	
@@ -459,7 +459,7 @@ pillow                    8.2.0            py37h5270095_0      # shows already i
 #### Sigmoid function
 ![sigmoid function](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/sigmoid_function.png)  
 Sigmoid function (for any value of x is between 0 & 1, crossover at 0.5) [6m maths](https://www.youtube.com/watch?v=TPqr8t919YM):
-<p align="center"><img src="./tex/0c6d0c344de69ab02d54858734614069.svg?invert_in_darkmode" align=middle width=110.56831829999999pt height=34.3600389pt/></p>
+<p align="center"><img src="./tex/7c505088ff7470b985deea77b05d6e20.svg?invert_in_darkmode" align=middle width=737.47324035pt height=34.3600389pt/></p>
 Used to map output values into probabilities (values between 0 - 1).
 
 ### 12 - Activation Functions  
