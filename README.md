@@ -461,16 +461,19 @@ pillow                    8.2.0            py37h5270095_0      # shows already i
 #### Sigmoid function
 ![sigmoid function](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/sigmoid_function.png)  
 Sigmoid function (for any value of x is between 0 & 1, crossover at 0.5) [6m maths](https://www.youtube.com/watch?v=TPqr8t919YM):
-<p align="center"><img src="./tex/7c505088ff7470b985deea77b05d6e20.svg?invert_in_darkmode" align=middle width=737.47324035pt height=34.3600389pt/></p>
+<p align="center"><img src="./tex/b744bbbaeaa991fd7cb8ea9d8b96067d.svg?invert_in_darkmode" align=middle width=361.00828665pt height=34.3600389pt/></p>
+Important thing to note is:
+<p align="center"><img src="./tex/d5b67a1adb489ef5eba6b8b1e145bcdb.svg?invert_in_darkmode" align=middle width=179.7600156pt height=22.6484214pt/></p>
 Used to map output values into probabilities (values between 0 - 1).  
 
 #### Softmax equation:
 <p align="center"><img src="./tex/3efb236387e0b3da0f331abc7caf7b0f.svg?invert_in_darkmode" align=middle width=102.61048545pt height=37.425951749999996pt/></p>
-What this equation describes is element wise exponentiation divided by the sum of those exponentiations
+What this equation describes is element wise exponentiation divided by the sum of those exponentiations.  
 [desmos - softmax bar charts](https://www.desmos.com/calculator/drqqhtb037).  
-![softmax element exponentiation](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/softmax_element_exponentiation.png)  
-The far right column represent the Sum of exponentiations for each element.  
-The preceding 4 the exponentiation of each element.  
+![softmax element exponentiation](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/softmax_element_exponentiation.png)   
+  
+The far right column represent the Sum of exponentiations for each element.   
+The preceding 4 the exponentiation of each element.   
 Who is divided by the sum to get the softmax probability outputs.   
   
 What are logits?
