@@ -18,16 +18,14 @@ print("\n" * 2)
 # 3m20 - ReLU: Rectified Linear Unit: 0 for -ve inputs, linear for +ve inputs
 #      - better performance than sigmoid
 # 4m20 - Leaky ReLU: Used in solving Vanishing gradient problem
-# 5m40 - Softmax:Typically good choice in last layer of a multi classificarion problem
-# 6m30
+# 5m40 - Softmax:Typically good choice in last layer of a multi classification problem
+# 6m30 - Walk the 1st Neural Network code
+# 7m40 - Walk the 2nd Neural Network code
+# note - the NN code isn't executed - next episode
+# 8m30 - API: torch.nn, torch.nn.functional
 
-
-
-
-import sys
 
 #print(f"\n  \n{  }")
-
 #print(f"\n  \n{  }")
 
 # output = w*x + b
@@ -98,6 +96,7 @@ print(f"\n  \n{ output }")
 
 # option 1 (create nn modules)
 class NeuralNet(nn.Module):
+    # initialise models named object vasr with standard functions
     def __init__(self, input_size, hidden_size):
         super(NeuralNet, self).__init__()
         self.linear1 = nn.Linear(input_size, hidden_size)
@@ -105,6 +104,8 @@ class NeuralNet(nn.Module):
         self.linear2 = nn.Linear(hidden_size, 1)
         self.sigmoid = nn.Sigmoid()
 
+    # use object name in forward pass
+    # output from each step/layer is passed to the next step/layer
     def forward(self, x):
         out = self.linear1(x)
         out = self.relu(out)
@@ -113,6 +114,7 @@ class NeuralNet(nn.Module):
         return out
 
 # option 2 (use activation functions directly in forward pass)
+# basicall a bit juggled about
 class NeuralNet(nn.Module):
     def __init__(self, input_size, hidden_size):
         super(NeuralNet, self).__init__()
