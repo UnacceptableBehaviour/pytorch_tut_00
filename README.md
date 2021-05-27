@@ -50,6 +50,7 @@ Add table later if relevant.
 	11. [11 - Softmax and Cross Entropy](#11---softmax-and-cross-entropy)  
 		1. [**Vid contents - 11 softmax & X-entropy**](#vid-contents---11-softmax--x-entropy)  
 		2. [Sigmoid function](#sigmoid-function)  
+		3. [Refs 11 - softmax & cross entropy](#refs-11---softmax--cross-entropy)  
 	12. [12 - Activation Functions](#12---activation-functions)  
 	13. [13 - Feed-Forward Neural Network](#13---feed-forward-neural-network)  
 	14. [14 - Convolutional Neural Network (CNN)](#14---convolutional-neural-network-cnn)  
@@ -460,7 +461,25 @@ pillow                    8.2.0            py37h5270095_0      # shows already i
 ![sigmoid function](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/sigmoid_function.png)  
 Sigmoid function (for any value of x is between 0 & 1, crossover at 0.5) [6m maths](https://www.youtube.com/watch?v=TPqr8t919YM):
 <p align="center"><img src="./tex/7c505088ff7470b985deea77b05d6e20.svg?invert_in_darkmode" align=middle width=737.47324035pt height=34.3600389pt/></p>
-Used to map output values into probabilities (values between 0 - 1).
+Used to map output values into probabilities (values between 0 - 1).  
+
+<p align="center"><img src="./tex/3efb236387e0b3da0f331abc7caf7b0f.svg?invert_in_darkmode" align=middle width=102.61048545pt height=37.425951749999996pt/></p>
+
+
+What this equation describes is element wise exponentiation divided by the sum of those exponentiations
+
+What are logits?
+What is an activation function?
+
+#### Refs 11 - softmax & cross entropy
+Good visual explanation of how outputs from linear block are converted to probabilities by the softmax block:
+[softmax w/ 3d visuals](https://www.youtube.com/watch?v=ytbYRIN0N4g).  
+
+Here Andrew Ng walks through the maths with an example 3m element wise exponentiation
+[Andrew Ng- walks through maths example](https://www.youtube.com/watch?v=LLux1SW--oM).  
+  
+[Sigmoid function](https://www.youtube.com/watch?v=TPqr8t919YM).  
+
 
 ### 12 - Activation Functions  
 ### 13 - Feed-Forward Neural Network  
