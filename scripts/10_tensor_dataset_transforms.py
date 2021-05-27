@@ -61,7 +61,7 @@ print("\n" * 2)
 # Lambda(lambd)
 #
 # ==CUSTOM
-#
+# ToTensor, MulTransform
 
 
 
