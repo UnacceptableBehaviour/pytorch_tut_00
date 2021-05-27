@@ -50,7 +50,8 @@ Add table later if relevant.
 	11. [11 - Softmax and Cross Entropy](#11---softmax-and-cross-entropy)  
 		1. [**Vid contents - 11 softmax & X-entropy**](#vid-contents---11-softmax--x-entropy)  
 		2. [Sigmoid function](#sigmoid-function)  
-		3. [Refs 11 - softmax & cross entropy](#refs-11---softmax--cross-entropy)  
+		3. [Softmax equation:](#softmax-equation)  
+		4. [Refs 11 - softmax & cross entropy](#refs-11---softmax--cross-entropy)  
 	12. [12 - Activation Functions](#12---activation-functions)  
 	13. [13 - Feed-Forward Neural Network](#13---feed-forward-neural-network)  
 	14. [14 - Convolutional Neural Network (CNN)](#14---convolutional-neural-network-cnn)  
@@ -463,11 +464,15 @@ Sigmoid function (for any value of x is between 0 & 1, crossover at 0.5) [6m mat
 <p align="center"><img src="./tex/7c505088ff7470b985deea77b05d6e20.svg?invert_in_darkmode" align=middle width=737.47324035pt height=34.3600389pt/></p>
 Used to map output values into probabilities (values between 0 - 1).  
 
+#### Softmax equation:
 <p align="center"><img src="./tex/3efb236387e0b3da0f331abc7caf7b0f.svg?invert_in_darkmode" align=middle width=102.61048545pt height=37.425951749999996pt/></p>
-
-
 What this equation describes is element wise exponentiation divided by the sum of those exponentiations
-
+[desmos - softmax bar charts](https://www.desmos.com/calculator/drqqhtb037).  
+![softmax element exponentiation](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/softmax_element_exponentiation.png)  
+The far right column represent the Sum of exponentiations for each element.  
+The preceding 4 the exponentiation of each element.  
+Who is divided by the sum to get the softmax probability outputs.   
+  
 What are logits?
 What is an activation function?
 
