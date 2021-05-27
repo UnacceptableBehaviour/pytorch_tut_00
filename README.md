@@ -469,9 +469,11 @@ Used to map output values into probabilities (values between 0 - 1).
 #### Softmax equation:
 <p align="center"><img src="./tex/3efb236387e0b3da0f331abc7caf7b0f.svg?invert_in_darkmode" align=middle width=102.61048545pt height=37.425951749999996pt/></p>
 What this equation describes is element wise exponentiation divided by the sum of those exponentiations.  
-[desmos - softmax bar charts](https://www.desmos.com/calculator/drqqhtb037).  
+  
 ![softmax element exponentiation](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/softmax_element_exponentiation.png)   
   
+[desmos - softmax bar charts](https://www.desmos.com/calculator/drqqhtb037)  
+
 The far right column represent the Sum of exponentiations for each element.   
 The preceding 4 the exponentiation of each element.   
 Who is divided by the sum to get the softmax probability outputs.   
