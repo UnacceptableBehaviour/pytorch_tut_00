@@ -591,6 +591,11 @@ A typical training procedure for a neural network is as follows:
  - Propagate gradients back into the networks parameters
  - Update the weights of the network, typically using a simple update rule: weight = weight - learning_rate * gradient
 
+Viewing loaded MNIST data:
+![MNIST data](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/view_MNIST_data.png)  
+
+
+
 
 #### Refs 13 feed forward NN 
 [Pytorch tutorial](https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html).  
