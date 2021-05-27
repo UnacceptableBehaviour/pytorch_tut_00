@@ -1,7 +1,8 @@
 # DO NOT put comment after - SB on OWN line!
 # for osx
-.DS_Store
-**/*.DS_Store   # ignore .DS_Store in subdirectories too!
+
+# ignore .DS_Store in subdirectories too!
+**/*.DS_Store
 *.aux
 *.fdb_latexmk
 *.fls
@@ -12,7 +13,8 @@
 
 #*.pyc
 #*.pyo
-*.py[co]    # file or folder ending in .pyc or .pyo. However, it doesn’t match .py!
+# file or folder ending in .pyc or .pyo. However, it doesn’t match .py!
+*.py[co]
 
 
 
