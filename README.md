@@ -35,8 +35,8 @@ Add table later if relevant.
 		1. [**Vid contents - 07 linear regression**](#vid-contents---07-linear-regression)  
 		2. [Summary of module import for 07](#summary-of-module-import-for-07)  
 		3. [Refs 07](#refs-07)  
-			1. [Whats the difference between Torch & Pytorch?](#whats-the-difference-between-torch--pytorch)  
-			2. [Whats THNN?](#whats-thnn)  
+			1. [What's the difference between Torch & Pytorch?](#whats-the-difference-between-torch--pytorch)  
+			2. [What's THNN?](#whats-thnn)  
 	8. [08 - Logistic Regression](#08---logistic-regression)  
 		1. [**Vid contents - 08 logistic regression**](#vid-contents---08-logistic-regression)  
 		2. [What data sets are available in sklearn?](#what-data-sets-are-available-in-sklearn)  
@@ -61,14 +61,23 @@ Add table later if relevant.
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 		2. [Refs 13 feed forward NN](#refs-13-feed-forward-nn)  
 	14. [14 - Convolutional Neural Network (CNN)](#14---convolutional-neural-network-cnn)  
+		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 	15. [15 - Transfer Learning](#15---transfer-learning)  
+		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 	16. [16 - How To Use The TensorBoard](#16---how-to-use-the-tensorboard)  
+		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 	17. [17 - Saving and Loading Models](#17---saving-and-loading-models)  
+		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 	18. [18 - Create & Deploy A Deep Learning App - PyTorch Model Deployment With Flask & Heroku](#18---create--deploy-a-deep-learning-app---pytorch-model-deployment-with-flask--heroku)  
+		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 	19. [19 - PyTorch RNN Tutorial - Name Classification Using A Recurrent Neural Net](#19---pytorch-rnn-tutorial---name-classification-using-a-recurrent-neural-net)  
+		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 	20. [20 - RNN & LSTM & GRU - Recurrent Neural Nets](#20---rnn--lstm--gru---recurrent-neural-nets)  
+		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 	21. [21 - PyTorch Lightning Tutorial - Lightweight PyTorch Wrapper For ML Researchers](#21---pytorch-lightning-tutorial---lightweight-pytorch-wrapper-for-ml-researchers)  
+		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 	22. [22 - PyTorch LR Scheduler - Adjust The Learning Rate For Better Results](#22---pytorch-lr-scheduler---adjust-the-learning-rate-for-better-results)  
+		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 6. [EG chapter](#eg-chapter)  
 	1. [EG episode](#eg-episode)  
 		1. [**Vid contents - EG**](#vid-contents---eg)  
@@ -256,10 +265,10 @@ Executing transaction: \
 
 
 #### Refs 07  
-##### Whats the difference between Torch & Pytorch?  
+##### What's the difference between Torch & Pytorch?  
 Both PyTorch and Torch use [THNN](https://github.com/torch/nn/tree/master/lib/THNN). Torch provides lua wrappers to the THNN library while Pytorch provides Python wrappers for the same.
 
-##### Whats THNN?
+##### What's THNN?
 THNN is a library that gathers nn's C implementations of neural network modules. It's entirely free of Lua dependency and therefore can be used in any application that has a C FFI. Please note that it only contains quite low level functions, and an object oriented C/C++ wrapper will be created soon as another library. (There is also a CUDA counterpart of THNN - THCUNN)
 
 [Static vs Dynamic Shape](https://pgaleone.eu/tensorflow/2018/07/28/understanding-tensorflow-tensors-shape-static-dynamic/) .  
@@ -532,11 +541,11 @@ Start w/ single output example, then above is simply a summation for of each of 
 | - | - |
 **0m**		| Intro to activation functions - rationale
 **2m**		| Popular activation functions
- 			| Step function, Sigmoid, TanH, ReLU, Leaky ReLU, Softmax
+note 		| Step function, Sigmoid, TanH, ReLU, Leaky ReLU, Softmax
 **2m25**	| Sigmoid 0 to 1: Last layer of binary classificatioon problem
 **2m50**	| TanH -1 to +1: Scaled & shifted sigmoid function - used in hidden layers
 **3m20**	| ReLU: Rectified Linear Unit: 0 for -ve inputs, linear for +ve inputs
- 			| better performance than sigmoid
+ note		| better performance than sigmoid
 **4m20**	| Leaky ReLU: Used in solving Vanishing gradient problem
 **5m40**	| Softmax:Typically good choice in last layer of a multi classification problem
 **6m30**	| Walk the 1st Neural Network code
@@ -566,7 +575,8 @@ class NeuralNet(nn.Module):
         return out
 ```
 Is the activation function then a filter that shapes the output to the next layer? Basically yes!
-Activation function decides, whether a neuron should be activated or not by calculating weighted sum and further adding bias with it. The purpose of the activation function is to introduce non-linearity into the output of a neuron.
+Activation function decides, whether a neuron should be activated or not by calculating weighted sum and further adding bias with it. The purpose of the activation function is to introduce non-linearity into the output of a neuron.  
+[Activation functions - wikiP](https://en.wikipedia.org/wiki/Activation_function).  
 
 
 #### Refs - 12 activation functions
@@ -595,21 +605,95 @@ Viewing loaded MNIST data:
 ![MNIST data](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/view_MNIST_data.png)  
 
 
+What is hidden_size specifying?
+What do the Loss & Optimiser steps do?
 
 
 #### Refs 13 feed forward NN 
 [Pytorch tutorial](https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html).  
+[Torch.NN](https://pytorch.org/docs/stable/nn.html) These are the basic building block for graphs.  
+In containers in Torch.nn is Module:  
+[Torch.nn.Module](https://pytorch.org/docs/stable/generated/torch.nn.Module.html) Base class for all neural network modules.  
+Your models should also subclass this class.  
+Modules can also contain other Modules, allowing to nest them in a tree structure. You can assign the submodules as regular attributes.  
+[MNIST animation](https://www.youtube.com/watch?v=3JQ3hYko51Y).  
 
 ### 14 - Convolutional Neural Network (CNN)  
+([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
+#### **Vid contents - 09 data loader**
+ time				| notes	
+| - | - |
+**0m**		| intro
+https://www.youtube.com/watch?v=pDdP0TFzsoQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=14
+
 ### 15 - Transfer Learning  
+([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
+#### **Vid contents - 09 data loader**
+ time				| notes	
+| - | - |
+**0m**		| intro
+  
+
 ### 16 - How To Use The TensorBoard  
+([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
+#### **Vid contents - 09 data loader**
+ time				| notes	
+| - | - |
+**0m**		| intro
+  
 ### 17 - Saving and Loading Models  
+([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
+#### **Vid contents - 09 data loader**
+ time				| notes	
+| - | - |
+**0m**		| intro
+  
 ### 18 - Create & Deploy A Deep Learning App - PyTorch Model Deployment With Flask & Heroku  
+([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
+#### **Vid contents - 09 data loader**
+ time				| notes	
+| - | - |
+**0m**		| intro
+  
 	[Docker Introduction 1hr](https://www.youtube.com/watch?v=i7ABlHngi1Q).  
 ### 19 - PyTorch RNN Tutorial - Name Classification Using A Recurrent Neural Net  
+([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
+#### **Vid contents - 09 data loader**
+ time				| notes	
+| - | - |
+**0m**		| intro
+  
 ### 20 - RNN & LSTM & GRU - Recurrent Neural Nets  
+([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
+#### **Vid contents - 09 data loader**
+ time				| notes	
+| - | - |
+**0m**		| intro
+  
 ### 21 - PyTorch Lightning Tutorial - Lightweight PyTorch Wrapper For ML Researchers  
+([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
+#### **Vid contents - 09 data loader**
+ time				| notes	
+| - | - |
+**0m**		| intro
+  
 ### 22 - PyTorch LR Scheduler - Adjust The Learning Rate For Better Results  
+([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
+#### **Vid contents - 09 data loader**
+ time				| notes	
+| - | - |
+**0m**		| intro
+  
+
 
 
 
