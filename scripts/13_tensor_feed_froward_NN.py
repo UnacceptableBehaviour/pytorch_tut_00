@@ -99,10 +99,15 @@ print(f"\n example_targets.shape \n{ example_targets.shape }")
 
 
 # check data
-# for i in range(12):
-#     plt.subplot(3,4,i+1)                            # 3 rows x 4 cols, index i+1
-#     plt.imshow(example_data[i][0], cmap='gray')
-#plt.show()
+import random
+for i in range(12):
+    plt.subplot(3,4,i+1)                            # 3 rows x 4 cols, index i+1
+    img = random.randrange(0,100)
+    plt.imshow(example_data[img][0], cmap='gray')
+    # TODO add class label to sub plot
+      #code
+
+plt.show()
 
 
 # 8m40 - NN class
@@ -117,7 +122,7 @@ class NeuralNet(nn.Module):
         super(NeuralNet, self).__init__()
         self.l1 = nn.Linear(input_size, hidden_size)
         self.relu = nn.ReLU()
-        self.l2 - nn.Linear(hidden_size, num_classes)
+        self.l2 = nn.Linear(hidden_size, num_classes)
         # nn.Linear - layers
         # https://pytorch.org/docs/stable/nn.html#linear-layers
         # https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear
@@ -138,7 +143,7 @@ class NeuralNet(nn.Module):
 # create model                                                        #
 model = NeuralNet(input_size, hidden_size, num_classes)               #
                                                                       #
-# 12m - Loss & Optimiser                                              #
+# 12m - Loss & Optimizer                                              #
 criterion = nn.CrossEntropyLoss()   # < this applies softmax for us <<#
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
@@ -165,6 +170,20 @@ for epoch in range(num_epochs):
             print (f'Epoch [{epoch+1}/{num_epochs}], Step [{i+1}/{n_total_steps}], Loss: {loss.item():.4f}')
 
 
+with torch.no_grad():
+    n_correct = 0
+    n_samples = 0
+    for images, labels in test_loader:
+        images = images.reshape(-1, 28*28).to(device)
+        labels = labels.to(device)
+        outputs = model(images)
+        # max returns (value ,index)
+        _, predicted = torch.max(outputs.data, 1)
+        n_samples += labels.size(0)
+        n_correct += (predicted == labels).sum().item()
+
+    acc = 100.0 * n_correct / n_samples
+    print(f'Accuracy of the network on the 10000 test images: {acc} %')
 
 
 
