@@ -32,10 +32,9 @@ import matplotlib.pyplot as plt
 # 10m10 - Multilayer NN Activation function
 # 12m - Loss & optimizer
 # 12m40 - Training loop
-#
-#
-#
-#
+# 15m   - Forward pass
+# 15m50 - Backwards & Optimize
+# 17m20 - Test run
 
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -99,15 +98,14 @@ print(f"\n example_targets.shape \n{ example_targets.shape }")
 
 
 # check data
-import random
-for i in range(12):
-    plt.subplot(3,4,i+1)                            # 3 rows x 4 cols, index i+1
-    img = random.randrange(0,100)
-    plt.imshow(example_data[img][0], cmap='gray')
-    # TODO add class label to sub plot
-      #code
-
-plt.show()
+# import random
+# for i in range(12):
+#     plt.subplot(3,4,i+1)                            # 3 rows x 4 cols, index i+1
+#     img = random.randrange(0,100)
+#     plt.imshow(example_data[img][0], cmap='gray')
+#     # TODO add class label to sub plot
+#
+# plt.show()
 
 
 # 8m40 - NN class
