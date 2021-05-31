@@ -27,7 +27,7 @@ venv/
 /scratch
 
 # large data sets
-/data/MNIST
+/data/
 
 # notes on
 # https://labs.consol.de/development/git/2017/02/22/gitignore.html
