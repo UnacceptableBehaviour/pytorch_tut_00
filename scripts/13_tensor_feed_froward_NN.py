@@ -115,7 +115,7 @@ class NeuralNet(nn.Module):
     hidden_size     number of hidden layers?
     num_classes     number of output classifications 0-9 10 in total
     '''
-    # define model layers
+    # define model layers - initialize
     def __init__(self, input_size, hidden_size, num_classes):
         super(NeuralNet, self).__init__()
         self.l1 = nn.Linear(input_size, hidden_size)
