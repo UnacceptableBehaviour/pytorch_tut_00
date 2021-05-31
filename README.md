@@ -61,7 +61,7 @@ Add table later if relevant.
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 		2. [Refs 13 feed forward NN](#refs-13-feed-forward-nn)  
 	14. [14 - Convolutional Neural Network (CNN)](#14---convolutional-neural-network-cnn)  
-		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
+		1. [**Vid contents - 14 CNN**](#vid-contents---14-cnn)  
 	15. [15 - Transfer Learning](#15---transfer-learning)  
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 	16. [16 - How To Use The TensorBoard](#16---how-to-use-the-tensorboard)  
@@ -598,7 +598,7 @@ Example pipeline [digit identifier](https://pytorch.org/tutorials/beginner/blitz
 **10m10**		| Multilayer NN Activation function
 **12m**			| Loss & optimizer
 **12m40**		| Training loop
-**15m  **		| Forward pass
+**15m**			| Forward pass
 **15m50**		| Backwards & Optimize
 **17m20**		| Test run
 
@@ -613,12 +613,14 @@ A typical training procedure for a neural network is as follows:
 
 Viewing loaded MNIST data:
 ![MNIST data](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/view_MNIST_data.png)  
+  
+**Questions**  
+What is hidden_size specifying?  
+What do the Loss & Optimiser steps do?  
+Can I use pytorch to clean up images and covert into a data set?  
+What tools are available to clean up images and covert into a data set?  
 
-
-What is hidden_size specifying?
-What do the Loss & Optimiser steps do?
-
-
+  
 #### Refs 13 feed forward NN 
 [Pytorch tutorial](https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html).  
 [Torch.NN](https://pytorch.org/docs/stable/nn.html) These are the basic building block for graphs.  
@@ -627,15 +629,19 @@ In containers in Torch.nn is Module:
 Your models should also subclass this class.  
 Modules can also contain other Modules, allowing to nest them in a tree structure. You can assign the submodules as regular attributes.  
 [MNIST animation](https://www.youtube.com/watch?v=3JQ3hYko51Y).  
+  
 
 ### 14 - Convolutional Neural Network (CNN)  
-([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
-([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
-#### **Vid contents - 09 data loader**
+([vid](https://www.youtube.com/watch?v=pDdP0TFzsoQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=14)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/14_tensor_cnn.py))   
+#### **Vid contents - 14 CNN**
  time				| notes	
 | - | - |
 **0m**		| intro
 https://www.youtube.com/watch?v=pDdP0TFzsoQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=14
+
+**Questions**  
+Hmmm but?   
 
 ### 15 - Transfer Learning  
 ([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
