@@ -82,7 +82,7 @@ Add table later if relevant.
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 	22. [22 - PyTorch LR Scheduler - Adjust The Learning Rate For Better Results](#22---pytorch-lr-scheduler---adjust-the-learning-rate-for-better-results)  
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
-6. [EG chapter](#eg-chapter)  
+6. [EG chapter---](#eg-chapter---)  
 	1. [EG episode](#eg-episode)  
 		1. [**Vid contents - EG**](#vid-contents---eg)  
 7. [Glossary of terms](#glossary-of-terms)  
@@ -105,6 +105,8 @@ Quick look a pytorch - dip toe in water!
 
 
 ## PyTorch Tutorials  
+  
+---
 ### 01 - Installation 
 ([vid](https://www.youtube.com/playlist?list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4))  
 First install conda (s/w package manger similar to homebrew) [How to install conda](#how-to-install-conda)  
@@ -128,7 +130,8 @@ Python 3.7.10
   
 Conda [CHEAT SHEET](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)  
 https://github.com/conda/conda/issues/9392  
-
+  
+---
 ### 02 - Tensor Basics  
 ([vid](https://www.youtube.com/watch?v=exaWOE8jvy8&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=2)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/02_tensor_basics.py))  
@@ -145,6 +148,7 @@ https://github.com/conda/conda/issues/9392
 **17m**		|  moving to GPU and back to CPU
 **17m20**	|  intro to requires_grad argument
   
+---
 ### 03 - Gradient Calculation w/ Autograd  
 ([vid](https://www.youtube.com/watch?v=DbeIqrwb_dE&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=3)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/03_tensor_gradients.py))  
@@ -164,6 +168,7 @@ https://github.com/conda/conda/issues/9392
 **15m**		|  summary
 
   
+---
 ### 04 - Backpropagation - Theory w/ Example  
 ([vid](https://www.youtube.com/watch?v=3Kb0QS6z7WA&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=4)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/04_tensor_backpropagation.py))  
@@ -182,6 +187,7 @@ Chain rule - add reference.
 y hat = predicted loss.  
 <p align="center"><img src="./tex/80d54bc90546c7381ff21ec68e752c5e.svg?invert_in_darkmode" align=middle width=173.51321625pt height=14.611878599999999pt/></p>
   
+---
 ### 05 - Gradient Descent w/ Autograd and Backpropagation  
 ([vid](https://www.youtube.com/watch?v=E-I2DNVzQLg&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=5)) - 
 ([code - numpy verison](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/05_tensor_model_optimisation_a.py)) - 
@@ -192,6 +198,7 @@ y hat = predicted loss.
 **0m**		| Manual, Prediction, Gradient Computation, Loss Computation, Parameter updates
 **12m10**	| Switch over from numpy to torch
   
+---
 ### 06 - Training Pipeline: Model, Loss, and Optimizer  
 ([vid](https://www.youtube.com/watch?v=VVDHU_TWwUg&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=6)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/06_tensor_training_pipeline_a.py))  
@@ -211,6 +218,7 @@ y hat = predicted loss.
   - backward pass: gradients
   - update weights
   
+---
 ### 07 - Linear Regression  
 ([vid](https://www.youtube.com/watch?v=YAJ5XBwlN4o&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=7)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/07_tensor_linear_regresssion.py))   
@@ -280,7 +288,8 @@ THNN is a library that gathers nn's C implementations of neural network modules.
 
 How to setup pytorch code prediction for Komodo IDE?
 https://www.google.com/search?safe=active&sxsrf=ALeKk03QSxUCcfqoRqniKinMd2nkDpWUuw:1621682572448&q=How+to+setup+%22pytorch%22+code+prediction+for+Komodo+IDE?&sa=X&ved=2ahUKEwi25qytlt3wAhXDTxUIHaTVD7UQ5t4CMAF6BAgDEAo&biw=1125&bih=734
-
+  
+---
 ### 08 - Logistic Regression  
 ([vid](https://www.youtube.com/watch?v=OGpQxIkR4ao&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=8)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/07_tensor_linear_regresssion.py))   
@@ -321,7 +330,8 @@ tensor([1., 1., 1., . . 455 COLS . ., 1., 1., 0., 1., 0., 0., 1., 1., 1., 1., 1.
 TODO  
 Read [this post](https://towardsdatascience.com/understanding-dimensions-in-pytorch-6edf9972d3be) add experimental code.  
 More on [dynamic & static shapes](https://pgaleone.eu/tensorflow/2018/07/28/understanding-tensorflow-tensors-shape-static-dynamic/).  
-
+  
+---
 ### 09 - Dataset and DataLoader - Batch Training  
 ([vid](https://www.youtube.com/watch?v=PXOzkkB5eH0&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=9)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/09_tensor_data_loader.py))   
@@ -357,6 +367,7 @@ Scaler example [from importance of feature scaling](https://scikit-learn.org/sta
 ![scaler example](./imgs/scaling_data.png)  
 
   
+---
 ### 10 - Dataset Transforms  
 ([vid](https://www.youtube.com/watch?v=X_QOZEko5uE&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=10)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/09_tensor_data_loader.py))   
@@ -465,7 +476,7 @@ Pillow offers several standard procedures for image manipulation. These include:
 pillow                    8.2.0            py37h5270095_0      # shows already installed
 > conda install -c anaconda pillow                             # if not in list
 ```
-
+---
 ### 11 - Softmax and Cross Entropy  
 ([vid](https://www.youtube.com/watch?v=7q7E91pHoW4&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=12)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/09_tensor_data_loader.py)) - 
@@ -536,6 +547,7 @@ Used to home in on a better answer, the lower the cross-entropy loss the closer 
 TODO - explain the maths
 Start w/ single output example, then above is simply a summation for of each of the loss functions for multiple class outputs.  
   
+---
 ### 12 - Activation Functions  
 ([vid](https://www.youtube.com/watch?v=3t9lZM7SS7k&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/12_tensor_activation_functions.py))   
@@ -587,7 +599,7 @@ Activation function decides, whether a neuron should be activated or not by c
 Pytorch Modules [ref here](https://pytorch.org/docs/stable/generated/torch.nn.Module.html).  
 Example pipeline [digit identifier](https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html).  
 
-
+---
 ### 13 - Feed-Forward Neural Network  
 ([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
@@ -635,7 +647,7 @@ Modules can also contain other Modules, allowing to nest them in a tree structur
 [MNIST animation](https://www.youtube.com/watch?v=3JQ3hYko51Y).  
 [MNIST Anim - in, weights, in * weight - out vote](https://www.youtube.com/watch?v=DVKMpWnUppA). 
   
-
+---
 ### 14 - Convolutional Neural Network (CNN)  
 ([vid](https://www.youtube.com/watch?v=pDdP0TFzsoQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=14)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/14_tensor_cnn.py))   
@@ -685,7 +697,7 @@ Here subsampling is the same as downsamplein / pooling I believe.
 [Source](http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture1.pdf).  
 [](https://proceedings.neurips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf)
   
-This architecture has been developed with changes to width, number of layers, softmax output points all sorts -  [Summary of architectures upto 2015](https://medium.com/analytics-vidhya/cnns-architectures-lenet-alexnet-vgg-googlenet-resnet-and-more-666091488df5).  
+The CNN architecture has been developed with changes to width, number of layers, softmax output points all sorts -  [Summary of architectures upto 2015](https://medium.com/analytics-vidhya/cnns-architectures-lenet-alexnet-vgg-googlenet-resnet-and-more-666091488df5).  
 ![reshaping the cnn arch](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/CNN_arch_width_vs_layers.png)
 [SOURCE -  Krizhevsky-Sutskever-Hinton ](https://arxiv.org/pdf/1905.11946.pdf).  
   
@@ -741,6 +753,7 @@ CNN history & overview from [The AI Summer](https://theaisummer.com/cnn-architec
 
 
   
+---
 ### 15 - Transfer Learning  
 ([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
@@ -753,7 +766,7 @@ CNN history & overview from [The AI Summer](https://theaisummer.com/cnn-architec
 Hmmm but?   
   
   
-
+---
 ### 16 - How To Use The TensorBoard  
 ([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
@@ -762,6 +775,7 @@ Hmmm but?
 | - | - |
 **0m**		| intro
   
+---
 ### 17 - Saving and Loading Models  
 ([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
@@ -770,6 +784,7 @@ Hmmm but?
 | - | - |
 **0m**		| intro
   
+---
 ### 18 - Create & Deploy A Deep Learning App - PyTorch Model Deployment With Flask & Heroku  
 ([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
@@ -780,6 +795,7 @@ Hmmm but?
   
 [Docker Introduction 1hr](https://www.youtube.com/watch?v=i7ABlHngi1Q).  
   
+---
 ### 19 - PyTorch RNN Tutorial - Name Classification Using A Recurrent Neural Net  
 ([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
@@ -788,6 +804,7 @@ Hmmm but?
 | - | - |
 **0m**		| intro
   
+---
 ### 20 - RNN & LSTM & GRU - Recurrent Neural Nets  
 ([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
@@ -796,6 +813,7 @@ Hmmm but?
 | - | - |
 **0m**		| intro
   
+---
 ### 21 - PyTorch Lightning Tutorial - Lightweight PyTorch Wrapper For ML Researchers  
 ([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
@@ -804,6 +822,7 @@ Hmmm but?
 | - | - |
 **0m**		| intro
   
+---
 ### 22 - PyTorch LR Scheduler - Adjust The Learning Rate For Better Results  
 ([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
@@ -818,7 +837,7 @@ Hmmm but?
 
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-## EG chapter
+## EG chapter---
 ### EG episode
 [vid](https://www.youtube.com/watch?v=HtSuA80QTyo&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=2&t=423s) ~ 
 [lect notes](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec01.pdf)  
