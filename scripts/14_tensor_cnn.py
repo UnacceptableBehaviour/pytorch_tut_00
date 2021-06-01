@@ -15,13 +15,19 @@ print("\n" * 2)
 # 0m12 - CIFAR-10 dataset - https://en.wikipedia.org/wiki/CIFAR-10
 # 4m - Code start, GPU support, hyper-parameters
 # 4m40 - load CIFAR dataset
-# 5m - class definitions
-#
+# 5m - Quick walk the code see code structure
+# 7m - class definitions in detail
+# 7m23 - CNN architecture slide
+# 11m - going over chosen layer parameters
+# 13m46 - Calculating the output size > Inputs into Linear layers
+# 17m20 - Class forward method layers
+# 20m30 - Run training
+# 
 #
 #
 #
 
-# Code Structure
+# - - - Code Structure - - -
 # GPU support
 # hyper-parameters
 # load (CIFAR) dataset
@@ -31,6 +37,28 @@ print("\n" * 2)
 # assign optimizer
 # train model
 # test model
+
+# CNN architecture slide
+#
+
+# Classification O/P
+#  |
+# Softmax layer spread output into a proportional representation
+#  |
+# Features Flattened into 1d fully connected layer connects to 2 more layers?
+#  |
+# Pooling: (Downsampling, stops overfitting)
+# Convolution & ReLU
+#  |
+# Pooling: (Downsampling, stops overfitting)
+# Convolution & ReLU
+#  |
+# INPUT
+
+# NOTE
+# CONCVOLUTION & ReLU is done on co-located areas to preserve spacial information
+# POOLING down samples - removes resolution to stop overfitting
+# these layers are repeated feeding forward into the next layer for feature extraction
 
 
 import torch
@@ -105,6 +133,7 @@ test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=batch_size,
 classes = ('plane', 'car', 'bird', 'cat',
            'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
+# TODO make 12x8 set of images
 def imshow(img):
     img = img / 2 + 0.5  # unnormalize
     npimg = img.numpy()
@@ -118,6 +147,40 @@ images, labels = dataiter.next()
 
 # show images
 imshow(torchvision.utils.make_grid(images))
+
+
+
+# 7m - class definitions in detail
+# 7m23 - CNN architecture slide
+class ConvNet(nn.Module):
+    def __init__(self):
+        super(ConvNet, self).__init__()
+        # Conv2d     https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html#torch.nn.Conv2d
+        # MaxPool2d  https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html#torch.nn.MaxPool2d
+        # Linear     https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear
+        self.conv1 = nn.Conv2d(3, 6, 5)  # in_channels = 3 (RGB), out_channels = 6?, kernel_size = 5 (5x5)
+        self.pool = nn.MaxPool2d(2, 2)
+        self.conv2 = nn.Conv2d(6, 16, 5)
+        self.fc1 = nn.Linear(16 * 5 * 5, 120)
+        self.fc2 = nn.Linear(120, 84)
+        self.fc3 = nn.Linear(84, 10)
+
+    def forward(self, x):
+        # -> n, 3, 32, 32
+        x = self.pool(F.relu(self.conv1(x)))  # -> n, 6, 14, 14
+        x = self.pool(F.relu(self.conv2(x)))  # -> n, 16, 5, 5
+        x = x.view(-1, 16 * 5 * 5)            # -> n, 400
+        x = F.relu(self.fc1(x))               # -> n, 120
+        x = F.relu(self.fc2(x))               # -> n, 84
+        x = self.fc3(x)                       # -> n, 10
+        return x
+
+
+model = ConvNet().to(device)
+
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+
 
 
 #print(f"\n  \n{  }")
