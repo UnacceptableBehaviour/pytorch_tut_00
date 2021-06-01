@@ -59,7 +59,9 @@ Add table later if relevant.
 		3. [Refs - 12 activation functions](#refs---12-activation-functions)  
 	13. [13 - Feed-Forward Neural Network](#13---feed-forward-neural-network)  
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
-		2. [Refs 13 feed forward NN](#refs-13-feed-forward-nn)  
+		2. [**Questions 13**](#questions-13)  
+			1. [**What is hidden_size specifying?**](#what-is-hiddensize-specifying)  
+		3. [Refs 13 feed forward NN](#refs-13-feed-forward-nn)  
 	14. [14 - Convolutional Neural Network (CNN)](#14---convolutional-neural-network-cnn)  
 		1. [**Vid contents - 14 CNN**](#vid-contents---14-cnn)  
 		2. [CNN pipeline steps](#cnn-pipeline-steps)  
@@ -630,11 +632,12 @@ A typical training procedure for a neural network is as follows:
 Viewing loaded MNIST data:
 ![MNIST data](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/view_MNIST_data.png)  
   
-**Questions**  
-What is hidden_size specifying?  
-What do the Loss & Optimiser steps do? http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture3.pdf.  
-Can I use pytorch to clean up images and covert into a data set?  
-What tools are available to clean up images and covert into a data set?  
+####**Questions 13**  
+#####**What is hidden_size specifying?**  
+**What do the Loss & Optimiser steps do? http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture3.pdf.**  
+**Can I use pytorch to clean up images and covert into a data set?**  
+[Simple B&W convert](https://www.blog.pythonlibrary.org/2017/10/11/convert-a-photo-to-black-and-white-in-python/) - [thresholding](https://datacarpentry.org/image-processing/07-thresholding/) - Quick bit of hacking to create script to generate 64px wide image from 3Mb mobile image []
+**What tools are available to clean up images and covert into a data set?**  
 
   
 #### Refs 13 feed forward NN 
