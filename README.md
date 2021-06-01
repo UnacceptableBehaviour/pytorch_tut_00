@@ -62,8 +62,8 @@ Add table later if relevant.
 		2. [Refs 13 feed forward NN](#refs-13-feed-forward-nn)  
 	14. [14 - Convolutional Neural Network (CNN)](#14---convolutional-neural-network-cnn)  
 		1. [**Vid contents - 14 CNN**](#vid-contents---14-cnn)  
-		2. [CNN architecure](#cnn-architecure)  
-		3. [CNN pipeline steps](#cnn-pipeline-steps)  
+		2. [CNN pipeline steps](#cnn-pipeline-steps)  
+		3. [CNN architecure](#cnn-architecure)  
 		4. [CNN pipeline steps - code](#cnn-pipeline-steps---code)  
 		5. [Refs 14 - CNNs](#refs-14---cnns)  
 	15. [15 - Transfer Learning](#15---transfer-learning)  
@@ -633,6 +633,7 @@ In containers in Torch.nn is Module:
 Your models should also subclass this class.  
 Modules can also contain other Modules, allowing to nest them in a tree structure. You can assign the submodules as regular attributes.  
 [MNIST animation](https://www.youtube.com/watch?v=3JQ3hYko51Y).  
+[MNIST Anim - in, weights, in * weight - out vote](https://www.youtube.com/watch?v=DVKMpWnUppA). 
   
 
 ### 14 - Convolutional Neural Network (CNN)  
@@ -654,19 +655,7 @@ Modules can also contain other Modules, allowing to nest them in a tree structur
 **17m20**	| Class forward method layers
 **20m30**	| Run training
 
-Watch this for solid overview on CNN - [03 - MIT 6.S191 - Convolutional Neural Networks]()
-
-#### CNN architecure
-![cnn arch - 1998 2012](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/CNN_arch_1998-2012.png)  
-[Source](http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture1.pdf).  
-[](https://proceedings.neurips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf)
-
-![reshaping the cnn arch](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/CNN_arch_width_vs_layers.png)
-[SOURCE -  Krizhevsky-Sutskever-Hinton ](https://arxiv.org/pdf/1905.11946.pdf).  
-
-Todo read: [Summary of architectures upto 2015](https://medium.com/analytics-vidhya/cnns-architectures-lenet-alexnet-vgg-googlenet-resnet-and-more-666091488df5).  
-
-Stanford		
+Watch this for solid overview on CNN - [03 - MIT 6.S191 - Convolutional Neural Networks](https://www.youtube.com/watch?v=AjtX1N_VT9E) from 14m on.
 
 #### CNN pipeline steps
 ```
@@ -689,6 +678,16 @@ CONCVOLUTION & ReLU is done on co-located areas to preserve spacial information
 POOLING down samples - removes resolution to stop overfitting
 these layers are repeated feeding forward into the next layer - FOR FEATURE EXTRACTION
 ```
+  
+#### CNN architecure
+Here subsampling is the same as downsamplein / pooling I believe.  
+![cnn arch - 1998 2012](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/CNN_arch_1998-2012.png)  
+[Source](http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture1.pdf).  
+[](https://proceedings.neurips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf)
+  
+This architecture has been developed with changes to width, number of layers, softmax output points all sorts -  [Summary of architectures upto 2015](https://medium.com/analytics-vidhya/cnns-architectures-lenet-alexnet-vgg-googlenet-resnet-and-more-666091488df5).  
+![reshaping the cnn arch](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/CNN_arch_width_vs_layers.png)
+[SOURCE -  Krizhevsky-Sutskever-Hinton ](https://arxiv.org/pdf/1905.11946.pdf).  
   
 #### CNN pipeline steps - code
 ```
@@ -729,7 +728,6 @@ optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
   
 Where does nearest neighbour come into the picture?
   
-
 
 **How do I visualise extracted features like this?**  
 ![extracted featuures](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/feature_extraction.png)  
