@@ -8,10 +8,14 @@
 # Shrink to 64px wide
 # make greyscale
 
+# derived from
+# https://www.blog.pythonlibrary.org/2017/10/11/convert-a-photo-to-black-and-white-in-python/
+#
+# this is probably worth a quick experiment too
+# https://datacarpentry.org/image-processing/07-thresholding/
+
 from PIL import Image
 
-
-# https://www.blog.pythonlibrary.org/2017/10/11/convert-a-photo-to-black-and-white-in-python/
 def black_and_white(input_image_path, output_image_path):
 
     color_image = Image.open(input_image_path)
@@ -68,9 +72,9 @@ if __name__ == '__main__':
     black_and_white_dithering('./data/scales/s0.jpg',
         './data/scales/s0_bw_Nd.jpg', False)
 
-    BOW  = '1'
-    GREY = 'L'
-    thumb_size = 64, 64  # goes with width :)
+    BOW  = '1'              # Black or White
+    GREY = 'L'              # Greay scale 256?
+    thumb_size = 64, 64     # goes with width :)
     create_thumbnail('./data/scales/s0.jpg',
         './data/scales/s0_thumb.jpg', thumb_size)
 
@@ -81,4 +85,4 @@ if __name__ == '__main__':
         './data/scales/s0_bw_Nd_thumb.jpg', thumb_size, BOW, False)
 
     bw_thumb('./data/scales/s0.jpg',
-        './data/scales/s0_bw_thumb.jpg', thumb_size, GREY)
+        './data/scales/s0_bw_d_thumb.jpg', thumb_size, GREY)
