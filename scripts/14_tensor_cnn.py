@@ -183,6 +183,103 @@ optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
 
 
 
+n_total_steps = len(train_loader)
+for epoch in range(num_epochs):
+    for i, (images, labels) in enumerate(train_loader):
+        # origin shape: [4, 3, 32, 32] = 4, 3, 1024
+        # input_layer: 3 input channels, 6 output channels, 5 kernel size
+        images = images.to(device)
+        labels = labels.to(device)
+
+        # Forward pass
+        outputs = model(images)
+        loss = criterion(outputs, labels)
+
+        # Backward and optimize
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+        if (i+1) % 2000 == 0:
+            print (f'Epoch [{epoch+1}/{num_epochs}], Step [{i+1}/{n_total_steps}], Loss: {loss.item():.4f}')
+
+print('Finished Training')
+PATH = './cnn.pth'
+torch.save(model.state_dict(), PATH)
+
+with torch.no_grad():
+    n_correct = 0
+    n_samples = 0
+    n_class_correct = [0 for i in range(10)]
+    n_class_samples = [0 for i in range(10)]
+    for images, labels in test_loader:
+        images = images.to(device)
+        labels = labels.to(device)
+        outputs = model(images)
+        # max returns (value ,index)
+        _, predicted = torch.max(outputs, 1)
+        n_samples += labels.size(0)
+        n_correct += (predicted == labels).sum().item()
+
+        for i in range(batch_size):
+            label = labels[i]
+            pred = predicted[i]
+            if (label == pred):
+                n_class_correct[label] += 1
+            n_class_samples[label] += 1
+
+    acc = 100.0 * n_correct / n_samples
+    print(f'Accuracy of the network: {acc} %')
+
+    for i in range(10):
+        acc = 100.0 * n_class_correct[i] / n_class_samples[i]
+        print(f'Accuracy of {classes[i]}: {acc} %')
+
+# RESULT
+# Epoch [1/5], Step [2000/12500], Loss: 2.2722
+# Epoch [1/5], Step [4000/12500], Loss: 2.2892
+# Epoch [1/5], Step [6000/12500], Loss: 2.2897
+# Epoch [1/5], Step [8000/12500], Loss: 2.3078
+# Epoch [1/5], Step [10000/12500], Loss: 2.1805
+# Epoch [1/5], Step [12000/12500], Loss: 2.1557
+# Epoch [2/5], Step [2000/12500], Loss: 1.6770
+# Epoch [2/5], Step [4000/12500], Loss: 2.2442
+# Epoch [2/5], Step [6000/12500], Loss: 1.8525
+# Epoch [2/5], Step [8000/12500], Loss: 2.4297
+# Epoch [2/5], Step [10000/12500], Loss: 1.7102
+# Epoch [2/5], Step [12000/12500], Loss: 1.9221
+# Epoch [3/5], Step [2000/12500], Loss: 1.7978
+# Epoch [3/5], Step [4000/12500], Loss: 1.5310
+# Epoch [3/5], Step [6000/12500], Loss: 1.8889
+# Epoch [3/5], Step [8000/12500], Loss: 2.2381
+# Epoch [3/5], Step [10000/12500], Loss: 1.3370
+# Epoch [3/5], Step [12000/12500], Loss: 1.0403
+# Epoch [4/5], Step [2000/12500], Loss: 1.3470
+# Epoch [4/5], Step [4000/12500], Loss: 1.6430
+# Epoch [4/5], Step [6000/12500], Loss: 1.1701
+# Epoch [4/5], Step [8000/12500], Loss: 1.5667
+# Epoch [4/5], Step [10000/12500], Loss: 1.8386
+# Epoch [4/5], Step [12000/12500], Loss: 1.5948
+# Epoch [5/5], Step [2000/12500], Loss: 1.6294
+# Epoch [5/5], Step [4000/12500], Loss: 0.9172
+# Epoch [5/5], Step [6000/12500], Loss: 1.3630
+# Epoch [5/5], Step [8000/12500], Loss: 1.6863
+# Epoch [5/5], Step [10000/12500], Loss: 1.2374
+# Epoch [5/5], Step [12000/12500], Loss: 0.8387
+# Finished Training
+# Accuracy of the network: 48.71 %
+# Accuracy of plane: 53.1 %
+# Accuracy of car: 74.9 %
+# Accuracy of bird: 32.1 %
+# Accuracy of cat: 23.2 %
+# Accuracy of deer: 31.4 %
+# Accuracy of dog: 37.9 %
+# Accuracy of frog: 57.2 %
+# Accuracy of horse: 67.9 %
+# Accuracy of ship: 61.6 %
+# Accuracy of truck: 47.8 %
+
+
 #print(f"\n  \n{  }")
 
 #print(f"\n  \n{  }")
