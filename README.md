@@ -61,6 +61,8 @@ Add table later if relevant.
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 		2. [**Questions 13**](#questions-13)  
 			1. [**What is hidden_size specifying?**](#what-is-hiddensize-specifying)  
+			2. [**What do the Loss & Optimiser steps do?**](#what-do-the-loss--optimiser-steps-do)  
+			3. [**Can I use pytorch to clean up images and covert into a data set?**](#can-i-use-pytorch-to-clean-up-images-and-covert-into-a-data-set)  
 		3. [Refs 13 feed forward NN](#refs-13-feed-forward-nn)  
 	14. [14 - Convolutional Neural Network (CNN)](#14---convolutional-neural-network-cnn)  
 		1. [**Vid contents - 14 CNN**](#vid-contents---14-cnn)  
@@ -632,11 +634,17 @@ A typical training procedure for a neural network is as follows:
 Viewing loaded MNIST data:
 ![MNIST data](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/view_MNIST_data.png)  
   
-####**Questions 13**  
-#####**What is hidden_size specifying?**  
-**What do the Loss & Optimiser steps do? http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture3.pdf.**  
-**Can I use pytorch to clean up images and covert into a data set?**  
-[Simple B&W convert](https://www.blog.pythonlibrary.org/2017/10/11/convert-a-photo-to-black-and-white-in-python/) - [thresholding](https://datacarpentry.org/image-processing/07-thresholding/) - Quick bit of hacking to create script to generate 64px wide image from 3Mb mobile image []
+#### **Questions 13**  
+##### **What is hidden_size specifying?**  
+##### **What do the Loss & Optimiser steps do?**   
+Refs http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture3.pdf.**  
+##### **Can I use pytorch to clean up images and covert into a data set?**  
+[Simple B&W convert](https://www.blog.pythonlibrary.org/2017/10/11/convert-a-photo-to-black-and-white-in-python/) - [thresholding](https://datacarpentry.org/image-processing/07-thresholding/).  
+Quick bit of hacking to create script to generate 64px wide image from 3Mb mobile image [https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/img_to_bw.py].  
+Src img			| B&W	| Dithered	| Thumbnail	| B&W Thumb	| B&W Thumb Dith	|		
+| - | - | - | - | - | - |
+![Src img](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/dSet_create/s0.jpg) | ![B&W	| Dithered	| Thumbnail	| ![B&W Thumb](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/dSet_create/s0_bw_thumb.jpg)	| ![B&W Thumb Dith](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/dSet_create/s0_bw_d_thumb.jpg)	|		
+
 **What tools are available to clean up images and covert into a data set?**  
 
   
