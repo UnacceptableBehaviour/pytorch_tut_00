@@ -43,7 +43,7 @@ Add table later if relevant.
 		3. [torch.tensor.shape() - torch.Size([455, 1])](#torchtensorshape---torchsize455-1)  
 	9. [09 - Dataset and DataLoader - Batch Training](#09---dataset-and-dataloader---batch-training)  
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
-		2. [Using load_wine() ([sklearn load_wine()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_wine.html#sklearn.datasets.load_wine)) load info about the dataset but doesn't appear to load the whole data set. How do I load & walk the data?](#using-loadwine-sklearn-loadwinehttpsscikit-learnorgstablemodulesgeneratedsklearndatasetsloadwinehtmlsklearndatasetsloadwine-load-info-about-the-dataset-but-doesnt-appear-to-load-the-whole-data-set-how-do-i-load--walk-the-data)  
+		2. [Using load_wine() - [sklearn load_wine()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_wine.html#sklearn.datasets.load_wine) to load info about the dataset but doesn't appear to load the whole data set. How do I load & walk the data?](#using-loadwine---sklearn-loadwinehttpsscikit-learnorgstablemodulesgeneratedsklearndatasetsloadwinehtmlsklearndatasetsloadwine-to-load-info-about-the-dataset-but-doesnt-appear-to-load-the-whole-data-set-how-do-i-load--walk-the-data)  
 	10. [10 - Dataset Transforms](#10---dataset-transforms)  
 		1. [**Vid contents - 10 data transforms**](#vid-contents---10-data-transforms)  
 		2. [What is PIL / Pillow?](#what-is-pil--pillow)  
@@ -62,6 +62,8 @@ Add table later if relevant.
 		2. [Refs 13 feed forward NN](#refs-13-feed-forward-nn)  
 	14. [14 - Convolutional Neural Network (CNN)](#14---convolutional-neural-network-cnn)  
 		1. [**Vid contents - 14 CNN**](#vid-contents---14-cnn)  
+		2. [CNN architecure](#cnn-architecure)  
+		3. [CNN pipeline steps](#cnn-pipeline-steps)  
 	15. [15 - Transfer Learning](#15---transfer-learning)  
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 	16. [16 - How To Use The TensorBoard](#16---how-to-use-the-tensorboard)  
@@ -343,7 +345,7 @@ number of iterations = number of passes, each pass using [batch_size] number of 
 EG 100 samples, batch_size=20 -> 100/20 = 5 iterations for 1 epoch
 ```
 
-#### Using load_wine() ([sklearn load_wine()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_wine.html#sklearn.datasets.load_wine)) load info about the dataset but doesn't appear to load the whole data set. How do I load & walk the data?
+#### Using load_wine() - [sklearn load_wine()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_wine.html#sklearn.datasets.load_wine) to load info about the dataset but doesn't appear to load the whole data set. How do I load & walk the data?
 ```
 from sklearn.datasets import load_wine
 data = load_wine()			# 
@@ -638,11 +640,55 @@ Modules can also contain other Modules, allowing to nest them in a tree structur
  time				| notes	
 | - | - |
 **0m**		| intro
-https://www.youtube.com/watch?v=pDdP0TFzsoQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=14
+**0m**		| CNN Theory overview
+**1m**		| concepts CNN convolutional neural net
+**0m12**	| CIFAR-10 dataset - https://en.wikipedia.org/wiki/CIFAR-10
+**4m**		| Code start, GPU support, hyper-parameters
+**4m40**	| load CIFAR dataset
+**5m**		| Quick walk the code see code structure
+**7m**		| class definitions in detail
+**7m23**	| CNN architecture slide
+**11m**		| going over chosen layer parameters
+**13m46**	| Calculating the output size > Inputs into Linear layers
+**17m20**	| Class forward method layers
+**20m30**	| Run training
+
+#### CNN architecure
+![cnn arch - wikipedia](https://en.wikipedia.org/wiki/Convolutional_neural_network#/media/File:Typical_cnn.png)  
+
+#### CNN pipeline steps
+```
+Classification O/P
+ |
+Softmax layer spread output into a proportional representation
+ |
+Features Flattened into 1d fully connected layer connects to 2 more layers?
+ |
+Pooling: (Downsampling, stops overfitting)
+Convolution & ReLU
+ |
+Pooling: (Downsampling, stops overfitting)
+Convolution & ReLU
+ |
+INPUT
+
+## NOTE ##
+CONCVOLUTION & ReLU is done on co-located areas to preserve spacial information
+POOLING down samples - removes resolution to stop overfitting
+these layers are repeated feeding forward into the next layer - FOR FEATURE EXTRACTION
+```
+  
 
 **Questions**  
-Hmmm but?   
+**What is CIFAR dataset?**  60K low res images of 'plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck' - data to learn how to train multi class CNN.  
+  
 
+How do I visualise extracted features like this?  
+![extracted featuures](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/feature_extraction.png)  
+This looks promising [visualizing feature maps w/ pytorch](https://debuggercafe.com/visualizing-filters-and-feature-maps-in-convolutional-neural-networks-using-pytorch/)  
+  
+
+  
 ### 15 - Transfer Learning  
 ([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
@@ -650,6 +696,10 @@ Hmmm but?
  time				| notes	
 | - | - |
 **0m**		| intro
+  
+**Questions**  
+Hmmm but?   
+  
   
 
 ### 16 - How To Use The TensorBoard  
