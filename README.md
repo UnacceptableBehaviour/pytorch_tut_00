@@ -643,7 +643,7 @@ Refs http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture3.pdf.**
 Quick bit of hacking to create script to generate 64px wide image from 3Mb mobile image [https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/img_to_bw.py].  
 Src img			| B&W	| Dithered	| Thumbnail	| B&W Thumb	| B&W Thumb Dith	|		
 | - | - | - | - | - | - |
-![Src img](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/dSet_create/s0.jpg) | ![B&W	| Dithered	| Thumbnail	| ![B&W Thumb](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/dSet_create/s0_bw_thumb.jpg)	| ![B&W Thumb Dith](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/dSet_create/s0_bw_d_thumb.jpg)	|		
+![Src img](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/dSet_create/s0.jpg) | ![B&W](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/dSet_create/s0_bw.jpg) | ![Dithered](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/dSet_create/s0_bw_d.jpg)	| ![Thumbnail](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/dSet_create/s0_thumb.jpg) | ![B&W Thumb](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/dSet_create/s0_bw_thumb.jpg)	| ![B&W Thumb Dith](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/dSet_create/s0_bw_d_thumb.jpg)	|		
 
 **What tools are available to clean up images and covert into a data set?**  
 
