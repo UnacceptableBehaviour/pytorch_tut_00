@@ -22,7 +22,7 @@ print("\n" * 2)
 # 13m46 - Calculating the output size > Inputs into Linear layers
 # 17m20 - Class forward method layers
 # 20m30 - Run training
-# 
+#
 #
 #
 #
@@ -54,11 +54,11 @@ print("\n" * 2)
 # Convolution & ReLU
 #  |
 # INPUT
-
+#
 # NOTE
 # CONCVOLUTION & ReLU is done on co-located areas to preserve spacial information
 # POOLING down samples - removes resolution to stop overfitting
-# these layers are repeated feeding forward into the next layer for feature extraction
+# these layers are repeated feeding forward into the next layer - FOR FEATURE EXTRACTION
 
 
 import torch
