@@ -64,6 +64,8 @@ Add table later if relevant.
 		1. [**Vid contents - 14 CNN**](#vid-contents---14-cnn)  
 		2. [CNN architecure](#cnn-architecure)  
 		3. [CNN pipeline steps](#cnn-pipeline-steps)  
+		4. [CNN pipeline steps - code](#cnn-pipeline-steps---code)  
+		5. [Refs 14 - CNNs](#refs-14---cnns)  
 	15. [15 - Transfer Learning](#15---transfer-learning)  
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 	16. [16 - How To Use The TensorBoard](#16---how-to-use-the-tensorboard)  
@@ -618,7 +620,7 @@ Viewing loaded MNIST data:
   
 **Questions**  
 What is hidden_size specifying?  
-What do the Loss & Optimiser steps do?  
+What do the Loss & Optimiser steps do? http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture3.pdf.  
 Can I use pytorch to clean up images and covert into a data set?  
 What tools are available to clean up images and covert into a data set?  
 
@@ -639,8 +641,7 @@ Modules can also contain other Modules, allowing to nest them in a tree structur
 #### **Vid contents - 14 CNN**
  time				| notes	
 | - | - |
-**0m**		| intro
-**0m**		| CNN Theory overview
+**0m**		| Intro CNN Theory overview
 **1m**		| concepts CNN convolutional neural net
 **0m12**	| CIFAR-10 dataset - https://en.wikipedia.org/wiki/CIFAR-10
 **4m**		| Code start, GPU support, hyper-parameters
@@ -649,12 +650,23 @@ Modules can also contain other Modules, allowing to nest them in a tree structur
 **7m**		| class definitions in detail
 **7m23**	| CNN architecture slide
 **11m**		| going over chosen layer parameters
-**13m46**	| Calculating the output size > Inputs into Linear layers
+**13m46**	| Calculating the output size > Inputs into Linear layers [more here p52](http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture5.pdf)
 **17m20**	| Class forward method layers
 **20m30**	| Run training
 
+Watch this for solid overview on CNN - [03 - MIT 6.S191 - Convolutional Neural Networks]()
+
 #### CNN architecure
-![cnn arch - wikipedia](https://en.wikipedia.org/wiki/Convolutional_neural_network#/media/File:Typical_cnn.png)  
+![cnn arch - 1998 2012](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/CNN_arch_1998-2012.png)  
+[Source](http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture1.pdf).  
+[](https://proceedings.neurips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf)
+
+![reshaping the cnn arch](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/CNN_arch_width_vs_layers.png)
+[SOURCE -  Krizhevsky-Sutskever-Hinton ](https://arxiv.org/pdf/1905.11946.pdf).  
+
+Todo read: [Summary of architectures upto 2015](https://medium.com/analytics-vidhya/cnns-architectures-lenet-alexnet-vgg-googlenet-resnet-and-more-666091488df5).  
+
+Stanford		
 
 #### CNN pipeline steps
 ```
@@ -678,15 +690,57 @@ POOLING down samples - removes resolution to stop overfitting
 these layers are repeated feeding forward into the next layer - FOR FEATURE EXTRACTION
 ```
   
+#### CNN pipeline steps - code
+```
+# 7m - class definitions in detail
+# 7m23 - CNN architecture slide
+class ConvNet(nn.Module):
+    def __init__(self):
+        super(ConvNet, self).__init__()
+        # Conv2d     https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html#torch.nn.Conv2d
+        # MaxPool2d  https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html#torch.nn.MaxPool2d
+        # Linear     https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear
+        self.conv1 = nn.Conv2d(3, 6, 5)  # in_channels = 3 (RGB), out_channels = 6?, kernel_size = 5 (5x5)
+        self.pool = nn.MaxPool2d(2, 2)
+        self.conv2 = nn.Conv2d(6, 16, 5)
+        self.fc1 = nn.Linear(16 * 5 * 5, 120)
+        self.fc2 = nn.Linear(120, 84)
+        self.fc3 = nn.Linear(84, 10)
+
+    def forward(self, x):
+        # -> n, 3, 32, 32
+        x = self.pool(F.relu(self.conv1(x)))  # -> n, 6, 14, 14
+        x = self.pool(F.relu(self.conv2(x)))  # -> n, 16, 5, 5
+        x = x.view(-1, 16 * 5 * 5)            # -> n, 400
+        x = F.relu(self.fc1(x))               # -> n, 120
+        x = F.relu(self.fc2(x))               # -> n, 84
+        x = self.fc3(x)                       # -> n, 10
+        return x
+
+
+model = ConvNet().to(device)
+
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+```
 
 **Questions**  
 **What is CIFAR dataset?**  60K low res images of 'plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck' - data to learn how to train multi class CNN.  
   
+Where does nearest neighbour come into the picture?
+  
 
-How do I visualise extracted features like this?  
+
+**How do I visualise extracted features like this?**  
 ![extracted featuures](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/feature_extraction.png)  
 This looks promising [visualizing feature maps w/ pytorch](https://debuggercafe.com/visualizing-filters-and-feature-maps-in-convolutional-neural-networks-using-pytorch/)  
   
+Can this be improved - try [AlexNet](https://theaisummer.com/cnn-architectures/)
+
+#### Refs 14 - CNNs
+CNN history & overview from [The AI Summer](https://theaisummer.com/cnn-architectures/).  
+
+
 
   
 ### 15 - Transfer Learning  
@@ -726,7 +780,8 @@ Hmmm but?
 | - | - |
 **0m**		| intro
   
-	[Docker Introduction 1hr](https://www.youtube.com/watch?v=i7ABlHngi1Q).  
+[Docker Introduction 1hr](https://www.youtube.com/watch?v=i7ABlHngi1Q).  
+  
 ### 19 - PyTorch RNN Tutorial - Name Classification Using A Recurrent Neural Net  
 ([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
