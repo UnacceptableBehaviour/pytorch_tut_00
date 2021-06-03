@@ -71,7 +71,7 @@ Add table later if relevant.
 		4. [CNN pipeline steps - code](#cnn-pipeline-steps---code)  
 		5. [Refs 14 - CNNs](#refs-14---cnns)  
 	15. [15 - Transfer Learning](#15---transfer-learning)  
-		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
+		1. [**Vid contents - 15 transfer learning**](#vid-contents---15-transfer-learning)  
 	16. [16 - How To Use The TensorBoard](#16---how-to-use-the-tensorboard)  
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 	17. [17 - Saving and Loading Models](#17---saving-and-loading-models)  
@@ -640,10 +640,11 @@ Viewing loaded MNIST data:
 Refs http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture3.pdf.**  
 ##### **Can I use pytorch to clean up images and covert into a data set?**  
 [Simple B&W convert](https://www.blog.pythonlibrary.org/2017/10/11/convert-a-photo-to-black-and-white-in-python/) - [thresholding](https://datacarpentry.org/image-processing/07-thresholding/).  
-Quick bit of hacking to create script to generate 64px wide image from 3Mb mobile image [https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/img_to_bw.py].  
+Quick bit of hacking to create [script](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/img_to_bw.py) to generate 64px wide image from 3Mb mobile image.  
 Src img			| B&W	| Dithered	| Thumbnail	| B&W Thumb	| B&W Thumb Dith	|		
 | - | - | - | - | - | - |
 ![Src img](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/dSet_create/s0.jpg) | ![B&W](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/dSet_create/s0_bw.jpg) | ![Dithered](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/dSet_create/s0_bw_d.jpg)	| ![Thumbnail](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/dSet_create/s0_thumb.jpg) | ![B&W Thumb](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/dSet_create/s0_bw_thumb.jpg)	| ![B&W Thumb Dith](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/dSet_create/s0_bw_d_thumb.jpg)	|		
+Now need to collect a large set and label it! Hmm.
 
 **What tools are available to clean up images and covert into a data set?**  
 
@@ -766,9 +767,9 @@ CNN history & overview from [The AI Summer](https://theaisummer.com/cnn-architec
   
 ---
 ### 15 - Transfer Learning  
-([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
-([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
-#### **Vid contents - 09 data loader**
+([vid](https://www.youtube.com/watch?v=K0lWSB2QoIQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=15)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/15_tensor_transfer_learning.py))   
+#### **Vid contents - 15 transfer learning**
  time				| notes	
 | - | - |
 **0m**		| intro
@@ -785,6 +786,11 @@ Hmmm but?
  time				| notes	
 | - | - |
 **0m**		| intro
+  
+**Questions**  
+Hmmm but?   
+  
+  
   
 ---
 ### 17 - Saving and Loading Models  
