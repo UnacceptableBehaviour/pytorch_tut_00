@@ -790,21 +790,13 @@ CNN history & overview from [The AI Summer](https://theaisummer.com/cnn-architec
 **11m10**		| 2nd Option: Replace the last (FC) layer & only retrain the last layer
 **11m30**		| How to freeze the layer in the model - param.requires_grad = False for each layer
 
-Transfer learning uses a pre-trained model (in this case [resnet]() - ) from the same data domain, such as images or sound and replaces the last fully connected layer w/ a virgin fully connected layer and retrains it on a new problem set. [Good summary from Andrew Ng - 11m](https://www.youtube.com/watch?v=yofjFQddwHE).  
+Transfer learning uses a pre-trained model (in this case [resnet](https://neurohive.io/en/popular-networks/resnet/)) from the same data domain, such as images or sound and replaces the last fully connected layer w/ a virgin fully connected layer and retrains it on a new problem set. [Good summary from Andrew Ng - 11m](https://www.youtube.com/watch?v=yofjFQddwHE).  
   
 In this example resnet is transfer trained using 2 sets of images of ants & bees:
  ants & bees	 |  ants & bees |  ants & bees
 | - | - | - |
 ![ants&bees](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/ant_bees_00.png) | ![ants&bees](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/ant_bees_01.png) | ![ants&bees](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/ant_bees_02.png) 
-
-| ants & bees |
-| - |
-| ![ants&bees](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/ant_bees_00.png) |
-| ![ants&bees](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/ant_bees_01.png) |
-| ![ants&bees](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/ant_bees_02.png) |
   
-
-
 ##### Quick reminder python dict comprehensions!
 ```
 keys = ['k','l','m','n']
@@ -823,15 +815,17 @@ print(f"\n syntax_test \n{ syntax_test }")
 ```
   
 **Questions**  
-What are the numbers after resnet eg models.resnet18 < 18?
-
+What are the numbers after resnet eg models.resnet18 < 18? I think its the number of layers.  
 Understanding CNN diagram from [Deep Residual Learning for Image Recognition](https://arxiv.org/pdf/1512.03385.pdf).  
-![cnn diag](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/cnn_diagram.png)
-Each box represents a layer EG convolutional layer contents: 3x3 conv, 64, /2   
-They are filter dimensions , layer type, number of kernels (or feature maps) that are convolved with the input ,stride(if applicable).  
+![cnn diag](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/cnn_diagram.png).  
+Each box represents a layer EG convolutional layer contents: **3x3 conv, 64, /2**   
+They are filter dimensions , layer type, number of kernels (or feature maps) that are convolved with the input, stride(if applicable).  
 FC = fully connected layer.  
-What are the loop over arrows? [Identity shortcut connection](https://towardsdatascience.com/an-overview-of-resnet-and-its-variants-5281e2f56035)
+  
+What are the loop over arrows? [Identity shortcut connection](https://towardsdatascience.com/an-overview-of-resnet-and-its-variants-5281e2f56035) - 
 
+[Unpack this & write up](https://stackoverflow.com/questions/43290192/intuition-on-deep-residual-network).  
+  
 Whats the difference between dotted and hardlines?
 
 Difference between [features and feature maps?](https://www.quora.com/What-is-the-difference-between-a-feature-and-a-feature-map-on-CNN-Does-a-feature-map-contain-many-features-or-we-can-treat-a-feature-map-as-an-individual-feature#:~:text=are%20different%20terms.-,Feature%20has%20a%20very%20loose%20meaning%20while%20the%20definition%20of,an%20object%20in%20some%20space.&text=3D%20Cartesian%20space.-,Similarly%2C%20if%20you%20represent%20an%20image%20in%20different%20spaces%2C%20you,different%20features%20of%20the%20image.)   
@@ -857,7 +851,6 @@ Filter size 3x3, stride = 1,
 [Transfer Learning approaches](https://www.youtube.com/watch?v=f3KMyG6-Adw).  
 [Deep Residual Learning for Image Recognition](https://arxiv.org/pdf/1512.03385.pdf).  
 [VGG16 architecture](https://www.youtube.com/watch?v=mRVTKrbRYi0).  
-
 [options for running pytorch on cloud computing](https://www.google.com/search?q=options+for+running+pytorch+on+cloud+computing&oq=options+for+running+pytorch+on+cloud+computing+&aqs=chrome..69i57.23455j0j7&sourceid=chrome&ie=UTF-8).  
   
 
