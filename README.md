@@ -795,9 +795,7 @@ Transfer learning uses a pre-trained model (in this case [resnet]() - ) from the
 In this example resnet is transfer trained using 2 sets of images of ants & bees:
  ants & bees	 |  ants & bees |  ants & bees
 | - | - | - |
-![ants&bees](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/ant_bees_00.png) |
-![ants&bees](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/ant_bees_01.png) |
-![ants&bees](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/ant_bees_02.png) 
+![ants&bees](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/ant_bees_00.png) | ![ants&bees](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/ant_bees_01.png) | ![ants&bees](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/ant_bees_02.png) 
 
 | ants & bees |
 | - |
