@@ -798,12 +798,19 @@ print(f"\n syntax_test \n{ syntax_test }")
 **Questions**  
 What are the numbers after resnet eg models.resnet18 < 18?
 
-Understanding CNN diagram:
+Understanding CNN diagram from [Deep Residual Learning for Image Recognition](https://arxiv.org/pdf/1512.03385.pdf).  
 ![cnn diag](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/cnn_diagram.png)
 Each box represents a layer EG convolutional layer contents: 3x3 conv, 64, /2   
 They are filter dimensions , layer type, number of kernels (or feature maps) that are convolved with the input ,stride(if applicable).  
 FC = fully connected layer.  
+What are the loop over arrows? [Identity shortcut connection](https://towardsdatascience.com/an-overview-of-resnet-and-its-variants-5281e2f56035)
 
+Whats the difference between dotted and hardlines?
+
+Difference between [features and feature maps?](https://www.quora.com/What-is-the-difference-between-a-feature-and-a-feature-map-on-CNN-Does-a-feature-map-contain-many-features-or-we-can-treat-a-feature-map-as-an-individual-feature#:~:text=are%20different%20terms.-,Feature%20has%20a%20very%20loose%20meaning%20while%20the%20definition%20of,an%20object%20in%20some%20space.&text=3D%20Cartesian%20space.-,Similarly%2C%20if%20you%20represent%20an%20image%20in%20different%20spaces%2C%20you,different%20features%20of%20the%20image.)   
+**Feature:** is usually a representation of an object in some space. An object here can be an invariant like a vector.
+  
+**Feature map:** feature map is a term from signal processing. Its a map of the results from convolution operator. Each filter defines a specific feature (IE a horizontal edge) that we want to extract from the input signal. Convolution shows the response of the signal to that feature by measuring the correlation between each part of the signal and the filter. By looking at the output of the convolution, we can locate where the signal contains features found, hence a map. 
 
 #### Refs 15 Transfer Learning
 [Deep Residual Learning for Image Recognition](https://arxiv.org/pdf/1512.03385.pdf).  
