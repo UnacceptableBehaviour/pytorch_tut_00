@@ -72,6 +72,8 @@ Add table later if relevant.
 		5. [Refs 14 - CNNs](#refs-14---cnns)  
 	15. [15 - Transfer Learning](#15---transfer-learning)  
 		1. [**Vid contents - 15 transfer learning**](#vid-contents---15-transfer-learning)  
+			1. [Quick reminder python dict comprehensions!](#quick-reminder-python-dict-comprehensions)  
+		2. [Refs 15 Transfer Learning](#refs-15-transfer-learning)  
 	16. [16 - How To Use The TensorBoard](#16---how-to-use-the-tensorboard)  
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 	17. [17 - Saving and Loading Models](#17---saving-and-loading-models)  
@@ -309,7 +311,9 @@ https://www.google.com/search?safe=active&sxsrf=ALeKk03QSxUCcfqoRqniKinMd2nkDpWU
   
 #### What data sets are available in sklearn?  
 There are Toy, Realworld & Generated [sklearn datasets here](https://scikit-learn.org/stable/datasets.html).  
-
+There are datasets in torchvision [from torchvision import datasets](https://pytorch.org/vision/stable/datasets.html).   
+TODO add list of well know datasets here
+  
 #### torch.tensor.shape() - torch.Size([455, 1])
 It seems odd that ROWS, COLS would be the order in which to specify shape
 ```
@@ -773,10 +777,38 @@ CNN history & overview from [The AI Summer](https://theaisummer.com/cnn-architec
  time				| notes	
 | - | - |
 **0m**		| intro
+
+##### Quick reminder python dict comprehensions!
+```
+keys = ['k','l','m','n']
+cnt = 0
+def counter(k):
+    global cnt
+    cnt +=1
+    return f"{k}-{cnt}"
+
+syntax_test = { gen_key: counter(gen_key) for gen_key in keys }	# python dict comprehension
+
+print(f"\n syntax_test \n{ syntax_test }")
+
+ syntax_test 
+{'k': 'k-1', 'l': 'l-2', 'm': 'm-3', 'n': 'n-4'}
+```
   
 **Questions**  
-Hmmm but?   
+What are the numbers after resnet eg models.resnet18 < 18?
+
+Understanding CNN diagram:
+![cnn diag](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/cnn_diagram.png)
+Each box represents a layer EG convolutional layer contents: 3x3 conv, 64, /2   
+They are filter dimensions , layer type, number of kernels (or feature maps) that are convolved with the input ,stride(if applicable).  
+FC = fully connected layer.  
+
+
+#### Refs 15 Transfer Learning
+[Deep Residual Learning for Image Recognition](https://arxiv.org/pdf/1512.03385.pdf).  
   
+
   
 ---
 ### 16 - How To Use The TensorBoard  
