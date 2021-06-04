@@ -98,25 +98,26 @@ data_transforms = {
     ]),
 }
 
-keys = ['k','l','m','n']
-cnt = 0
-def counter(k):
-    global cnt
-    cnt +=1
-    return f"{k}-{cnt}"
+# keys = ['k','l','m','n']
+# cnt = 0
+# def counter(k):
+#     global cnt
+#     cnt +=1
+#     return f"{k}-{cnt}"
+#
+# syntax_test = { gen_key: counter(gen_key) for gen_key in keys }  # list comprehension for dict!
+# print(f"\n syntax_test \n{ syntax_test }")
+#
+# dict_of_weapons = {'first': 'fear', 'second': 'surprise',
+#                    'third':'ruthless efficiency', 'fourth':'fanatical devotion',
+#                    'fifth': None}
+#
+# dict_comprehension = { k.upper(): weapon for k, weapon in dict_of_weapons.items() if weapon }
+# print(f"\n dict_comprehension w/ condition \n{ dict_comprehension }")
 
-syntax_test = { gen_key: counter(gen_key) for gen_key in keys }  # list comprehension for dict!
-print(f"\n syntax_test \n{ syntax_test }")
-
-dict_of_weapons = {'first': 'fear', 'second': 'surprise',
-                   'third':'ruthless efficiency', 'fourth':'fanatical devotion',
-                   'fifth': None}
-
-dict_comprehension = { k.upper(): weapon for k, weapon in dict_of_weapons.items() if weapon }
-print(f"\n dict_comprehension \n{ dict_comprehension }")
 
 data_dir = 'data/hymenoptera_data'
-image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x), data_transforms[x]) for x in ['train', 'val']}
+# image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x), data_transforms[x]) for x in ['train', 'val']}
 image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x),        #
                                           data_transforms[x])
                   for x in ['train', 'val']}
