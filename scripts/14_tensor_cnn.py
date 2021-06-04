@@ -158,6 +158,7 @@ class ConvNet(nn.Module):
         # Conv2d     https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html#torch.nn.Conv2d
         # MaxPool2d  https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html#torch.nn.MaxPool2d
         # Linear     https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear
+        # (kernel = feature map)
         self.conv1 = nn.Conv2d(3, 6, 5)  # in_channels = 3 (RGB), out_channels = 6?, kernel_size = 5 (5x5)
         self.pool = nn.MaxPool2d(2, 2)
         self.conv2 = nn.Conv2d(6, 16, 5)
@@ -187,7 +188,7 @@ n_total_steps = len(train_loader)
 for epoch in range(num_epochs):
     for i, (images, labels) in enumerate(train_loader):
         # origin shape: [4, 3, 32, 32] = 4, 3, 1024
-        # input_layer: 3 input channels, 6 output channels, 5 kernel size
+        # input_layer: 3 input channels, 6 output channels, 5 kernel size (kernel = feature map)
         images = images.to(device)
         labels = labels.to(device)
 

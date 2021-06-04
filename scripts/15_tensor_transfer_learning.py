@@ -35,16 +35,14 @@ print("\n" * 2)
 # 2m20 - Topics: Image folder, Scheduler, Transfer Learning
 # 3m46 - Image folder structure, training & validation folders
 # 3m50 - Download Data from https://download.pytorch.org/tutorial/hymenoptera_data.zip
-#   Scheduler
-#
 # 4m40 - Transfer Learning
-#
+# 5m - Remove last FC (fully connected) layer
 # 5m30 - import pre-trained model- from torchvision import datasets, MODELS
-#
-#
-#
-#
-#
+# 7m10 - define loss function & optimiser w/ learning rate
+# 7m45 - Scheduler - adaptive learning rate
+# 10m30 - Finetune Summary: Replace the last (FC) layer & retrain the whole network with the new dataset
+# 11m10 - 2nd Option: Replace the last (FC) layer & only retrain the last layer
+# 11m30 - How to freeze the layer in the model - param.requires_grad = False for each layer
 #
 #
 # to run code
@@ -163,9 +161,10 @@ inputs, classes = next(iter(dataloaders['train']))
 # Make a grid from batch
 out = torchvision.utils.make_grid(inputs)
 
-imshow(out, title=[class_names[x] for x in classes])
+#imshow(out, title=[class_names[x] for x in classes])
 
-def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
+#def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
+def train_model(model, criterion, optimizer, scheduler, num_epochs):
     since = time.time()
 
     best_model_wts = copy.deepcopy(model.state_dict())
@@ -231,63 +230,84 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
     # load best model weights
     model.load_state_dict(best_model_wts)
     return model
-#
-#
-# #### Finetuning the convnet ####
-# # Load a pretrained model and reset final fully connected layer.
-#
-# model = models.resnet18(pretrained=True)
-# num_ftrs = model.fc.in_features
-# # Here the size of each output sample is set to 2.
-# # Alternatively, it can be generalized to nn.Linear(num_ftrs, len(class_names)).
-# model.fc = nn.Linear(num_ftrs, 2)
-#
-# model = model.to(device)
-#
-# criterion = nn.CrossEntropyLoss()
-#
-# # Observe that all parameters are being optimized
-# optimizer = optim.SGD(model.parameters(), lr=0.001)
-#
-# # StepLR Decays the learning rate of each parameter group by gamma every step_size epochs
-# # Decay LR by a factor of 0.1 every 7 epochs
-# # Learning rate scheduling should be applied after optimizer’s update
-# # e.g., you should write your code this way:
-# # for epoch in range(100):
-# #     train(...)
-# #     validate(...)
-# #     scheduler.step()
-#
-# step_lr_scheduler = lr_scheduler.StepLR(optimizer, step_size=7, gamma=0.1)
-#
-# model = train_model(model, criterion, optimizer, step_lr_scheduler, num_epochs=25)
-#
-#
-# #### ConvNet as fixed feature extractor ####
-# # Here, we need to freeze all the network except the final layer.
-# # We need to set requires_grad == False to freeze the parameters so that the gradients are not computed in backward()
-# model_conv = torchvision.models.resnet18(pretrained=True)
-# for param in model_conv.parameters():
-#     param.requires_grad = False
-#
-# # Parameters of newly constructed modules have requires_grad=True by default
-# num_ftrs = model_conv.fc.in_features
-# model_conv.fc = nn.Linear(num_ftrs, 2)
-#
-# model_conv = model_conv.to(device)
-#
-# criterion = nn.CrossEntropyLoss()
-#
-# # Observe that only parameters of final layer are being optimized as
-# # opposed to before.
-# optimizer_conv = optim.SGD(model_conv.fc.parameters(), lr=0.001, momentum=0.9)
-#
-# # Decay LR by a factor of 0.1 every 7 epochs
-# exp_lr_scheduler = lr_scheduler.StepLR(optimizer_conv, step_size=7, gamma=0.1)
-#
-# model_conv = train_model(model_conv, criterion, optimizer_conv,
-#                          exp_lr_scheduler, num_epochs=25)
-#
+
+
+#### Finetuning the convnet ####
+# Load a pretrained model and reset final fully connected layer.
+
+# 5m - Remove last FC (fully connected) layer
+model = models.resnet18(pretrained=True)  # load a pre-trained model on imaeNet data
+
+num_ftrs = model.fc.in_features # get number of input features from last layer
+                                # fc - fully connected
+                                # in_features - input features
+
+# Here the size of each output sample is set to 2.
+# Alternatively, it can be generalized to nn.Linear(num_ftrs, len(class_names)).
+model.fc = nn.Linear(num_ftrs, 2)  # create a new linear layer of the same size
+                                   # and overwrite the fc - fully connected layer
+
+model = model.to(device)    # move model to GPU if present
+
+# 7m10 - define loss function & optimiser w/ learning rate
+criterion = nn.CrossEntropyLoss()   # This criterion COMBINES LogSoftmax and NLLLoss in one single class.
+    # https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html
+
+# Observe that ALL PARAMETERS are being optimized
+optimizer = optim.SGD(model.parameters(), lr=0.001)     # torch.optim
+
+
+# 7m45 - Scheduler - adaptive learning rate
+
+# StepLR Decays the learning rate of each parameter group by gamma every step_size epochs
+# Decay LR by a factor of 0.1 every 7 epochs
+# Learning rate scheduling should be applied after optimizer’s update
+# e.g., you should write your code this way:
+# for epoch in range(100):
+#     train(...) # optimzer.step()
+#     validate(...)
+#     scheduler.step()
+                                                     # every 7 epochs learning rate is multiplied by gamma
+step_lr_scheduler = lr_scheduler.StepLR(optimizer, step_size=7, gamma=0.1)
+      # torch.optim.lr_scheduler.StepLR
+
+#model = train_model(model, criterion, optimizer, step_lr_scheduler, num_epochs=25)
+model = train_model(model, criterion, optimizer, step_lr_scheduler, num_epochs=5)
+
+
+# 10m30 - Finetune Summary: Replace the last (FC) layer & retrain the whole network with the new dataset
+
+
+# 11m10 - 2nd Option: Replace the last (FC) layer & only retrain the last layer
+
+#### ConvNet as fixed feature extractor ####
+# Here, we need to freeze all the network except the final layer.
+# We need to set requires_grad == False to freeze the parameters so that the gradients are not computed in backward()
+model_conv = torchvision.models.resnet18(pretrained=True)
+
+# 11m30 - How to freeze the layer in the model - param.requires_grad = False for each layer
+
+for param in model_conv.parameters():
+    param.requires_grad = False
+
+# Parameters of newly constructed modules have requires_grad=True by default
+num_ftrs = model_conv.fc.in_features
+model_conv.fc = nn.Linear(num_ftrs, 2)
+
+model_conv = model_conv.to(device)
+
+criterion = nn.CrossEntropyLoss()
+
+# Observe that only parameters of final layer are being optimized as
+# opposed to before.
+optimizer_conv = optim.SGD(model_conv.fc.parameters(), lr=0.001, momentum=0.9)
+
+# Decay LR by a factor of 0.1 every 7 epochs
+exp_lr_scheduler = lr_scheduler.StepLR(optimizer_conv, step_size=7, gamma=0.1)
+
+#model_conv = train_model(model_conv, criterion, optimizer_conv,exp_lr_scheduler, num_epochs=25)
+model_conv = train_model(model_conv, criterion, optimizer_conv,exp_lr_scheduler, num_epochs=5)
+
 
 #print(f"\n  \n{  }")
 
