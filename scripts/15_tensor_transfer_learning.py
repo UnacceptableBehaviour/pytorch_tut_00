@@ -161,7 +161,7 @@ inputs, classes = next(iter(dataloaders['train']))
 # Make a grid from batch
 out = torchvision.utils.make_grid(inputs)
 
-#imshow(out, title=[class_names[x] for x in classes])
+imshow(out, title=[class_names[x] for x in classes])
 
 #def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
 def train_model(model, criterion, optimizer, scheduler, num_epochs):
@@ -273,9 +273,35 @@ step_lr_scheduler = lr_scheduler.StepLR(optimizer, step_size=7, gamma=0.1)
 
 #model = train_model(model, criterion, optimizer, step_lr_scheduler, num_epochs=25)
 model = train_model(model, criterion, optimizer, step_lr_scheduler, num_epochs=5)
-
-
 # 10m30 - Finetune Summary: Replace the last (FC) layer & retrain the whole network with the new dataset
+
+# Epoch 0/4
+# ----------
+# train Loss: 0.6225 Acc: 0.6680
+# val Loss: 0.4436 Acc: 0.8105
+#
+# Epoch 1/4
+# ----------
+# train Loss: 0.5179 Acc: 0.7787
+# val Loss: 0.3409 Acc: 0.8758
+#
+# Epoch 2/4
+# ----------
+# train Loss: 0.4501 Acc: 0.7828
+# val Loss: 0.2885 Acc: 0.8954
+#
+# Epoch 3/4
+# ----------
+# train Loss: 0.4032 Acc: 0.8320
+# val Loss: 0.2411 Acc: 0.9412
+#
+# Epoch 4/4
+# ----------
+# train Loss: 0.4392 Acc: 0.8074
+# val Loss: 0.2269 Acc: 0.9281
+#
+# Training complete in 11m 18s
+# Best val Acc: 0.941176
 
 
 # 11m10 - 2nd Option: Replace the last (FC) layer & only retrain the last layer
@@ -308,6 +334,33 @@ exp_lr_scheduler = lr_scheduler.StepLR(optimizer_conv, step_size=7, gamma=0.1)
 #model_conv = train_model(model_conv, criterion, optimizer_conv,exp_lr_scheduler, num_epochs=25)
 model_conv = train_model(model_conv, criterion, optimizer_conv,exp_lr_scheduler, num_epochs=5)
 
+# Epoch 0/4
+# ----------
+# train Loss: 0.6686 Acc: 0.6639
+# val Loss: 0.2539 Acc: 0.9020
+#
+# Epoch 1/4
+# ----------
+# train Loss: 0.5492 Acc: 0.7664
+# val Loss: 0.2437 Acc: 0.8954
+#
+# Epoch 2/4
+# ----------
+# train Loss: 0.4347 Acc: 0.8033
+# val Loss: 0.2052 Acc: 0.9346
+#
+# Epoch 3/4
+# ----------
+# train Loss: 0.4968 Acc: 0.7869
+# val Loss: 0.1634 Acc: 0.9542
+#
+# Epoch 4/4
+# ----------
+# train Loss: 0.5655 Acc: 0.7828
+# val Loss: 0.2686 Acc: 0.9020
+#
+# Training complete in 4m 27s
+# Best val Acc: 0.954248
 
 #print(f"\n  \n{  }")
 
