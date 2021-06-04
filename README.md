@@ -776,7 +776,36 @@ CNN history & overview from [The AI Summer](https://theaisummer.com/cnn-architec
 #### **Vid contents - 15 transfer learning**
  time				| notes	
 | - | - |
-**0m**		| intro
+**0m**			| Transfer learning: tweaking last layers of a neural net to classify a new target (similar data type)
+**2m**			| Resnet: 1M images, 18 layers, 1000 object categories, trained on [ImageNet](https://image-net.org/challenges/LSVRC/2013/)
+**2m20**		| Topics: Image folder, Scheduler, Transfer Learning
+**3m46**		| Image folder structure, training & validation folders
+**3m50**		| Download Data from https://download.pytorch.org/tutorial/hymenoptera_data.zip
+**4m40**		| Transfer Learning
+**5m**			| Remove last FC (fully connected) layer
+**5m30**		| import pre-trained model- from torchvision import datasets, MODELS
+**7m10**		| define loss function & optimiser w/ learning rate
+**7m45**		| Scheduler: adaptive learning rate
+**10m30**		| Finetune Summary: Replace the last (FC) layer & retrain the whole network with the new dataset
+**11m10**		| 2nd Option: Replace the last (FC) layer & only retrain the last layer
+**11m30**		| How to freeze the layer in the model - param.requires_grad = False for each layer
+
+Transfer learning uses a pre-trained model (in this case [resnet]() - ) from the same data domain, such as images or sound and replaces the last fully connected layer w/ a virgin fully connected layer and retrains it on a new problem set. [Good summary from Andrew Ng - 11m](https://www.youtube.com/watch?v=yofjFQddwHE).  
+  
+In this example resnet is transfer trained using 2 sets of images of ants & bees:
+ ants & bees	 |  ants & bees |  ants & bees
+| - | - | - |
+![ants&bees](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/ant_bees_00.png) |
+![ants&bees](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/ant_bees_01.png) |
+![ants&bees](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/ant_bees_02.png) 
+
+| ants & bees |
+| - |
+| ![ants&bees](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/ant_bees_00.png) |
+| ![ants&bees](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/ant_bees_01.png) |
+| ![ants&bees](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/ant_bees_02.png) |
+  
+
 
 ##### Quick reminder python dict comprehensions!
 ```
@@ -812,8 +841,26 @@ Difference between [features and feature maps?](https://www.quora.com/What-is-th
   
 **Feature map:** feature map is a term from signal processing. Its a map of the results from convolution operator. Each filter defines a specific feature (IE a horizontal edge) that we want to extract from the input signal. Convolution shows the response of the signal to that feature by measuring the correlation between each part of the signal and the filter. By looking at the output of the convolution, we can locate where the signal contains features found, hence a map. 
 
+What criterion again? CrossEntropyLoss function
+Terms
+step
+learning rate
+momentum
+criterion
+optimiser
+
+TODO - transfer train using VGG16
+VGG16
+Img In 224x224x3
+Filter size 3x3, stride = 1, 
+
 #### Refs 15 Transfer Learning
+[AndrewNg - Transfer Learning - C3W2L07 11m](https://www.youtube.com/watch?v=yofjFQddwHE).  
+[Transfer Learning approaches](https://www.youtube.com/watch?v=f3KMyG6-Adw).  
 [Deep Residual Learning for Image Recognition](https://arxiv.org/pdf/1512.03385.pdf).  
+[VGG16 architecture](https://www.youtube.com/watch?v=mRVTKrbRYi0).  
+
+[options for running pytorch on cloud computing](https://www.google.com/search?q=options+for+running+pytorch+on+cloud+computing&oq=options+for+running+pytorch+on+cloud+computing+&aqs=chrome..69i57.23455j0j7&sourceid=chrome&ie=UTF-8).  
   
 
   
