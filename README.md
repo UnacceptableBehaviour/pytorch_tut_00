@@ -886,8 +886,8 @@ Filter size 3x3, stride = 1,
 **19n20**	| import torch.nn.functional as F to convert last layer output into softmax probabilities
 **20m40**	| Use class_probs_batch = [F.softmax(output, dim=0) for output in outputs] to convert values
   
-To get the tensor board interface which run in a web browser
-Instal it into the conda environment, and run it as follows
+To get the tensor board interface which runs in a web browser,   
+Install it into the conda environment, and run it as follows
 ```
 > conda install -c conda-forge tensorboard
 > conda activate pt3
