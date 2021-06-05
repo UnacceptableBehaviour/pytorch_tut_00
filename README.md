@@ -43,7 +43,7 @@ Add table later if relevant.
 		3. [torch.tensor.shape() - torch.Size([455, 1])](#torchtensorshape---torchsize455-1)  
 	9. [09 - Dataset and DataLoader - Batch Training](#09---dataset-and-dataloader---batch-training)  
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
-		2. [Using load_wine() - [sklearn load_wine()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_wine.html#sklearn.datasets.load_wine) to load info about the dataset but doesn't appear to load the whole data set. How do I load & walk the data?](#using-loadwine---sklearn-loadwinehttpsscikit-learnorgstablemodulesgeneratedsklearndatasetsloadwinehtmlsklearndatasetsloadwine-to-load-info-about-the-dataset-but-doesnt-appear-to-load-the-whole-data-set-how-do-i-load--walk-the-data)  
+		2. [Using load_wine() to load info about the dataset but doesn't appear to load the whole data set. How do I load & walk the data?](#using-loadwine-to-load-info-about-the-dataset-but-doesnt-appear-to-load-the-whole-data-set-how-do-i-load--walk-the-data)  
 	10. [10 - Dataset Transforms](#10---dataset-transforms)  
 		1. [**Vid contents - 10 data transforms**](#vid-contents---10-data-transforms)  
 		2. [What is PIL / Pillow?](#what-is-pil--pillow)  
@@ -367,7 +367,8 @@ number of iterations = number of passes, each pass using [batch_size] number of 
 EG 100 samples, batch_size=20 -> 100/20 = 5 iterations for 1 epoch
 ```
 
-#### Using load_wine() - [sklearn load_wine()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_wine.html#sklearn.datasets.load_wine) to load info about the dataset but doesn't appear to load the whole data set. How do I load & walk the data?
+#### Using load_wine() to load info about the dataset but doesn't appear to load the whole data set. How do I load & walk the data?
+[sklearn load_wine()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_wine.html#sklearn.datasets.load_wine)
 ```
 from sklearn.datasets import load_wine
 data = load_wine()			# 
