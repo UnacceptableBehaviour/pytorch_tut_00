@@ -10,10 +10,26 @@ print("-" * 80)
 print("-" * 80)
 print("\n" * 2)
 
-# 0m - intro to gradients
-# 1m - theory - chain rule
-# 2m - computational graph
-# etc
+# 0m - Intro to https://www.tensorflow.org/tensorboard
+# 1m - Tools: Track & Vis metrics, model graphs, redimensioning, Profiling TensorFlow programs all sorts
+# 1m10 - Code from 13 - Feed-Forward Neural Network - MNIST digit classi
+# 2m30 - Install tensorboard - conda install -c conda-forge tensorboard in the vid he uses pip
+# 3m40 - import tesnorboard, setup
+# 4m30 - add images to tensorboard
+# 6m20 - image view test
+# 7m - Adding a graph
+# 8m40 - Inspect graph Add to Ep 13,
+# 9m - adding Accuracy & Loss - writer.add_scalar
+# 14m30 - modifying the learning rate
+# 16m - prescision & recal? https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/
+#
+#
+#
+#
+#
+#
+
+
 
 
 import torch
