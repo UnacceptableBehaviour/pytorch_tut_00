@@ -58,7 +58,7 @@ Add table later if relevant.
 		2. [Neural Network code example](#neural-network-code-example)  
 		3. [Refs - 12 activation functions](#refs---12-activation-functions)  
 	13. [13 - Feed-Forward Neural Network](#13---feed-forward-neural-network)  
-		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
+		1. [**Vid contents - 13 Feed Forward NN**](#vid-contents---13-feed-forward-nn)  
 		2. [**Questions 13**](#questions-13)  
 			1. [**What is hidden_size specifying?**](#what-is-hiddensize-specifying)  
 			2. [**What do the Loss & Optimiser steps do?**](#what-do-the-loss--optimiser-steps-do)  
@@ -75,7 +75,10 @@ Add table later if relevant.
 			1. [Quick reminder python dict comprehensions!](#quick-reminder-python-dict-comprehensions)  
 		2. [Refs 15 Transfer Learning](#refs-15-transfer-learning)  
 	16. [16 - How To Use The TensorBoard](#16---how-to-use-the-tensorboard)  
-		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
+		1. [**Vid contents - 16 TensorBoard**](#vid-contents---16-tensorboard)  
+		2. [](#)  
+		3. [Precision & Recall](#precision--recall)  
+		4. [ROC](#roc)  
 	17. [17 - Saving and Loading Models](#17---saving-and-loading-models)  
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 	18. [18 - Create & Deploy A Deep Learning App - PyTorch Model Deployment With Flask & Heroku](#18---create--deploy-a-deep-learning-app---pytorch-model-deployment-with-flask--heroku)  
@@ -346,7 +349,6 @@ More on [dynamic & static shapes](https://pgaleone.eu/tensorflow/2018/07/28/unde
 #### **Vid contents - 09 data loader**
  time				| notes	
 | - | - |
-**0m**		| intro
 **0m**		| intro to dataloader classes
 **1m30**	| terms: epoch, batch size, num of iteration,
 **2m**		| libs: torch, torchvision, torch.utils.data, numpy, math
@@ -611,7 +613,7 @@ Example pipeline [digit identifier](https://pytorch.org/tutorials/beginner/blitz
 ### 13 - Feed-Forward Neural Network  
 ([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
-#### **Vid contents - 09 data loader**
+#### **Vid contents - 13 Feed Forward NN**
  time			| notes	
 | - | - |
 **0m**			| Overview: MNIST, Dataloader, Transformation, Multilayer NN Activation function, Loss & Optimiser, Training Loop, Model Evaluation, GPU support
@@ -846,6 +848,8 @@ VGG16
 Img In 224x224x3
 Filter size 3x3, stride = 1, 
 
+
+
 #### Refs 15 Transfer Learning
 [AndrewNg - Transfer Learning - C3W2L07 11m](https://www.youtube.com/watch?v=yofjFQddwHE).  
 [Transfer Learning approaches](https://www.youtube.com/watch?v=f3KMyG6-Adw).  
@@ -857,6 +861,91 @@ Filter size 3x3, stride = 1,
   
 ---
 ### 16 - How To Use The TensorBoard  
+([vid](https://www.youtube.com/watch?v=VJW9wU-1n18&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=16)) - 
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/16_tensor_tensorboard.py))   
+#### **Vid contents - 16 TensorBoard**
+ time				| notes	
+| - | - |
+**0m**		| intro
+**0m**		| Intro to https://www.tensorflow.org/tensorboard
+**1m**		| Tools: Track & Vis metrics, model graphs, redimensioning, Profiling TensorFlow programs all sorts
+**1m10**	| Code from 13 - Feed-Forward Neural Network - MNIST digit classi
+**2m30**	| Install tensorboard - conda install -c conda-forge tensorboard in the vid he uses pip
+**3m40**	| import tesnorboard, setup
+**4m30**	| add images to tensorboard
+**6m20**	| image view test
+**7m**		| Adding a graph
+**8m40**	| Inspect graph Add to Ep 13,
+**9m**		| adding Accuracy & Loss - writer.add_scalar
+**14m30**	| modifying the learning rate
+**16m**		| prescision & recal curve? https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/
+**note**		| Wow! opened a can of terms leading to the confusion matrix!! [aka error matrix](https://en.wikipedia.org/wiki/Confusion_matrix)
+**16m20**	| TensorBoard doc add_pr_curve
+**17m20**	| add code to do PR curve for each classification
+**19n20**	| import torch.nn.functional as F to convert last layer output into softmax probabilities
+**20m40**	| Use class_probs_batch = [F.softmax(output, dim=0) for output in outputs] to convert values
+  
+To get the tensor board interface which run in a web browser
+Instal it into the conda environment, and run it as follows
+```
+> conda install -c conda-forge tensorboard
+> conda activate pt3
+(pt3) > tensorboard --logdir=runs
+TensorFlow installation not found - running with reduced feature set.
+TensorBoard 1.15.0 at http://Simons-MBP.lan:6006/ (Press CTRL+C to quit)
+```
+Navigate to link. Clicking the gear will take you to [GitHub/tensorboard](https://github.com/tensorflow/tensorboard/blob/master/README.md).  
+
+The interface to tensor board is SummaryWriter
+```
+from torch.utils.tensorboard import SummaryWriter
+
+writer = SummaryWriter('runs/mnist1')      # pass in the directory to store data
+```
+  
+Add images to the board.
+```
+examples = iter(test_loader)
+example_data, example_targets = examples.next()
+img_grid = torchvision.utils.make_grid(example_data)
+writer.add_image('mnist_images', img_grid)
+```
+  
+Display the model graph. Show the layer, flow & shape of data in the model.
+```
+model = NeuralNet(input_size, hidden_size, num_classes).to(device)
+writer.add_graph(model, example_data.reshape(-1, 28*28))	# 
+```
+![graph](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/tensorboard_graphs_0.png) ![connection](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/tensorboard_graphs_1.png)
+  
+The 
+
+
+#### 
+
+#### Precision & Recall
+
+![precision / recall]()
+[Wikipedia](https://en.wikipedia.org/wiki/Precision_and_recall) - [Licence](https://creativecommons.org/licenses/by-sa/4.0/)
+
+![ROC]()
+[Wikipedia](https://en.wikipedia.org/wiki/Precision_and_recall) - [Licence](https://creativecommons.org/licenses/by-sa/4.0/)
+
+![]()
+[source](https://en.wikipedia.org/wiki/Precision_and_recall) - [Licence](https://creativecommons.org/licenses/by-sa/4.0/)
+
+
+
+#### ROC
+
+
+**Questions**  
+What is tensor board? 
+  
+[Embeddings - High dimensional data Visualisation](https://www.tensorflow.org/text/guide/word_embeddings).  
+  
+---
+### 17 - Saving and Loading Models  
 ([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
 #### **Vid contents - 09 data loader**
@@ -867,16 +956,6 @@ Filter size 3x3, stride = 1,
 **Questions**  
 Hmmm but?   
   
-  
-  
----
-### 17 - Saving and Loading Models  
-([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
-([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
-#### **Vid contents - 09 data loader**
- time				| notes	
-| - | - |
-**0m**		| intro
   
 ---
 ### 18 - Create & Deploy A Deep Learning App - PyTorch Model Deployment With Flask & Heroku  
