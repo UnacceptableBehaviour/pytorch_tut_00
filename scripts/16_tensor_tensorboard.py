@@ -21,16 +21,59 @@ print("\n" * 2)
 # 8m40 - Inspect graph Add to Ep 13,
 # 9m - adding Accuracy & Loss - writer.add_scalar
 # 14m30 - modifying the learning rate
-# 16m - prescision & recal? https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/
-#
-#
-#
-#
+# 16m - prescision & recal curve? https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/
+# note - Wow! opened a can of terms leading to the confusion matrix!! [used t](https://en.wikipedia.org/wiki/Confusion_matrix)
+# 16m20 - TensorBoard doc add_pr_curve
+# 17m20 - add code to do PR curve for each classification
+# 19n20 - import torch.nn.functional as F to convert last layer output into softmax probabilities
+# 20m40 - Use class_probs_batch = [F.softmax(output, dim=0) for output in outputs] to convert values
 #
 #
 
+# 16m - prescision & recal curve - aka PR curve https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/
+# Wow! opened a can of terms leading to the confusion matrix!! [used t](https://en.wikipedia.org/wiki/Confusion_matrix)
+
+# prescision & recal curve
+# accuracy =  True positives / total observations (Note: imbalanced data problem will give misleading results)
+# balanced data - classes have similar number of elements
+# unbalanced date - classes have very different number of elements skewing accuracy
+# decision threshold - classification boundary
+# TP - True Positive
+# FN - False Negative
+# FP - False Positive
+# AUC - Area under curve
+# ROC - Receiver Operating Characteristic, for predicting the probability of a binary outcome
+#
+# precision y axis range 0-1    out of all the time I predicted a positive how many time was I correct
+#                               total correct classifications / total observations in that class
+#                               precision = TP / (TP + FP)
+#
+# recall x axis    range 0-1    total correct classifications / total observations in the whole model
+#                               recall = TP / (TP + FN)
+#
+# best result is 1,1 < ideal
+
+# tutorial w code https://www.youtube.com/watch?v=_UEBIOC4WIY
+# tutorial w code https://www.youtube.com/watch?v=gZmOmgQns3c
+
+#
+# Whats a ROC curve? Receiver Operating Characteristic
+# https://datascience103579984.wordpress.com/2019/04/30/roc-and-precision-recall-curves/
+# https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/
+# Terms
+# SESNSITIVITY (True Positive Rate)
+# vs
+# SPECIFICITY (False Positive Rate)
+#
+#
+# When PREVALENCE matters a PR curve is used instead of a ROC curve
+# Prevalence = P / P + N
+# What is PREVALENCE
 
 
+# https://www.youtube.com/watch?v=_1QtMPuYIVw
+
+# https://creativecommons.org/licenses/by-sa/4.0/
 
 import torch
 import torch.nn as nn
@@ -174,7 +217,7 @@ with torch.no_grad():
         class_preds.append(class_probs_batch)
         class_labels.append(predicted)
 
-    # 10000, 10, and 10000, 1
+    # 10000, 10, and 10000, 1  < tensor shape
     # stack concatenates tensors along a new dimension
     # cat concatenates tensors in the given dimension
     class_preds = torch.cat([torch.stack(batch) for batch in class_preds])
@@ -187,7 +230,7 @@ with torch.no_grad():
     classes = range(10)
     for i in classes:
         labels_i = class_labels == i
-        preds_i = class_preds[:, i]
+        preds_i = class_preds[:, i]     # all sample but only fro class i
         writer.add_pr_curve(str(i), labels_i, preds_i, global_step=0)
         writer.close()
     ###################################################
