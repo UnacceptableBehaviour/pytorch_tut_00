@@ -863,11 +863,11 @@ Filter size 3x3, stride = 1,
 ---
 ### 16 - How To Use The TensorBoard  
 ([vid](https://www.youtube.com/watch?v=VJW9wU-1n18&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=16)) - 
-([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/16_tensor_tensorboard.py))   
+([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/16_tensor_tensorboard.py))    
+![tensorboard header](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/tensorboard_header.png)  
 #### **Vid contents - 16 TensorBoard**
  time				| notes	
 | - | - |
-**0m**		| intro
 **0m**		| Intro to https://www.tensorflow.org/tensorboard
 **1m**		| Tools: Track & Vis metrics, model graphs, redimensioning, Profiling TensorFlow programs all sorts
 **1m10**	| Code from 13 - Feed-Forward Neural Network - MNIST digit classi
@@ -879,7 +879,7 @@ Filter size 3x3, stride = 1,
 **8m40**	| Inspect graph Add to Ep 13,
 **9m**		| adding Accuracy & Loss - writer.add_scalar
 **14m30**	| modifying the learning rate
-**16m**		| prescision & recal curve? https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/
+**16m**		| [prescision & recal curve](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/)
 **note**		| Wow! opened a can of terms leading to the confusion matrix!! [aka error matrix](https://en.wikipedia.org/wiki/Confusion_matrix)
 **16m20**	| TensorBoard doc add_pr_curve
 **17m20**	| add code to do PR curve for each classification
@@ -897,7 +897,7 @@ TensorBoard 1.15.0 at http://Simons-MBP.lan:6006/ (Press CTRL+C to quit)
 ```
 Navigate to link. Clicking the gear will take you to [GitHub/tensorboard](https://github.com/tensorflow/tensorboard/blob/master/README.md).  
 
-The interface to tensor board is SummaryWriter
+The interface to tensor board is **SummaryWriter**
 ```
 from torch.utils.tensorboard import SummaryWriter
 
@@ -917,7 +917,9 @@ Display the model graph. Show the layer, flow & shape of data in the model.
 model = NeuralNet(input_size, hidden_size, num_classes).to(device)
 writer.add_graph(model, example_data.reshape(-1, 28*28))	# 
 ```
-![graph](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/tensorboard_graphs_0.png) ![connection](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/tensorboard_graphs_1.png)
+| graph | zoom in |
+| - | - |
+| ![graph](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/tensorboard_graphs_0.png)|![connection](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/tensorboard_graphs_1.png)|
   
 The 
 
