@@ -119,7 +119,7 @@ Quick look a pytorch - dip toe in water!
 ### 01 - Installation 
 ([vid](https://www.youtube.com/playlist?list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4))  
 First install conda (s/w package manger similar to homebrew) [How to install conda](#how-to-install-conda)  
-Then creat & activate the virtual environment and install pytorch [How to install pytorch on osx](#how-to-install-pytorch-on-osx)  
+Then create & activate the virtual environment and install pytorch [How to install pytorch on osx](#how-to-install-pytorch-on-osx)  
   
 ```
 > conda create -n pt3 python=3.7        # -n pt3 - name of the virtual environment can be anything!
@@ -129,16 +129,28 @@ Then creat & activate the virtual environment and install pytorch [How to instal
 WARNING: **do NOT set python=3.9** because the instal fails!  
 Also  a bit of a gotcha:
 ```
-(base) > conda activate pt3
-(pt3) > python --version	             # using SYSTEM version
+> python --version		             # using SYSTEM version
 Python 3.9.2
-(pt3) > python3 --version	             # using conda venv version 
+(base) > conda activate pt3
+
+(base) > python --version				# python default
+Python 3.9.2
+
+(pt3) > python --version	             # using conda venv version  - python
+Python 3.9.2
+
+(pt3) > python3 --version	             # using conda venv version  - python 3
 Python 3.7.10
 > python -c "import sys; print(sys.executable)"  # find out which exe is being used
+
+(pt3) simon@Simons-MBP pytorch % python -c "import sys; print(sys.executable)"
+/usr/local/opt/python@3.9/bin/python3.9
+
+(pt3) simon@Simons-MBP pytorch % python3 -c "import sys; print(sys.executable)"
+/Users/simon/miniconda3/envs/pt3/bin/python3
 ```
   
-Conda [CHEAT SHEET](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)  
-https://github.com/conda/conda/issues/9392  
+Conda [CHEAT SHEET](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)    
   
 ---
 ### 02 - Tensor Basics  
