@@ -76,9 +76,8 @@ Add table later if relevant.
 		2. [Refs 15 Transfer Learning](#refs-15-transfer-learning)  
 	16. [16 - How To Use The TensorBoard](#16---how-to-use-the-tensorboard)  
 		1. [**Vid contents - 16 TensorBoard**](#vid-contents---16-tensorboard)  
-		2. [](#)  
+		2. [ROC - Receiver Operating Characteristic](#roc---receiver-operating-characteristic)  
 		3. [Precision & Recall](#precision--recall)  
-		4. [ROC](#roc)  
 	17. [17 - Saving and Loading Models](#17---saving-and-loading-models)  
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 	18. [18 - Create & Deploy A Deep Learning App - PyTorch Model Deployment With Flask & Heroku](#18---create--deploy-a-deep-learning-app---pytorch-model-deployment-with-flask--heroku)  
@@ -933,11 +932,15 @@ writer.add_graph(model, example_data.reshape(-1, 28*28))	#
 | - | - |
 | ![graph](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/tensorboard_graphs_0.png)|![connection](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/tensorboard_graphs_1.png)|
   
-The 
 
 
-#### 
-
+  
+#### ROC - Receiver Operating Characteristic
+Sensitivity
+Specificity
+AUC
+Add terms . . 
+  
 #### Precision & Recall
 
 ![precision / recall]()
@@ -946,13 +949,14 @@ The
 ![ROC]()
 [Wikipedia](https://en.wikipedia.org/wiki/Precision_and_recall) - [Licence](https://creativecommons.org/licenses/by-sa/4.0/)
 
-![]()
+![PR concept](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_Precisionrecall.png)
 [source](https://en.wikipedia.org/wiki/Precision_and_recall) - [Licence](https://creativecommons.org/licenses/by-sa/4.0/)
 
-
-
-#### ROC
-
+![1](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_data.png) - 
+![2](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_accuracy.png) - 
+![3](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_precision.png) - 
+![4](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_recall.png)
+  
 
 **Questions**  
 What is tensor board? 
