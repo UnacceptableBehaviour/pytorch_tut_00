@@ -69,15 +69,20 @@ Add table later if relevant.
 		2. [CNN pipeline steps](#cnn-pipeline-steps)  
 		3. [CNN architecure](#cnn-architecure)  
 		4. [CNN pipeline steps - code](#cnn-pipeline-steps---code)  
-		5. [Refs 14 - CNNs](#refs-14---cnns)  
+		5. [**How do I visualise extracted features like this?**](#how-do-i-visualise-extracted-features-like-this)  
+		6. [Refs 14 - CNNs](#refs-14---cnns)  
 	15. [15 - Transfer Learning](#15---transfer-learning)  
 		1. [**Vid contents - 15 transfer learning**](#vid-contents---15-transfer-learning)  
 			1. [Quick reminder python dict comprehensions!](#quick-reminder-python-dict-comprehensions)  
 		2. [Refs 15 Transfer Learning](#refs-15-transfer-learning)  
 	16. [16 - How To Use The TensorBoard](#16---how-to-use-the-tensorboard)  
 		1. [**Vid contents - 16 TensorBoard**](#vid-contents---16-tensorboard)  
-		2. [ROC - Receiver Operating Characteristic](#roc---receiver-operating-characteristic)  
-		3. [Precision & Recall](#precision--recall)  
+		2. [What is tensor board?](#what-is-tensor-board)  
+		3. [PR / ROC / AUC Terms](#pr--roc--auc-terms)  
+		4. [**PR curve**:  Prescision & Recal curve](#pr-curve--prescision--recal-curve)  
+		5. [Whats a ROC curve? Receiver Operating Characteristic](#whats-a-roc-curve-receiver-operating-characteristic)  
+		6. [ROC - Receiver Operating Characteristic](#roc---receiver-operating-characteristic)  
+		7. [Precision & Recall](#precision--recall)  
 	17. [17 - Saving and Loading Models](#17---saving-and-loading-models)  
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 	18. [18 - Create & Deploy A Deep Learning App - PyTorch Model Deployment With Flask & Heroku](#18---create--deploy-a-deep-learning-app---pytorch-model-deployment-with-flask--heroku)  
@@ -771,9 +776,10 @@ optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
 Where does nearest neighbour come into the picture?
   
 
-**How do I visualise extracted features like this?**  
+#### **How do I visualise extracted features like this?**  
 ![extracted featuures](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/feature_extraction.png)  
 This looks promising [visualizing feature maps w/ pytorch](https://debuggercafe.com/visualizing-filters-and-feature-maps-in-convolutional-neural-networks-using-pytorch/)  
+[Tutorial for keras read understand shapes](https://machinelearningmastery.com/how-to-visualize-filters-and-feature-maps-in-convolutional-neural-networks/)
   
 Can this be improved - try [AlexNet](https://theaisummer.com/cnn-architectures/)
 
@@ -897,25 +903,29 @@ Filter size 3x3, stride = 1,
 **19n20**	| import torch.nn.functional as F to convert last layer output into softmax probabilities
 **20m40**	| Use class_probs_batch = [F.softmax(output, dim=0) for output in outputs] to convert values
   
+#### What is tensor board?
+It's a tool for analysing neural nets from tensor flow & google but can also be used by pytorch.   
+You instrument the code & run it. This write data to a specified folder then you run tensor board which loads & displays the data.  
+
 To get the tensor board interface which runs in a web browser,   
 Install it into the conda environment, and run it as follows
 ```
 > conda install -c conda-forge tensorboard
 > conda activate pt3
-(pt3) > tensorboard --logdir=runs
+(pt3) > tensorboard --logdir=runs          # **RUN THE CODE YOUR ANALYSING FIRST TO GENERATE THE TEST DATA**
 TensorFlow installation not found - running with reduced feature set.
 TensorBoard 1.15.0 at http://Simons-MBP.lan:6006/ (Press CTRL+C to quit)
 ```
 Navigate to link. Clicking the gear will take you to [GitHub/tensorboard](https://github.com/tensorflow/tensorboard/blob/master/README.md).  
 
-The interface to tensor board is **SummaryWriter**
+The **interface** to tensor board is **SummaryWriter**
 ```
 from torch.utils.tensorboard import SummaryWriter
 
 writer = SummaryWriter('runs/mnist1')      # pass in the directory to store data
 ```
   
-Add images to the board.
+**Add images** to the board.
 ```
 examples = iter(test_loader)
 example_data, example_targets = examples.next()
@@ -923,7 +933,7 @@ img_grid = torchvision.utils.make_grid(example_data)
 writer.add_image('mnist_images', img_grid)
 ```
   
-Display the model graph. Show the layer, flow & shape of data in the model.
+Display the **model graph**. Show the layer, flow & shape of data in the model.
 ```
 model = NeuralNet(input_size, hidden_size, num_classes).to(device)
 writer.add_graph(model, example_data.reshape(-1, 28*28))	# 
@@ -932,8 +942,55 @@ writer.add_graph(model, example_data.reshape(-1, 28*28))	#
 | - | - |
 | ![graph](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/tensorboard_graphs_0.png)|![connection](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/tensorboard_graphs_1.png)|
   
+Add
 
 
+#### PR / ROC / AUC Terms
+**TP**: True Positive (model correctly classifies & input)
+**FN**: False Negative
+**FP**: False Positive
+
+**accuracy**: True positives / total observations (Note: imbalanced data problem will give misleading results)
+**balanced data**: classes have similar number of elements to train from
+**unbalanced date**: classes have very different number of elements skewing accuracy
+**decision threshold**: classification boundary
+**AUC**: Area under curve
+**ROC**: Receiver Operating Characteristic, for predicting the probability of a binary outcome
+**PR curve**:  Prescision & Recal curve
+**precision** = TP / (TP + FP) : total correct classifications / total observations in that class
+**recall** = TP / (TP + FN) : total correct classifications / total observations in the whole model
+**sesnsitivity**: True Positive Rate
+**specificity**: False Positive Rate
+**prevalence**: ? P / P + N
+
+
+#### **PR curve**:  Prescision & Recal curve
+**precision** - y axis range 0-1  
+out of all the time I predicted a positive how many time was I correct   
+total correct classifications / total observations in that class   
+precision = TP / (TP + FP)   
+
+**recall** - x axis    range 0-1    total correct classifications / total observations in the whole model   
+recall = TP / (TP + FN)   
+
+best result is 1,1 < ideal
+
+PR / ROC / AUC tutorial w code https://www.youtube.com/watch?v=_UEBIOC4WIY
+
+
+
+#### Whats a ROC curve? Receiver Operating Characteristic
+[ROC & PR curves](https://datascience103579984.wordpress.com/2019/04/30/roc-and-precision-recall-curves/)
+https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/
+Terms
+SESNSITIVITY (True Positive Rate)
+vs
+SPECIFICITY (False Positive Rate)
+
+
+When PREVALENCE matters a PR curve is used instead of a ROC curve
+Prevalence = P / P + N
+What is PREVALENCE
   
 #### ROC - Receiver Operating Characteristic
 Sensitivity
@@ -952,10 +1009,12 @@ Add terms . .
 ![PR concept](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_Precisionrecall.png)
 [source](https://en.wikipedia.org/wiki/Precision_and_recall) - [Licence](https://creativecommons.org/licenses/by-sa/4.0/)
 
-![1](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_data.png) - 
-![2](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_accuracy.png) - 
-![3](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_precision.png) - 
-![4](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_recall.png)
+| PR curve terms | visual |
+| - | - |
+| data | accuracy |
+|![1](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_data.png) | ![2](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_accuracy.png)    
+| precision | recall |
+|![3](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_precision.png) | ![4](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_recall.png)  
   
 
 **Questions**  
