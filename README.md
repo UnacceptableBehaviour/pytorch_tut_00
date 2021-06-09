@@ -949,19 +949,19 @@ Add
 **TP**: True Positive (model correctly classifies & input)
 **FN**: False Negative
 **FP**: False Positive
-
-**accuracy**: True positives / total observations (Note: imbalanced data problem will give misleading results)
-**balanced data**: classes have similar number of elements to train from
-**unbalanced date**: classes have very different number of elements skewing accuracy
-**decision threshold**: classification boundary
-**AUC**: Area under curve
-**ROC**: Receiver Operating Characteristic, for predicting the probability of a binary outcome
-**PR curve**:  Prescision & Recal curve
-**precision** = TP / (TP + FP) : total correct classifications / total observations in that class
-**recall** = TP / (TP + FN) : total correct classifications / total observations in the whole model
-**sesnsitivity**: True Positive Rate
-**specificity**: False Positive Rate
-**prevalence**: ? P / P + N
+**TN**: True Negative
+**accuracy**: True positives / total observations (Note: imbalanced data problem will give misleading results).   
+**balanced data**: classes have similar number of elements to train from.   
+**unbalanced date**: classes have very different number of elements skewing accuracy.   
+**decision threshold**: classification boundary.   
+**AUC**: Area under curve.   
+**ROC**: Receiver Operating Characteristic, for predicting the probability of a binary outcome.   
+**PR curve**:  Prescision & Recal curve.   
+**precision** = TP / (TP + FP) : total correct classifications / total observations in that class.   
+**recall** = TP / (TP + FN) : total correct classifications / total observations in the whole model.   
+**sesnsitivity**: True Positive Rate.   
+**specificity**: False Positive Rate.   
+**prevalence**: ? P / P + N.   
 
 
 #### **PR curve**:  Prescision & Recal curve
@@ -1009,11 +1009,13 @@ Add terms . .
 ![PR concept](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_Precisionrecall.png)
 [source](https://en.wikipedia.org/wiki/Precision_and_recall) - [Licence](https://creativecommons.org/licenses/by-sa/4.0/)
 
-| PR curve terms | visual |
+| PR curve terms visual | Note these terms are per class WRT oranges or WRT apples|
 | - | - |
 | data | accuracy |
+| input | correct classifications / number of observations |
 |![1](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_data.png) | ![2](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_accuracy.png)    
-| precision | recall |
+| precision TP / (TP + FP) | recall TP / (TP + FN) |
+| out of all the time I predicted a positive how many time was I correct | total correct classifications / total observations in the whole model |
 |![3](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_precision.png) | ![4](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_recall.png)  
   
 
