@@ -661,6 +661,7 @@ Viewing loaded MNIST data:
 ##### **What is hidden_size specifying?**  
 ##### **What do the Loss & Optimiser steps do?**   
 Refs http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture3.pdf.**  
+https://analyticsindiamag.com/ultimate-guide-to-pytorch-optimizers/ 
 ##### **Can I use pytorch to clean up images and covert into a data set?**  
 [Simple B&W convert](https://www.blog.pythonlibrary.org/2017/10/11/convert-a-photo-to-black-and-white-in-python/) - [thresholding](https://datacarpentry.org/image-processing/07-thresholding/).  
 Quick bit of hacking to create [script](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/img_to_bw.py) to generate 64px wide image from 3Mb mobile image.  
@@ -1036,7 +1037,18 @@ What is tensor board?
 #### **Vid contents - 17 save / load models**
  time				| notes	
 | - | - |
-**0m**		| intro
+**0m**		| intro to gradients
+**1m**		| save / load complete model LAZY: torch.save(model, PATH) / model = torch.load(PATH)
+**1m50**	| save/load RECOMMENDED: save model state dict
+**3m**		| EG code
+**3m30**	| save load lazy way
+**5m40**	| save load recommended way
+**9m**		| print / display state_dict
+**9m30**	| common way of saving a check point - model building progress checkpoint I'm guessing
+**15m30**	| Consideration when using GPU
+**15m50**	| save on GPU, load on CPU - map_location
+**16m30**	| save on GPU, load on GPU
+**16m50**	| save on CPU, load on GPU - map_location="cuda:0" select GPU
   
 High level methods:   
 ```
@@ -1048,9 +1060,11 @@ torch.load(PATH)
 state_dict = model.state_dict()     # retrieve model parameters as dict - FROM model
 
 model.load_state_dict(state_dict)   # restore model parameters as dict  - TO model
+
+                                    # torch.nn.Module().load_state_dict()
 ```
   
-Complete model - lazy approach:   
+Complete model - **lazy approach**:   
 Drawback: serialised data bound to specific classes and exact directory structure thats used when model saved.   
 I suspect this is a limitation imposed by pickle module < guess.   
 ```
@@ -1061,9 +1075,7 @@ model = torch.load(PATH)
 model.eval()
 ```
 
-Complete model - lazy approach:   
-Drawback: serialised data bound to specific classes and exact directory structure thats used when model saved.   
-I suspect this is a limitation imposed by pickle module < guess.   
+Complete model - **recommended approach**: using the **model state_dict instead** of whole thing.   
 ```
 # 1m50 - save/load RECOMMENDED: save model state dict
 
@@ -1078,13 +1090,43 @@ model.load_state_dict(torch.load(PATH)) # load dict - torch.load(PATH) pass it t
 model.eval()  
 ```
 
+Saving and restoring checkpoint during training
+```
+checkpoint = {
+    "epoch": 90,                                # place in training
+    "model_state": model.state_dict(),          # model state
+    "optim_state": optimizer.state_dict()       # optimiser state < ALSO REQUIRED
+}
 
-=w
- 
-**Questions**  
-Hmmm but?   
-  
-  
+FILE_CHECKPOINT = "checkpoint.pth"
+torch.save(checkpoint, FILE_CHECKPOINT)
+
+model = Model(n_input_features=6)                       # create model object
+optimizer = torch.optim.SGD(model.parameters(), lr=0)   # create optimizer object - correct learning rate loaded later
+
+checkpoint = torch.load(FILE_CHECKPOINT)        # load checkpoint - DICT like one above
+
+model.load_state_dict(checkpoint['model_state'])        # restore model state_dict
+
+optimizer.load_state_dict(checkpoint['optim_state'])    # restore optimiser state_dict
+print(f"\n LOADED optimizer.state_dict() \n{ optimizer.state_dict() }")
+#  LOADED optimizer.state_dict()
+# {'state': {}, 'param_groups': [{'lr': 0.01, 'momentum': 0, 'dampening': 0, 'weight_decay': 0, 'nesterov': False, 'params': [0, 1]}]}
+#               NOTE learning rate ^      ^ no longer 0
+
+epoch = checkpoint['epoch']
+
+model.eval()  # call model.eval() to set dropout and batch normalization layers to evaluation mode before running inference.
+# - or -
+# model.train()
+
+print(f"\n LOADED model.state_dict() \n{ model.state_dict() }")
+# Remember that you must call model.eval() to set dropout and batch normalization layers
+# to evaluation mode before running inference. Failing to do this will yield
+# inconsistent inference results. If you wish to resuming training,
+# call model.train() to ensure these layers are in training mode.
+```
+     
 ---
 ### 18 - Create & Deploy A Deep Learning App - PyTorch Model Deployment With Flask & Heroku  
 ([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
