@@ -22,7 +22,7 @@ print("\n" * 2)
 # 9m - adding Accuracy & Loss - writer.add_scalar
 # 14m30 - modifying the learning rate
 # 16m - prescision & recal curve? https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/
-# note - Wow! opened a can of terms leading to the confusion matrix!! [used t](https://en.wikipedia.org/wiki/Confusion_matrix)
+# note - Wow! opened a can of terms leading to the confusion matrix!! (https://en.wikipedia.org/wiki/Confusion_matrix)
 # 16m20 - TensorBoard doc add_pr_curve
 # 17m20 - add code to do PR curve for each classification
 # 19n20 - import torch.nn.functional as F to convert last layer output into softmax probabilities
@@ -52,10 +52,10 @@ print("\n" * 2)
 #                               recall = TP / (TP + FN)
 #
 # best result is 1,1 < ideal
-
+#
 # tutorial w code https://www.youtube.com/watch?v=_UEBIOC4WIY
 # tutorial w code https://www.youtube.com/watch?v=gZmOmgQns3c
-
+#
 #
 # Whats a ROC curve? Receiver Operating Characteristic
 # https://datascience103579984.wordpress.com/2019/04/30/roc-and-precision-recall-curves/
