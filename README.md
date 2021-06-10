@@ -84,7 +84,7 @@ Add table later if relevant.
 		6. [ROC - Receiver Operating Characteristic](#roc---receiver-operating-characteristic)  
 		7. [Precision & Recall](#precision--recall)  
 	17. [17 - Saving and Loading Models](#17---saving-and-loading-models)  
-		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
+		1. [**Vid contents - 17 save / load models**](#vid-contents---17-save--load-models)  
 	18. [18 - Create & Deploy A Deep Learning App - PyTorch Model Deployment With Flask & Heroku](#18---create--deploy-a-deep-learning-app---pytorch-model-deployment-with-flask--heroku)  
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
 	19. [19 - PyTorch RNN Tutorial - Name Classification Using A Recurrent Neural Net](#19---pytorch-rnn-tutorial---name-classification-using-a-recurrent-neural-net)  
@@ -735,6 +735,8 @@ Here subsampling is the same as downsamplein / pooling I believe.
 The CNN architecture has been developed with changes to width, number of layers, softmax output points all sorts -  [Summary of architectures upto 2015](https://medium.com/analytics-vidhya/cnns-architectures-lenet-alexnet-vgg-googlenet-resnet-and-more-666091488df5).  
 ![reshaping the cnn arch](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/CNN_arch_width_vs_layers.png)
 [SOURCE -  Krizhevsky-Sutskever-Hinton ](https://arxiv.org/pdf/1905.11946.pdf).  
+
+
   
 #### CNN pipeline steps - code
 ```
@@ -942,14 +944,15 @@ writer.add_graph(model, example_data.reshape(-1, 28*28))	#
 | - | - |
 | ![graph](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/tensorboard_graphs_0.png)|![connection](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/tensorboard_graphs_1.png)|
   
-Add
+Add comment on data path label 64x
 
 
 #### PR / ROC / AUC Terms
-**TP**: True Positive (model correctly classifies & input)
-**FN**: False Negative
-**FP**: False Positive
-**TN**: True Negative
+**TP**: True Positive (model prediction & input match - output is true).   
+**TN**: True Negative (model prediction & input match - output is false).   
+**FN**: False Negative (model prediction & input DONT match - output is false).   
+**FP**: False Positive (model prediction & input DONT match - output is true).   
+  
 **accuracy**: True positives / total observations (Note: imbalanced data problem will give misleading results).   
 **balanced data**: classes have similar number of elements to train from.   
 **unbalanced date**: classes have very different number of elements skewing accuracy.   
@@ -962,7 +965,16 @@ Add
 **sesnsitivity**: True Positive Rate.   
 **specificity**: False Positive Rate.   
 **prevalence**: ? P / P + N.   
-
+  
+| PR curve terms visual | Note these terms are per class   WRT oranges or WRT apples|
+| - | - |
+| data | **accuracy** |
+| input | correct classifications / number of observations |
+|![1](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_data.png) | ![2](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_accuracy.png)    
+| **precision** TP / (TP + FP) | **recall** TP / (TP + FN) |
+| out of all the time I predicted a positive how many time was I correct | total correct classifications / total observations in the whole model |
+|![3](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_precision.png) | ![4](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_recall.png)  
+  
 
 #### **PR curve**:  Prescision & Recal curve
 **precision** - y axis range 0-1  
@@ -974,6 +986,8 @@ precision = TP / (TP + FP)
 recall = TP / (TP + FN)   
 
 best result is 1,1 < ideal
+
+Add example graph, when to use etc
 
 PR / ROC / AUC tutorial w code https://www.youtube.com/watch?v=_UEBIOC4WIY
 
@@ -1009,15 +1023,6 @@ Add terms . .
 ![PR concept](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_Precisionrecall.png)
 [source](https://en.wikipedia.org/wiki/Precision_and_recall) - [Licence](https://creativecommons.org/licenses/by-sa/4.0/)
 
-| PR curve terms visual | Note these terms are per class WRT oranges or WRT apples|
-| - | - |
-| data | accuracy |
-| input | correct classifications / number of observations |
-|![1](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_data.png) | ![2](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_accuracy.png)    
-| precision TP / (TP + FP) | recall TP / (TP + FN) |
-| out of all the time I predicted a positive how many time was I correct | total correct classifications / total observations in the whole model |
-|![3](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_precision.png) | ![4](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/PR_recall.png)  
-  
 
 **Questions**  
 What is tensor board? 
@@ -1028,11 +1033,54 @@ What is tensor board?
 ### 17 - Saving and Loading Models  
 ([vid](https://www.youtube.com/watch?v=oPhxf2fXHkQ&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=13)) - 
 ([code](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/13_tensor_feed_froward_NN.py))   
-#### **Vid contents - 09 data loader**
+#### **Vid contents - 17 save / load models**
  time				| notes	
 | - | - |
 **0m**		| intro
   
+High level methods:   
+```
+torch.save(arg, PATH)           # tensors, models, or any dict  - uses pickle under the hood
+
+torch.load(PATH)
+
+
+state_dict = model.state_dict()     # retrieve model parameters as dict - FROM model
+
+model.load_state_dict(state_dict)   # restore model parameters as dict  - TO model
+```
+  
+Complete model - lazy approach:   
+Drawback: serialised data bound to specific classes and exact directory structure thats used when model saved.   
+I suspect this is a limitation imposed by pickle module < guess.   
+```
+torch.save(model, PATH)
+
+model = torch.load(PATH)
+
+model.eval()
+```
+
+Complete model - lazy approach:   
+Drawback: serialised data bound to specific classes and exact directory structure thats used when model saved.   
+I suspect this is a limitation imposed by pickle module < guess.   
+```
+# 1m50 - save/load RECOMMENDED: save model state dict
+
+# torch.save/load saves or loads a dict - model.state_dict()
+# model.state_dict()                    # retrieve model parameter
+# model.load_state_dict()               # write model parameters
+torch.save(model.state_dict(), PATH)    # model.state_dict() < model parameters
+
+# recreate model using parameters
+model = Model(*args, **kwargs)          # create model object
+model.load_state_dict(torch.load(PATH)) # load dict - torch.load(PATH) pass it to load_state_dict()
+model.eval()  
+```
+
+
+=w
+ 
 **Questions**  
 Hmmm but?   
   
@@ -1045,6 +1093,10 @@ Hmmm but?
  time				| notes	
 | - | - |
 **0m**		| intro
+  
+**Questions**  
+Hmmm but?   
+  
   
 [Docker Introduction 1hr](https://www.youtube.com/watch?v=i7ABlHngi1Q).  
   
