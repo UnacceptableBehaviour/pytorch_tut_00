@@ -31,6 +31,7 @@ Add table later if relevant.
 	6. [06 - Training Pipeline: Model, Loss, and Optimizer](#06---training-pipeline-model-loss-and-optimizer)  
 		1. [**Vid contents - 06 training pipeline**](#vid-contents---06-training-pipeline)  
 		2. [Steps in Torch ML pipeline](#steps-in-torch-ml-pipeline)  
+			1. [**What is an optimiser doing in this process?**](#what-is-an-optimiser-doing-in-this-process)  
 	7. [07 - Linear Regression](#07---linear-regression)  
 		1. [**Vid contents - 07 linear regression**](#vid-contents---07-linear-regression)  
 		2. [Summary of module import for 07](#summary-of-module-import-for-07)  
@@ -243,7 +244,7 @@ y hat = predicted loss.
   - backward pass: gradients
   - update weights
     
-**What is an optimiser doing in this process?**  
+##### **What is an optimiser doing in this process?**  
 After each pass the loss (how wrong the prediction is) is calculated.   
 This is back propagated through the network and optimisation function is used to decide how much to change weights by. Example optimizer algorithms: 
 [Adagrad](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#adagrad), 
@@ -253,7 +254,7 @@ This is back propagated through the network and optimisation function is used to
 [BFGS](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#bfgs), 
 [Momentum](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#momentum), 
 [Nesterov Momentum](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#nesterov-momentum), 
-[Newtons Method](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#newton-s-method), 
+[Newton's Method](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#newton-s-method), 
 [RMSProp](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#rmsprop), 
 [SGD](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#sgd). (maths & code).   
   
@@ -353,8 +354,7 @@ THNN is a library that gathers nn's C implementations of neural network modules.
 [Static vs Dynamic Shape](https://pgaleone.eu/tensorflow/2018/07/28/understanding-tensorflow-tensors-shape-static-dynamic/) .  
 Describing computational graphs is just a matter of connecting nodes correctly. Connecting nodes seems a trivial operation, **but it hides some difficulties related to the shape of tensors**. This article will guide you through the concept of tensors shape in both its variants: static and dynamic.
 
-How to setup pytorch code prediction for Komodo IDE?
-https://www.google.com/search?safe=active&sxsrf=ALeKk03QSxUCcfqoRqniKinMd2nkDpWUuw:1621682572448&q=How+to+setup+%22pytorch%22+code+prediction+for+Komodo+IDE?&sa=X&ved=2ahUKEwi25qytlt3wAhXDTxUIHaTVD7UQ5t4CMAF6BAgDEAo&biw=1125&bih=734
+
   
 ---
 ### 08 - Logistic Regression  
@@ -823,7 +823,7 @@ Where does nearest neighbour come into the picture?
   
 
 #### **How do I visualise extracted features like this?**  
-![extracted featuures](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/feature_extraction.png)  
+![extracted features](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/feature_extraction.png)  
 This looks promising [visualizing feature maps w/ pytorch](https://debuggercafe.com/visualizing-filters-and-feature-maps-in-convolutional-neural-networks-using-pytorch/)  
 [Tutorial for keras read understand shapes](https://machinelearningmastery.com/how-to-visualize-filters-and-feature-maps-in-convolutional-neural-networks/)
   
@@ -899,13 +899,13 @@ Difference between [features and feature maps?](https://www.quora.com/What-is-th
   
 **Feature map:** feature map is a term from signal processing. Its a map of the results from convolution operator. Each filter defines a specific feature (IE a horizontal edge) that we want to extract from the input signal. Convolution shows the response of the signal to that feature by measuring the correlation between each part of the signal and the filter. By looking at the output of the convolution, we can locate where the signal contains features found, hence a map. 
 
-What criterion again? CrossEntropyLoss function
+What criterion again? Selected loss function here uses the CrossEntropyLoss function
 Terms
 step
 learning rate
 momentum
 criterion
-optimiser
+optimiser? Selecter optimiser function, interpret the loss and adjusts weight during back propagation based on an optimisation strategy [example optimisers here]()
 
 TODO - transfer train using VGG16
 VGG16
