@@ -44,7 +44,8 @@ Add table later if relevant.
 		3. [torch.tensor.shape() - torch.Size([455, 1])](#torchtensorshape---torchsize455-1)  
 	9. [09 - Dataset and DataLoader - Batch Training](#09---dataset-and-dataloader---batch-training)  
 		1. [**Vid contents - 09 data loader**](#vid-contents---09-data-loader)  
-		2. [Using load_wine() to load info about the dataset but doesn't appear to load the whole data set. How do I load & walk the data?](#using-loadwine-to-load-info-about-the-dataset-but-doesnt-appear-to-load-the-whole-data-set-how-do-i-load--walk-the-data)  
+		2. [Samples / Observations vs Batch Size vs Iterations vs Epoch](#samples--observations-vs-batch-size-vs-iterations-vs-epoch)  
+		3. [Using load_wine() to load info about the dataset but doesn't appear to load the whole data set. How do I load & walk the data?](#using-loadwine-to-load-info-about-the-dataset-but-doesnt-appear-to-load-the-whole-data-set-how-do-i-load--walk-the-data)  
 	10. [10 - Dataset Transforms](#10---dataset-transforms)  
 		1. [**Vid contents - 10 data transforms**](#vid-contents---10-data-transforms)  
 		2. [What is PIL / Pillow?](#what-is-pil--pillow)  
@@ -263,8 +264,7 @@ Visual representation of how different types of optimiser interpret the gradient
 [credit CS231n](https://cs231n.github.io/neural-networks-3/)  
   
 Whats the difference between a loss & cost function?  
-
-
+For a single training cycle loss is calculated numerous times, but the cost function is only calculated once for the whole network.
 =w
 
 ---
@@ -417,13 +417,13 @@ More on [dynamic & static shapes](https://pgaleone.eu/tensorflow/2018/07/28/unde
 **10m40**	| training loop - iterating dataset
 **14m50**	| example data sets: MNIST et al  
   
-Terms  
-```
-epoch = 1 forward & backward pass of all training samples
-batch_size = number of training samples in forward & backward pass
-number of iterations = number of passes, each pass using [batch_size] number of samples
-EG 100 samples, batch_size=20 -> 100/20 = 5 iterations for 1 epoch
-```
+#### Samples / Observations vs Batch Size vs Iterations vs Epoch
+**Terms**
+**epoch** = 1 forward & backward pass of all training **samples**  
+**batch_size** = number of training samples in forward & backward pass  
+number of **iterations** = number of passes, each pass using [batch_size] number of samples  
+**EG** 100 **samples**, batch_size=20 -> 100/20 = 5 iterations for 1 epoch  
+  
 
 #### Using load_wine() to load info about the dataset but doesn't appear to load the whole data set. How do I load & walk the data?
 [sklearn load_wine()](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_wine.html#sklearn.datasets.load_wine)
@@ -898,15 +898,20 @@ Difference between [features and feature maps?](https://www.quora.com/What-is-th
 **Feature:** is usually a representation of an object in some space. An object here can be an invariant like a vector.
   
 **Feature map:** feature map is a term from signal processing. Its a map of the results from convolution operator. Each filter defines a specific feature (IE a horizontal edge) that we want to extract from the input signal. Convolution shows the response of the signal to that feature by measuring the correlation between each part of the signal and the filter. By looking at the output of the convolution, we can locate where the signal contains features found, hence a map. 
+  
+**Refresh of terms:**  
+**Learning rate** 
+  
+**Step**  
+  
+**Stride**  
+  
+**Momentum**  
+  
+**Criterion:** Selected loss function here uses the CrossEntropyLoss function [loss vs cost function]()
 
-What criterion again? Selected loss function here uses the CrossEntropyLoss function
-Terms
-step
-learning rate
-momentum
-criterion
-optimiser? Selecter optimiser function, interpret the loss and adjusts weight during back propagation based on an optimisation strategy [example optimisers here]()
-
+**Optimiser?** Selected optimiser function, interpret the loss and adjusts weight during back propagation based on an optimisation strategy [example optimiser algorithms here](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/README.md#what-is-an-optimiser-doing-in-this-process).  
+  
 TODO - transfer train using VGG16
 VGG16
 Img In 224x224x3
