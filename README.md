@@ -272,7 +272,7 @@ Bias (B) is where the model intercepts with the axis and is included in the mode
   
 Mx + B
   
-[Code for plot](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/07_tensor_linear_regresssion.py)
+[Code for plot](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/07_tensor_linear_regresssion.py)  
 ![linear regression](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/linear_regression.png)  
   
 Note multivariable is still linear relation ship but to more than one variable!  
