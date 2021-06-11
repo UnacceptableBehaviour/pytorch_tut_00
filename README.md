@@ -242,9 +242,17 @@ y hat = predicted loss.
   - forward pass: compute prediction
   - backward pass: gradients
   - update weights
+    
+**What is an optimiser doing in this process?**  
+After each pass the loss (how wrong the prediction is) is calculated.   
+This is back propagated through the network and optimisation function is used to decide how much to change weights by. Example optimizer algorithms: , , , , , , , , ,  (maths & code).  
   
+Visual representation of how different types of optimiser interpret the gradient terrain:  
+![zeroing-in](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/optimiser_eg.gif)  
+[credit CS231n](https://cs231n.github.io/neural-networks-3/)  
+  
+Whats the difference between a loss & cost function?  
 
-Whats the difference between a loss & cost function
 
 =w
 
