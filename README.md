@@ -245,7 +245,17 @@ y hat = predicted loss.
     
 **What is an optimiser doing in this process?**  
 After each pass the loss (how wrong the prediction is) is calculated.   
-This is back propagated through the network and optimisation function is used to decide how much to change weights by. Example optimizer algorithms: , , , , , , , , ,  (maths & code).  
+This is back propagated through the network and optimisation function is used to decide how much to change weights by. Example optimizer algorithms: 
+[Adagrad](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#adagrad), 
+[Adadelta](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#adadelta), 
+[Adam](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#adam), 
+[Conjugate Gradients](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#conjugate-gradients), 
+[BFGS](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#bfgs), 
+[Momentum](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#momentum), 
+[Nesterov Momentum](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#nesterov-momentum), 
+[Newtons Method](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#newton-s-method), 
+[RMSProp](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#rmsprop), 
+[SGD](https://ml-cheatsheet.readthedocs.io/en/latest/optimizers.html#sgd). (maths & code).   
   
 Visual representation of how different types of optimiser interpret the gradient terrain:  
 ![zeroing-in](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/optimiser_eg.gif)  
