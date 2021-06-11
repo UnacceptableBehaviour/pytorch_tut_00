@@ -268,10 +268,11 @@ Whats the difference between a loss & cost function
 What is **LINEAR REGRESSION**?   
 Single variable:
 This is simply fitting a straight (linear - constant M) line (the model) to the provided data set as seen here.  
-Bias (B) is where the model intercepts with the axis and is included in the model so it can be tweaked by the learning process. [Code for plot](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/07_tensor_linear_regresssion.py)  
+Bias (B) is where the model intercepts with the axis and is included in the model so it can be tweaked by the learning process.   
   
 Mx + B
   
+[Code for plot](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/07_tensor_linear_regresssion.py)
 ![linear regression](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/linear_regression.png)  
   
 Note multivariable is still linear relation ship but to more than one variable!  
