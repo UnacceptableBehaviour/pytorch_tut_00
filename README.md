@@ -243,6 +243,11 @@ y hat = predicted loss.
   - backward pass: gradients
   - update weights
   
+
+Whats the difference between a loss & cost function
+
+=w
+
 ---
 ### 07 - Linear Regression  
 ([vid](https://www.youtube.com/watch?v=YAJ5XBwlN4o&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=7)) - 
@@ -259,6 +264,24 @@ y hat = predicted loss.
 **5m40**	| 2) Construct the loss & optimiser
 **7m**		| 3) Training Loop
 **10m**		| plot
+  
+What is **LINEAR REGRESSION**?   
+Single variable:
+This is simply fitting a straight (linear - constant M) line (the model) to the provided data set as seen here.  
+Bias (B) is where the model intercepts with the axis and is included in the model so it can be tweaked by the learning process. [Code for plot](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/scripts/07_tensor_linear_regresssion.py)  
+  
+Mx + B
+  
+![linear regression](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/linear_regression.png)  
+  
+Note multivariable is still linear relation ship but to more than one variable!  
+  
+Mx + Ny + Oz + B  
+  
+[More on linear regression inc multivariable](https://ml-cheatsheet.readthedocs.io/en/latest/linear_regression.html).  
+
+
+
 
 #### Summary of module import for 07
 ```
@@ -703,7 +726,8 @@ Modules can also contain other Modules, allowing to nest them in a tree structur
 **17m20**	| Class forward method layers
 **20m30**	| Run training
 
-Watch this for solid overview on CNN - [03 - MIT 6.S191 - Convolutional Neural Networks](https://www.youtube.com/watch?v=AjtX1N_VT9E) from 14m on.
+Watch this for solid overview on CNN - [03 - MIT 6.S191 - Convolutional Neural Networks](https://www.youtube.com/watch?v=AjtX1N_VT9E) from 14m on. [lect notes](http://introtodeeplearning.com/slides/6S191_MIT_DeepLearning_L3.pdf)
+
 
 #### CNN pipeline steps
 ```
@@ -728,7 +752,7 @@ these layers are repeated feeding forward into the next layer - FOR FEATURE EXTR
 ```
   
 #### CNN architecure
-Here subsampling is the same as downsamplein / pooling I believe.  
+Here subsampling is the same as downsampleing / pooling I believe.  
 ![cnn arch - 1998 2012](https://github.com/UnacceptableBehaviour/pytorch_tut_00/blob/main/imgs/CNN_arch_1998-2012.png)  
 [Source](http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture1.pdf).  
 [](https://proceedings.neurips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf)
@@ -1001,6 +1025,7 @@ Terms
 SESNSITIVITY (True Positive Rate)
 vs
 SPECIFICITY (False Positive Rate)
+See 41m39 CNN - [] from 14m on. []
 
 
 When PREVALENCE matters a PR curve is used instead of a ROC curve
@@ -1141,6 +1166,7 @@ Hmmm but?
   
   
 [Docker Introduction 1hr](https://www.youtube.com/watch?v=i7ABlHngi1Q).  
+[How to run pytorch models in browser w ONNX.js](https://www.youtube.com/watch?v=Vs730jsRgO8).  
   
 ---
 ### 19 - PyTorch RNN Tutorial - Name Classification Using A Recurrent Neural Net  
