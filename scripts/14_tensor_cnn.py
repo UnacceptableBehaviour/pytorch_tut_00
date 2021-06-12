@@ -135,7 +135,7 @@ test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=batch_size,
 classes = ('plane', 'car', 'bird', 'cat',
            'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
-# TODO make 12x8 set of images
+# shows a batch of images
 def imshow(img):
     img = img / 2 + 0.5  # unnormalize
     npimg = img.numpy()
@@ -148,7 +148,7 @@ dataiter = iter(train_loader)
 images, labels = dataiter.next()
 
 # show images
-imshow(torchvision.utils.make_grid(images))
+#imshow(torchvision.utils.make_grid(images))
 
 
 
@@ -195,44 +195,44 @@ class ConvNet(nn.Module):
         #                 bias=True)
 
         # parameter explanation 13m
-        self.conv1 = nn.Conv2d(3, 6, 5)         # in_channels = 3 (RGB), out_channels = 6 features / planes, kernel_size = 5 (5x5)
+        self.conv1 = nn.Conv2d(3, 12, 3)         # in_channels = 3 (RGB), out_channels = 6 features / planes, kernel_size = 5 (5x5)
         self.pool = nn.MaxPool2d(2, 2)          # kernel = 2, stride=2  down sample  OP =
-        self.conv2 = nn.Conv2d(6, 16, 5)
-        self.fc1 = nn.Linear(16 * 5 * 5, 120)
+        self.conv2 = nn.Conv2d(12, 32, 3)
+        self.fc1 = nn.Linear(32 * 6 * 6, 120)
         self.fc2 = nn.Linear(120, 84)
         self.fc3 = nn.Linear(84, 10)
 
-    def forward(self, x):
-        # -> n, 3, 32, 32
-        x = self.pool(F.relu(self.conv1(x)))  # -> n, 6, 14, 14
-        x = self.pool(F.relu(self.conv2(x)))  # -> n, 16, 5, 5
-        x = x.view(-1, 16 * 5 * 5)            # -> n, 400
-        x = F.relu(self.fc1(x))               # -> n, 120
-        x = F.relu(self.fc2(x))               # -> n, 84
-        x = self.fc3(x)                       # -> n, 10
-        return x
-
-    # def forward(self, x): # Conv2d o/p - Calculating the output size: (Wfmap = (Wimg - Wkrn + 2*padding) / stride ) + 1 - - -\
-    #     print(f"\n shape( x ) \n{ x.shape }")                           # torch.Size([4, 3, 32, 32])                          |
-    #                                             # -> n, 3, 32, 32                       batch size                            |
-    #     act = F.relu(self.conv1(x))                                     #              /                                      |
-    #     print(f"\n shape( F.relu(self.conv1(x)) ) \n{ act.shape }")     # torch.Size([4, 6, 28, 28])  < why this changes! <--/  from 32x32 to 28x28
-    #     x = self.pool(act)                      # -> n, 6, 14, 14
-    #     print(f"\n shape( self.pool(act) ) \n{ x.shape }")              # torch.Size([4, 6, 14, 14])
-    #     act = F.relu(self.conv2(x))
-    #     print(f"\n shape( F.relu(self.conv1(x)) ) \n{ act.shape }")     # torch.Size([4, 16, 10, 10])
-    #     x = self.pool(act)                      # -> n, 16, 5, 5
-    #     print(f"\n shape( self.pool(act) ) \n{ x.shape }")              # torch.Size([4, 16, 5, 5])
-    #
-    #     # flatten for linear layers
+    # def forward(self, x):
+    #     # -> n, 3, 32, 32
+    #     x = self.pool(F.relu(self.conv1(x)))  # -> n, 6, 14, 14
+    #     x = self.pool(F.relu(self.conv2(x)))  # -> n, 16, 5, 5
     #     x = x.view(-1, 16 * 5 * 5)            # -> n, 400
-    #
     #     x = F.relu(self.fc1(x))               # -> n, 120
     #     x = F.relu(self.fc2(x))               # -> n, 84
     #     x = self.fc3(x)                       # -> n, 10
-    #
-    #     sys.exit(0)
     #     return x
+
+    def forward(self, x): # Conv2d o/p - Calculating the output size: (Wfmap = (Wimg - Wkrn + 2*padding) / stride ) + 1 - - -\
+        print(f"\n shape( x ) \n{ x.shape }")                           # torch.Size([4, 3, 32, 32])                          |
+                                                # -> n, 3, 32, 32                       batch size                            |
+        act = F.relu(self.conv1(x))                                     #              /                                      |
+        print(f"\n shape( F.relu(self.conv1(x)) ) \n{ act.shape }")     # torch.Size([4, 6, 28, 28])  < why this changes! <--/  from 32x32 to 28x28
+        x = self.pool(act)                      # -> n, 6, 14, 14
+        print(f"\n shape( self.pool(act) ) \n{ x.shape }")              # torch.Size([4, 6, 14, 14])
+        act = F.relu(self.conv2(x))
+        print(f"\n shape( F.relu(self.conv1(x)) ) \n{ act.shape }")     # torch.Size([4, 16, 10, 10])
+        x = self.pool(act)                      # -> n, 16, 5, 5
+        print(f"\n shape( self.pool(act) ) \n{ x.shape }")              # torch.Size([4, 16, 5, 5])
+
+        # flatten for linear layers
+        x = x.view(-1, 32 * 6 * 6)            # -> n, 400
+
+        x = F.relu(self.fc1(x))               # -> n, 120
+        x = F.relu(self.fc2(x))               # -> n, 84
+        x = self.fc3(x)                       # -> n, 10
+
+        sys.exit(0)
+        return x
 
 
 model = ConvNet().to(device)
