@@ -158,7 +158,12 @@ class ConvNet(nn.Module):
         # Conv2d     https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html#torch.nn.Conv2d
         # MaxPool2d  https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html#torch.nn.MaxPool2d
         # Linear     https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear
-        # (kernel = feature map)
+        # fc - fully connected / dense layer
+
+        # KERNEL = FILTER 3x3, 4x4 etc
+        # FILTERS are convolved with image by scanning it: produces a FEATURE MAP
+        # scanning is done by moving the filter x pixels at a time x is set by the STRIDE hyperparameter
+
         self.conv1 = nn.Conv2d(3, 6, 5)  # in_channels = 3 (RGB), out_channels = 6?, kernel_size = 5 (5x5)
         self.pool = nn.MaxPool2d(2, 2)
         self.conv2 = nn.Conv2d(6, 16, 5)
