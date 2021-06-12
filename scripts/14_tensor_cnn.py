@@ -9,6 +9,7 @@ print("\n" * 20)
 print("-" * 80)
 print("-" * 80)
 print("\n" * 2)
+import sys
 
 # 0m - CNN Theory overview
 # 1m - concepts CNN convolutional neural net
@@ -19,7 +20,8 @@ print("\n" * 2)
 # 7m - class definitions in detail
 # 7m23 - CNN architecture slide
 # 11m - going over chosen layer parameters
-# 13m46 - Calculating the output size > Inputs into Linear layers
+# 13m - parameter explanation
+# 13m46 - Conv2d o/p - Calculating the output size > Inputs into Linear layers
 # 17m20 - Class forward method layers
 # 20m30 - Run training
 #
@@ -108,7 +110,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # Hyper-parameters
 num_epochs = 5
-batch_size = 4
+batch_size = 12
 learning_rate = 0.001
 
 # dataset has PILImage images of range [0, 1].
@@ -175,12 +177,26 @@ class ConvNet(nn.Module):
         # maths 0 to hero: https://arxiv.org/pdf/1603.07285.pdf   https://www.youtube.com/watch?v=MmG2ah5Df4g
         #
         # MaxPool2d  https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html#torch.nn.MaxPool2d
+        #
+        # OUTPUT SIZE (Hout,Wout) = (Hin/stride, Win/stride)    See above link foe EQN tha includes all params
+        #
+        # torch.nn.MaxPool2d(kernel_size,           # pool window dimension:    3 3x3, 4x4 etc or (2,4) (height,width)
+        #                    stride=None,           # uses kernel_size as default
+        #                    padding=0,
+        #                    dilation=1,
+        #                    return_indices=False,
+        #                    ceil_mode=False)
+        #
         # Linear     https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear
         # fc - fully connected / dense layer
+        #
+        # torch.nn.Linear(in_features,      #
+        #                 out_features,
+        #                 bias=True)
 
-
-        self.conv1 = nn.Conv2d(3, 6, 5)  # in_channels = 3 (RGB), out_channels = 6?, kernel_size = 5 (5x5)
-        self.pool = nn.MaxPool2d(2, 2)
+        # parameter explanation 13m
+        self.conv1 = nn.Conv2d(3, 6, 5)         # in_channels = 3 (RGB), out_channels = 6 features / planes, kernel_size = 5 (5x5)
+        self.pool = nn.MaxPool2d(2, 2)          # kernel = 2, stride=2  down sample  OP =
         self.conv2 = nn.Conv2d(6, 16, 5)
         self.fc1 = nn.Linear(16 * 5 * 5, 120)
         self.fc2 = nn.Linear(120, 84)
@@ -195,6 +211,28 @@ class ConvNet(nn.Module):
         x = F.relu(self.fc2(x))               # -> n, 84
         x = self.fc3(x)                       # -> n, 10
         return x
+
+    # def forward(self, x): # Conv2d o/p - Calculating the output size: (Wfmap = (Wimg - Wkrn + 2*padding) / stride ) + 1 - - -\
+    #     print(f"\n shape( x ) \n{ x.shape }")                           # torch.Size([4, 3, 32, 32])                          |
+    #                                             # -> n, 3, 32, 32                       batch size                            |
+    #     act = F.relu(self.conv1(x))                                     #              /                                      |
+    #     print(f"\n shape( F.relu(self.conv1(x)) ) \n{ act.shape }")     # torch.Size([4, 6, 28, 28])  < why this changes! <--/  from 32x32 to 28x28
+    #     x = self.pool(act)                      # -> n, 6, 14, 14
+    #     print(f"\n shape( self.pool(act) ) \n{ x.shape }")              # torch.Size([4, 6, 14, 14])
+    #     act = F.relu(self.conv2(x))
+    #     print(f"\n shape( F.relu(self.conv1(x)) ) \n{ act.shape }")     # torch.Size([4, 16, 10, 10])
+    #     x = self.pool(act)                      # -> n, 16, 5, 5
+    #     print(f"\n shape( self.pool(act) ) \n{ x.shape }")              # torch.Size([4, 16, 5, 5])
+    #
+    #     # flatten for linear layers
+    #     x = x.view(-1, 16 * 5 * 5)            # -> n, 400
+    #
+    #     x = F.relu(self.fc1(x))               # -> n, 120
+    #     x = F.relu(self.fc2(x))               # -> n, 84
+    #     x = self.fc3(x)                       # -> n, 10
+    #
+    #     sys.exit(0)
+    #     return x
 
 
 model = ConvNet().to(device)
@@ -225,7 +263,7 @@ for epoch in range(num_epochs):
             print (f'Epoch [{epoch+1}/{num_epochs}], Step [{i+1}/{n_total_steps}], Loss: {loss.item():.4f}')
 
 print('Finished Training')
-PATH = './cnn.pth'
+PATH = './data/cnn14.pth'
 torch.save(model.state_dict(), PATH)
 
 with torch.no_grad():
@@ -287,7 +325,7 @@ with torch.no_grad():
 # Epoch [5/5], Step [8000/12500], Loss: 1.6863
 # Epoch [5/5], Step [10000/12500], Loss: 1.2374
 # Epoch [5/5], Step [12000/12500], Loss: 0.8387
-# Finished Training
+# Finished Training - batch = 4
 # Accuracy of the network: 48.71 %
 # Accuracy of plane: 53.1 %
 # Accuracy of car: 74.9 %
@@ -300,6 +338,18 @@ with torch.no_grad():
 # Accuracy of ship: 61.6 %
 # Accuracy of truck: 47.8 %
 
+# Finished Training - batch = 4
+# Accuracy of the network: 50.13 %
+# Accuracy of plane: 57.8 %
+# Accuracy of car: 52.1 %
+# Accuracy of bird: 25.0 %
+# Accuracy of cat: 34.2 %
+# Accuracy of deer: 51.2 %
+# Accuracy of dog: 40.9 %
+# Accuracy of frog: 64.6 %
+# Accuracy of horse: 54.7 %
+# Accuracy of ship: 58.6 %
+# Accuracy of truck: 62.2 %
 
 #print(f"\n  \n{  }")
 
