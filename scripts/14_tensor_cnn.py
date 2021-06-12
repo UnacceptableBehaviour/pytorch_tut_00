@@ -156,13 +156,28 @@ class ConvNet(nn.Module):
     def __init__(self):
         super(ConvNet, self).__init__()
         # Conv2d     https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html#torch.nn.Conv2d
+        #
+        # KERNEL = FILTER 3x3, 4x4 etc
+        # FILTERS are convolved with image by scanning it: produces a FEATURE MAP
+        # scanning is done by moving the filter x pixels at a time x is set by the STRIDE hyperparameter
+        #
+        # torch.nn.Conv2d(in_channels,  # inputs signal planes - for initial input of image this will usually be 3 for RGB planes
+        #                 out_channels, # there will be one plane (feature map) for each filter
+        #                 kernel_size,  # filter dimension:         3 3x3, 4x4 etc or (2,4) (height,width)
+        #                 stride=1,     # filter movement amount    3 3x3, 4x4 etc or (2,4) (height,width)
+        #                 padding=0,    # periferal padding         3 3x3, 4x4 etc or (2,4) (height,width)
+        #                 dilation=1,   # separation between filter sample points  'a trous algorithm'  ^ as above int / tuple
+        #                 groups=1,     # last piece of puzzle < need better understanding of this TODO
+        #                 bias=True,    # learnable bias default = True
+        #                 padding_mode='zeros')
+        #
+        # dilation stride anims: https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md
+        # maths 0 to hero: https://arxiv.org/pdf/1603.07285.pdf   https://www.youtube.com/watch?v=MmG2ah5Df4g
+        #
         # MaxPool2d  https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html#torch.nn.MaxPool2d
         # Linear     https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear
         # fc - fully connected / dense layer
 
-        # KERNEL = FILTER 3x3, 4x4 etc
-        # FILTERS are convolved with image by scanning it: produces a FEATURE MAP
-        # scanning is done by moving the filter x pixels at a time x is set by the STRIDE hyperparameter
 
         self.conv1 = nn.Conv2d(3, 6, 5)  # in_channels = 3 (RGB), out_channels = 6?, kernel_size = 5 (5x5)
         self.pool = nn.MaxPool2d(2, 2)
