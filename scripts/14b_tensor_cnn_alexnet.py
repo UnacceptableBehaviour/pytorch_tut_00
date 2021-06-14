@@ -207,9 +207,13 @@ class AlexNet(nn.Module):
         )
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         x = self.features(x)
+        print(f"\n shape( self.features(x) ) \n{ x.shape }")
         x = self.avgpool(x)
+        print(f"\n shape( self.avgpool(x) ) \n{ x.shape }")
         x = torch.flatten(x, 1)
+        print(f"\n shape( torch.flatten(x, 1) ) \n{ x.shape }")
         x = self.classifier(x)
+        print(f"\n shape( self.classifier(x) ) \n{ x.shape }")
         return x
 
 #model = ConvNet().to(device)
